@@ -5,6 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <title>Tenth Sanctum Tattoo</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&display=swap" rel="stylesheet">
 
   <style>
     /* =========================
@@ -85,8 +88,8 @@
     }
 
     body.logo-settling .site-logo {
-    top: 24px;
-    width: min(48vw, 520px);
+    top: 22px;
+    width: min(52vw, 600px);
     transform: translate(-50%, 0);
     }
 
@@ -147,28 +150,36 @@
        TOP RIGHT BOOK BUTTON
        This remains as the main CTA.
     ========================== */
-    .book-top {
-      position: fixed;
-      top: 28px;
-      right: 32px;
-      z-index: 1100;
-      padding: 12px 18px;
-      border: 1px solid rgba(255, 42, 31, 0.75);
-      color: var(--cream);
-      background: rgba(0, 0, 0, 0.22);
-      font-family: Arial, sans-serif;
-      font-size: 0.72rem;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      text-decoration: none;
-      opacity: 0;
-      pointer-events: none;
-      transition:
-        opacity 0.7s ease,
-        background 0.2s ease,
-        color 0.2s ease,
-        box-shadow 0.2s ease;
-    }
+  .book-top {
+  position: fixed;
+  top: 28px;
+  right: 32px;
+  z-index: 1100;
+  padding: 12px 18px;
+  border: 1px solid rgba(184, 90, 77, 0.72);
+  color: var(--cream);
+  background: rgba(0, 0, 0, 0.18);
+  font-family: Arial, sans-serif;
+  font-size: 0.7rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  text-decoration: none;
+  opacity: 0;
+  pointer-events: none;
+  transition:
+    opacity 0.7s ease,
+    background 0.2s ease,
+    color 0.2s ease,
+    box-shadow 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.book-top:hover {
+  background: rgba(184, 90, 77, 0.14);
+  color: #fff;
+  border-color: #b85a4d;
+  box-shadow: 0 0 10px rgba(184, 90, 77, 0.12);
+}
 
     body.nav-live .book-top {
       opacity: 1;
@@ -385,7 +396,7 @@
 .hero-text {
   position: absolute;
   left: 56px;
-  bottom: 118px;
+  bottom: 150px;
   z-index: 20;
   max-width: 520px;
   color: var(--cream);
@@ -401,25 +412,22 @@ body.nav-live .hero-text {
 
 .hero-text h1 {
   margin: 0 0 18px;
-  font-family: Georgia, "Times New Roman", serif;
-  font-size: clamp(2rem, 3.6vw, 3.35rem);
-  line-height: 1.04;
-  font-weight: 500;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: clamp(2.15rem, 3.6vw, 3.35rem);
+  line-height: 0.98;
+  font-weight: 600;
   color: var(--cream);
-  letter-spacing: 0.005em;
+  letter-spacing: 0.01em;
 }
 
 .hero-text .walkins {
   margin: 0;
   font-family: Arial, sans-serif;
-  font-size: 0.82rem;
+  font-size: 0.76rem;
   letter-spacing: 0.24em;
   text-transform: uppercase;
-  color: #c94a3f;
-  text-shadow:
-    text-shadow:
-  0 0 5px rgba(201, 74, 63, 0.35),
-  0 0 12px rgba(201, 74, 63, 0.16);;
+  color: #b85a4d;
+  text-shadow: none;
 }
 
     /* =========================
