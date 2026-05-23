@@ -382,43 +382,44 @@
        This sits directly on the hero image.
        No button under Walk-Ins Welcome.
     ========================== */
-    .hero-text {
-      position: absolute;
-      left: 48px;
-      bottom: 70px;
-      z-index: 20;
-      max-width: 660px;
-      color: var(--cream);
-      opacity: 0;
-      transform: translateY(14px);
-      transition: opacity 0.8s ease, transform 0.8s ease;
-    }
+.hero-text {
+  position: absolute;
+  left: 56px;
+  bottom: 118px;
+  z-index: 20;
+  max-width: 520px;
+  color: var(--cream);
+  opacity: 0;
+  transform: translateY(14px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
 
-    body.nav-live .hero-text {
-      opacity: 1;
-      transform: translateY(0);
-    }
+body.nav-live .hero-text {
+  opacity: 1;
+  transform: translateY(0);
+}
 
-    .hero-text h1 {
-      margin: 0 0 18px;
-      font-family: Georgia, "Times New Roman", serif;
-      font-size: clamp(2.1rem, 4.2vw, 3.9rem);
-      line-height: 1.02;
-      font-weight: 500;
-      color: var(--cream);
-    }
+.hero-text h1 {
+  margin: 0 0 20px;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(2rem, 3.8vw, 3.45rem);
+  line-height: 1.04;
+  font-weight: 500;
+  color: var(--cream);
+  letter-spacing: 0.01em;
+}
 
-    .hero-text .walkins {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      font-size: 0.95rem;
-      letter-spacing: 0.22em;
-      text-transform: uppercase;
-      color: var(--red);
-      text-shadow:
-        0 0 6px rgba(255, 42, 31, 0.55),
-        0 0 14px rgba(255, 42, 31, 0.25);
-    }
+.hero-text .walkins {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  font-size: 0.82rem;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--red);
+  text-shadow:
+    0 0 6px rgba(255, 42, 31, 0.5),
+    0 0 14px rgba(255, 42, 31, 0.22);
+}
 
     /* =========================
        TABLET
@@ -488,22 +489,22 @@
         filter: brightness(0.72) contrast(1.06) saturate(0.72);
       }
 
-      .hero-text {
-        left: 22px;
-        right: 22px;
-        bottom: 92px;
-        max-width: none;
-        text-align: left;
+     .hero-text {
+      left: 24px;
+      right: 24px;
+      bottom: 90px;
+      max-width: none;
+      text-align: left;
       }
 
       .hero-text h1 {
-        font-size: clamp(2rem, 10vw, 3.1rem);
-        line-height: 1.02;
+      font-size: clamp(1.9rem, 8.8vw, 2.85rem);
+      line-height: 1.05;
       }
 
-      .hero-text .walkins {
-        font-size: 0.72rem;
-        letter-spacing: 0.16em;
+    .hero-text .walkins {
+    font-size: 0.68rem;
+    letter-spacing: 0.18em;
       }
     }
   </style>
