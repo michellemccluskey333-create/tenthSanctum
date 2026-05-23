@@ -304,15 +304,18 @@
 
     /* Note, not a menu choice */
     .no-piercer-note {
-      margin: 46px 0 0;
-      padding-top: 18px;
-      border-top: 1px solid rgba(232, 222, 206, 0.14);
-      color: rgba(232, 222, 206, 0.72);
-      font-family: Arial, sans-serif;
-      font-size: 0.68rem;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-    }
+  margin: 46px 0 0;
+  padding-top: 18px;
+  border-top: 1px solid var(--red-border);
+  color: var(--red);
+  font-family: Arial, sans-serif;
+  font-size: 0.82rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  text-shadow:
+    0 0 5px rgba(216, 91, 79, 0.35),
+    0 0 12px rgba(216, 91, 79, 0.14);
+}
 
     /* Emblem sits below the note, not stranded at the bottom */
     .menu-logo-small {
@@ -526,10 +529,10 @@
         text-align: left;
       }
 
-      .hero-text h1 {
-        font-size: clamp(1.9rem, 8.8vw, 2.85rem);
-        line-height: 1.05;
-      }
+    .hero-text h1 {
+  font-size: clamp(2.1rem, 9.5vw, 3.15rem);
+  line-height: 1.05;
+}
 
       .hero-text .walkins {
         font-size: 0.78rem;
