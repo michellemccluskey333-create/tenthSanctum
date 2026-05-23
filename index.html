@@ -230,47 +230,42 @@
     </section>
   </main>
 
-  <script>
-    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+<script>
+  window.addEventListener("load", () => {
+    // 1. Black screen + large centered logo is already visible.
 
-    if (reduceMotion) {
+    // 2. Logo moves/shrinks to top center.
+    setTimeout(() => {
+      document.body.classList.add("logo-settling");
+    }, 650);
+
+    // 3. Hero image appears, still very dark/blackened.
+    setTimeout(() => {
+      document.body.classList.add("hero-live");
+    }, 1650);
+
+    // 4. Hero image brightens into visibility.
+    setTimeout(() => {
+      document.body.classList.add("hero-bright");
+    }, 2050);
+
+    // 5. Header/logo becomes visible.
+    setTimeout(() => {
+      document.body.classList.add("content-live");
       document.body.classList.remove("intro-running");
-      document.body.classList.add(
-        "logo-settling",
-        "hero-live",
-        "hero-bright",
-        "content-live",
-        "intro-complete"
-      );
-    } else {
-      window.addEventListener("load", () => {
-        setTimeout(() => {
-          document.body.classList.add("logo-settling");
-        }, 650);
+    }, 2600);
 
-        setTimeout(() => {
-          document.body.classList.add("hero-live");
-        }, 1650);
+    // 6. Fade away black intro layer.
+    setTimeout(() => {
+      document.body.classList.add("intro-complete");
+    }, 2850);
 
-        setTimeout(() => {
-          document.body.classList.add("hero-bright");
-        }, 2050);
-
-        setTimeout(() => {
-          document.body.classList.add("content-live");
-          document.body.classList.remove("intro-running");
-        }, 2600);
-
-        setTimeout(() => {
-          document.body.classList.add("intro-complete");
-        }, 2850);
-
-        setTimeout(() => {
-          const intro = document.querySelector(".intro");
-          if (intro) intro.remove();
-        }, 3350);
-      });
-    }
-  </script>
+    // 7. Remove intro layer.
+    setTimeout(() => {
+      const intro = document.querySelector(".intro");
+      if (intro) intro.remove();
+    }, 3350);
+  });
+</script>
 </body>
 </html>
