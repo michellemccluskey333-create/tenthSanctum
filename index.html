@@ -7,10 +7,16 @@
   <title>Tenth Sanctum Tattoo</title>
 
   <style>
+    /* =========================
+       GLOBAL SETTINGS
+    ========================== */
     :root {
       --bg: #000;
       --line: rgba(232, 222, 206, 0.12);
-      --header-h: 108px;
+      --cream: #e8dece;
+      --muted: #c7b8a1;
+      --red: #ff2a1f;
+      --deep-red: #b6251d;
       --ease: cubic-bezier(.22, .61, .36, 1);
     }
 
@@ -33,237 +39,274 @@
       max-width: 100%;
     }
 
+    a {
+      color: inherit;
+    }
+
+    /* =========================
+       BLACKOUT INTRO LAYER
+       This creates the black screen at load.
+    ========================== */
     .blackout {
-  position: fixed;
-  inset: 0;
-  z-index: 900;
-  background: #000;
-  opacity: 1;
-  pointer-events: none;
-  transition: opacity 0.9s ease;
-}
+      position: fixed;
+      inset: 0;
+      z-index: 900;
+      background: #000;
+      opacity: 1;
+      pointer-events: none;
+      transition: opacity 0.9s ease;
+    }
 
-.site-logo {
-  position: fixed;
-  z-index: 1000;
-  top: 50%;
-  left: 50%;
-  width: min(76vw, 800px);
-  transform: translate(-50%, -50%);
-  transform-origin: center center;
-  filter:
-    drop-shadow(0 0 12px rgba(182, 37, 29, 0.26))
-    drop-shadow(0 0 32px rgba(182, 37, 29, 0.14));
-  transition:
-    top 1.05s cubic-bezier(.22, .61, .36, 1),
-    width 1.05s cubic-bezier(.22, .61, .36, 1),
-    transform 1.05s cubic-bezier(.22, .61, .36, 1);
-}
-.menu-toggle {
-  position: fixed;
-  top: 28px;
-  left: 32px;
-  z-index: 1100;
-  width: 44px;
-  height: 36px;
-  border: 0;
-  background: transparent;
-  cursor: pointer;
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.7s ease;
-}
+    body.hero-live .blackout {
+      opacity: 0;
+    }
 
-body.nav-live .menu-toggle {
-  opacity: 1;
-  pointer-events: auto;
-}
+    /* =========================
+       ONE MOVING LOGO
+       This is the only main logo.
+       It starts large/centered, then moves to top center.
+    ========================== */
+    .site-logo {
+      position: fixed;
+      z-index: 1000;
+      top: 50%;
+      left: 50%;
+      width: min(76vw, 800px);
+      transform: translate(-50%, -50%);
+      transform-origin: center center;
+      filter:
+        drop-shadow(0 0 12px rgba(182, 37, 29, 0.26))
+        drop-shadow(0 0 32px rgba(182, 37, 29, 0.14));
+      transition:
+        top 1.05s var(--ease),
+        width 1.05s var(--ease),
+        transform 1.05s var(--ease);
+    }
 
-.menu-toggle span {
-  display: block;
-  width: 30px;
-  height: 1px;
-  margin: 7px 0;
-  background: #e8dece;
-  transition: transform 0.25s ease, opacity 0.25s ease;
-}
+    body.logo-settling .site-logo {
+      top: 28px;
+      width: min(42vw, 440px);
+      transform: translate(-50%, 0);
+    }
 
-body.menu-open .menu-toggle span:nth-child(1) {
-  transform: translateY(8px) rotate(45deg);
-}
+    /* =========================
+       TOP MENU BUTTON
+       Hidden until intro is done.
+    ========================== */
+    .menu-toggle {
+      position: fixed;
+      top: 28px;
+      left: 32px;
+      z-index: 1100;
+      width: 44px;
+      height: 36px;
+      border: 0;
+      background: transparent;
+      cursor: pointer;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.7s ease;
+    }
 
-body.menu-open .menu-toggle span:nth-child(2) {
-  opacity: 0;
-}
+    body.nav-live .menu-toggle {
+      opacity: 1;
+      pointer-events: auto;
+    }
 
-body.menu-open .menu-toggle span:nth-child(3) {
-  transform: translateY(-8px) rotate(-45deg);
-}
+    .menu-toggle span {
+      display: block;
+      width: 30px;
+      height: 1px;
+      margin: 7px 0;
+      background: var(--cream);
+      transition: transform 0.25s ease, opacity 0.25s ease;
+    }
 
-.book-top {
-  position: fixed;
-  top: 28px;
-  right: 32px;
-  z-index: 1100;
-  padding: 12px 18px;
-  border: 1px solid rgba(182, 37, 29, 0.75);
-  color: #e8dece;
-  background: rgba(0, 0, 0, 0.22);
-  font-family: Arial, sans-serif;
-  font-size: 0.72rem;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  text-decoration: none;
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.7s ease, background 0.2s ease, color 0.2s ease;
-}
+    body.menu-open .menu-toggle span:nth-child(1) {
+      transform: translateY(8px) rotate(45deg);
+    }
 
-body.nav-live .book-top {
-  opacity: 1;
-  pointer-events: auto;
-}
+    body.menu-open .menu-toggle span:nth-child(2) {
+      opacity: 0;
+    }
 
-.book-top:hover {
-  background: rgba(182, 37, 29, 0.18);
-  color: #fff;
-}
+    body.menu-open .menu-toggle span:nth-child(3) {
+      transform: translateY(-8px) rotate(-45deg);
+    }
 
-.pull-menu {
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 1050;
-  width: min(360px, 88vw);
-  height: 100vh;
-  padding: 110px 34px 32px;
-  background:
-    linear-gradient(to bottom, rgba(0,0,0,0.98), rgba(8,8,8,0.96)),
-    #000;
-  border-right: 1px solid rgba(232, 222, 206, 0.12);
-  transform: translateX(-100%);
-  transition: transform 0.45s cubic-bezier(.22, .61, .36, 1);
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
+    /* =========================
+       TOP RIGHT BOOK BUTTON
+       Desktop CTA. Mobile can be moved with media query.
+    ========================== */
+    .book-top {
+      position: fixed;
+      top: 28px;
+      right: 32px;
+      z-index: 1100;
+      padding: 12px 18px;
+      border: 1px solid rgba(255, 42, 31, 0.75);
+      color: var(--cream);
+      background: rgba(0, 0, 0, 0.22);
+      font-family: Arial, sans-serif;
+      font-size: 0.72rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      text-decoration: none;
+      opacity: 0;
+      pointer-events: none;
+      transition:
+        opacity 0.7s ease,
+        background 0.2s ease,
+        color 0.2s ease,
+        box-shadow 0.2s ease;
+    }
 
-body.menu-open .pull-menu {
-  transform: translateX(0);
-}
+    body.nav-live .book-top {
+      opacity: 1;
+      pointer-events: auto;
+    }
 
-.pull-menu-links {
-  display: flex;
-  flex-direction: column;
-  gap: 24px;
-}
+    .book-top:hover {
+      background: rgba(182, 37, 29, 0.18);
+      color: #fff;
+      box-shadow:
+        0 0 8px rgba(255, 42, 31, 0.35),
+        0 0 20px rgba(255, 42, 31, 0.14);
+    }
 
-.pull-menu a {
-  position: relative;
-  width: fit-content;
-  color: #e8dece;
-  font-family: Arial, sans-serif;
-  font-size: 0.82rem;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  text-decoration: none;
-  padding-bottom: 8px;
-}
+    /* =========================
+       PULL-DOWN MENU
+    ========================== */
+    .pull-menu {
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 1050;
+      width: min(360px, 88vw);
+      height: 100vh;
+      padding: 110px 34px 32px;
+      background:
+        linear-gradient(to bottom, rgba(0,0,0,0.98), rgba(8,8,8,0.96)),
+        #000;
+      border-right: 1px solid var(--line);
+      transform: translateX(-100%);
+      transition: transform 0.45s var(--ease);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
 
-.pull-menu a::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  width: 0;
-  height: 1px;
-  background: #ff2a1f;
-  box-shadow:
-    0 0 6px rgba(255, 42, 31, 0.85),
-    0 0 14px rgba(255, 42, 31, 0.45);
-  transition: width 0.22s ease;
-}
+    body.menu-open .pull-menu {
+      transform: translateX(0);
+    }
 
-.pull-menu a:hover::after {
-  width: 100%;
-}
+    .pull-menu-links {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
 
-.pull-menu a:hover {
-  color: #fff;
-  text-shadow:
-    0 0 6px rgba(255, 42, 31, 0.55),
-    0 0 14px rgba(255, 42, 31, 0.25);
-}
-.pull-menu .menu-book-btn {
-  margin-top: 8px;
-  width: 100%;
-  max-width: 220px;
-  padding: 13px 18px;
-  border: 1px solid rgba(255, 42, 31, 0.8);
-  color: #e8dece;
-  text-align: center;
-  background: rgba(182, 37, 29, 0.08);
-  box-shadow:
-    inset 0 0 10px rgba(255, 42, 31, 0.08),
-    0 0 14px rgba(255, 42, 31, 0.08);
-}
+    .pull-menu a {
+      position: relative;
+      width: fit-content;
+      color: var(--cream);
+      font-family: Arial, sans-serif;
+      font-size: 0.82rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      text-decoration: none;
+      padding-bottom: 8px;
+    }
 
-.pull-menu .menu-book-btn::after {
-  display: none;
-}
+    .pull-menu a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 0;
+      height: 1px;
+      background: var(--red);
+      box-shadow:
+        0 0 6px rgba(255, 42, 31, 0.85),
+        0 0 14px rgba(255, 42, 31, 0.45);
+      transition: width 0.22s ease;
+    }
 
-.pull-menu .menu-book-btn:hover {
-  color: #fff;
-  background: rgba(182, 37, 29, 0.18);
-  border-color: #ff2a1f;
-  box-shadow:
-    0 0 8px rgba(255, 42, 31, 0.45),
-    0 0 22px rgba(255, 42, 31, 0.18),
-    inset 0 0 12px rgba(255, 42, 31, 0.12);
-}
+    .pull-menu a:hover::after {
+      width: 100%;
+    }
 
-.no-piercer-note {
-  margin-top: 18px;
-  color: #c7b8a1;
-  font-family: Arial, sans-serif;
-  font-size: 0.72rem;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-}
+    .pull-menu a:hover {
+      color: #fff;
+      text-shadow:
+        0 0 6px rgba(255, 42, 31, 0.55),
+        0 0 14px rgba(255, 42, 31, 0.25);
+    }
 
-.menu-logo-small {
-  width: 140px;
-  opacity: 0.85;
-  filter:
-    drop-shadow(0 0 8px rgba(182, 37, 29, 0.16))
-    drop-shadow(0 0 18px rgba(182, 37, 29, 0.08));
-}
+    /* Pull-down Book Now button */
+    .pull-menu .menu-book-btn {
+      margin-top: 8px;
+      width: 100%;
+      max-width: 220px;
+      padding: 13px 18px;
+      border: 1px solid rgba(255, 42, 31, 0.8);
+      color: var(--cream);
+      text-align: center;
+      background: rgba(182, 37, 29, 0.08);
+      box-shadow:
+        inset 0 0 10px rgba(255, 42, 31, 0.08),
+        0 0 14px rgba(255, 42, 31, 0.08);
+    }
 
-.menu-backdrop {
-  position: fixed;
-  inset: 0;
-  z-index: 1040;
-  background: rgba(0, 0, 0, 0.5);
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.3s ease;
-}
+    .pull-menu .menu-book-btn::after {
+      display: none;
+    }
 
-body.menu-open .menu-backdrop {
-  opacity: 1;
-  pointer-events: auto;
-}
-    
-body.logo-settling .site-logo {
-  top: 28px;
-  width: min(42vw, 440px);
-  transform: translate(-50%, 0);
-}
+    .pull-menu .menu-book-btn:hover {
+      color: #fff;
+      background: rgba(182, 37, 29, 0.18);
+      border-color: var(--red);
+      box-shadow:
+        0 0 8px rgba(255, 42, 31, 0.45),
+        0 0 22px rgba(255, 42, 31, 0.18),
+        inset 0 0 12px rgba(255, 42, 31, 0.12);
+    }
 
-body.hero-live .blackout {
-  opacity: 0;
-}
+    .no-piercer-note {
+      margin-top: 18px;
+      color: var(--muted);
+      font-family: Arial, sans-serif;
+      font-size: 0.72rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
 
+    .menu-logo-small {
+      width: 140px;
+      opacity: 0.85;
+      filter:
+        drop-shadow(0 0 8px rgba(182, 37, 29, 0.16))
+        drop-shadow(0 0 18px rgba(182, 37, 29, 0.08));
+    }
+
+    .menu-backdrop {
+      position: fixed;
+      inset: 0;
+      z-index: 1040;
+      background: rgba(0, 0, 0, 0.5);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+    }
+
+    body.menu-open .menu-backdrop {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    /* =========================
+       HERO IMAGE
+    ========================== */
     .hero {
       position: relative;
       min-height: 100vh;
@@ -312,6 +355,7 @@ body.hero-live .blackout {
           rgba(0,0,0,0.18) 70%,
           rgba(0,0,0,0.58) 100%
         );
+      pointer-events: none;
     }
 
     .hero-img {
@@ -323,206 +367,271 @@ body.hero-live .blackout {
       object-fit: cover;
       object-position: center center;
     }
+
+    /* =========================
+       HERO TEXT
+       This sits ON the hero image, not in the pull-down menu.
+    ========================== */
     .hero-text {
-  position: absolute;
-  left: 48px;
-  bottom: 54px;
-  z-index: 20;
-  max-width: 520px;
-  color: #e8dece;
-}
+      position: absolute;
+      left: 48px;
+      bottom: 54px;
+      z-index: 20;
+      max-width: 560px;
+      color: var(--cream);
+      opacity: 0;
+      transform: translateY(14px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
 
-.hero-text h1 {
-  margin: 0 0 14px;
-  font-family: Georgia, "Times New Roman", serif;
-  font-size: clamp(2.3rem, 5vw, 4.6rem);
-  line-height: 0.98;
-  font-weight: 500;
-}
+    body.nav-live .hero-text {
+      opacity: 1;
+      transform: translateY(0);
+    }
 
-.hero-text .walkins {
-  margin: 0 0 22px;
-  font-family: Arial, sans-serif;
-  font-size: 0.95rem;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: #ff2a1f;
-}
+    .hero-text h1 {
+      margin: 0 0 14px;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(2.3rem, 5vw, 4.6rem);
+      line-height: 0.98;
+      font-weight: 500;
+      color: var(--cream);
+    }
 
-.hero-btn {
-  display: inline-block;
-  padding: 13px 22px;
-  border: 1px solid rgba(255, 42, 31, 0.8);
-  color: #e8dece;
-  text-decoration: none;
-  text-transform: uppercase;
-  letter-spacing: 0.14em;
-  font-family: Arial, sans-serif;
-  font-size: 0.75rem;
-  background: rgba(182, 37, 29, 0.08);
-}
+    .hero-text .walkins {
+      margin: 0 0 22px;
+      font-family: Arial, sans-serif;
+      font-size: 0.95rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--red);
+      text-shadow:
+        0 0 6px rgba(255, 42, 31, 0.55),
+        0 0 14px rgba(255, 42, 31, 0.25);
+    }
 
-.hero-btn:hover {
-  color: #fff;
-  background: rgba(182, 37, 29, 0.18);
-  box-shadow:
-    0 0 8px rgba(255, 42, 31, 0.45),
-    0 0 22px rgba(255, 42, 31, 0.18);
-}
+    .hero-btn {
+      display: inline-block;
+      padding: 13px 22px;
+      border: 1px solid rgba(255, 42, 31, 0.8);
+      color: var(--cream);
+      text-decoration: none;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      font-family: Arial, sans-serif;
+      font-size: 0.75rem;
+      background: rgba(182, 37, 29, 0.08);
+      transition:
+        background 0.2s ease,
+        color 0.2s ease,
+        box-shadow 0.2s ease;
+    }
 
-@media (max-width: 1050px) {
-  .site-logo {
-    width: min(78vw, 620px);
-  }
+    .hero-btn:hover {
+      color: #fff;
+      background: rgba(182, 37, 29, 0.18);
+      box-shadow:
+        0 0 8px rgba(255, 42, 31, 0.45),
+        0 0 22px rgba(255, 42, 31, 0.18);
+    }
 
-  body.logo-settling .site-logo {
-    top: 24px;
-    width: min(54vw, 340px);
-    transform: translate(-50%, 0);
-  }
-}
+    /* =========================
+       TABLET
+    ========================== */
+    @media (max-width: 1050px) {
+      .site-logo {
+        width: min(78vw, 620px);
+      }
 
-@media (max-width: 640px) {
-  :root {
-    --header-h: 96px;
-  }
+      body.logo-settling .site-logo {
+        top: 24px;
+        width: min(54vw, 340px);
+        transform: translate(-50%, 0);
+      }
+    }
 
-  .site-logo {
-    width: min(84vw, 520px);
-  }
+    /* =========================
+       MOBILE
+    ========================== */
+    @media (max-width: 640px) {
+      .site-logo {
+        width: min(84vw, 520px);
+      }
 
-  body.logo-settling .site-logo {
-    top: 18px;
-    width: min(58vw, 250px);
-    transform: translate(-50%, 0);
-  }
+      body.logo-settling .site-logo {
+        top: 18px;
+        width: min(58vw, 250px);
+        transform: translate(-50%, 0);
+      }
 
-  .hero-img {
-    object-fit: cover;
-    object-position: center center;
-  }
+      .hero-img {
+        object-fit: cover;
+        object-position: center center;
+      }
 
-  .hero-media {
-    filter: brightness(0.08) contrast(1.08) saturate(0.45);
-  }
+      .hero-media {
+        filter: brightness(0.08) contrast(1.08) saturate(0.45);
+      }
 
-  body.hero-bright .hero-media {
-    filter: brightness(0.72) contrast(1.06) saturate(0.72);
-  }
+      body.hero-bright .hero-media {
+        filter: brightness(0.72) contrast(1.06) saturate(0.72);
+      }
 
-  .menu-toggle {
-    top: 22px;
-    left: 18px;
-  }
+      .menu-toggle {
+        top: 22px;
+        left: 18px;
+      }
 
-  .book-top {
-    top: 22px;
-    right: 18px;
-    padding: 9px 12px;
-    font-size: 0.62rem;
-    letter-spacing: 0.12em;
-  }
+      .book-top {
+        top: 22px;
+        right: 18px;
+        padding: 9px 12px;
+        font-size: 0.62rem;
+        letter-spacing: 0.12em;
+      }
 
-  .pull-menu {
-    width: 86vw;
-    padding: 96px 28px 28px;
-  }
+      .pull-menu {
+        width: 86vw;
+        padding: 96px 28px 28px;
+      }
 
-  .menu-logo-small {
-    width: 120px;
-  }
-}
+      .menu-logo-small {
+        width: 120px;
+      }
 
+      .hero-text {
+        left: 22px;
+        right: 22px;
+        bottom: 105px;
+        max-width: none;
+        text-align: center;
+      }
+
+      .hero-text h1 {
+        font-size: clamp(2rem, 10vw, 3.2rem);
+      }
+
+      .hero-text .walkins {
+        font-size: 0.72rem;
+        letter-spacing: 0.16em;
+      }
+
+      .hero-btn {
+        width: min(72vw, 280px);
+        text-align: center;
+      }
+    }
   </style>
 </head>
 
 <body class="intro-running">
+  <!-- Black overlay for intro animation -->
   <div class="blackout" aria-hidden="true"></div>
 
+  <!-- Single animated logo -->
   <img src="Images/logo.PNG" alt="Tenth Sanctum Tattoo" class="site-logo" />
+
+  <!-- Hamburger menu button -->
   <button class="menu-toggle" type="button" aria-label="Open menu" aria-expanded="false">
-  <span></span>
-  <span></span>
-  <span></span>
-</button>
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
 
-<a href="#book" class="book-top">Book Now</a>
+  <!-- Top-right desktop CTA -->
+  <a href="#book" class="book-top">Book Now</a>
 
-<div class="menu-backdrop" aria-hidden="true"></div>
+  <!-- Menu backdrop -->
+  <div class="menu-backdrop" aria-hidden="true"></div>
 
-<nav class="pull-menu" aria-label="Main navigation">
-  <div>
-    <div class="pull-menu-links">
-      <a href="#about">About</a>
-      <a href="#tattooers">Tattooers</a>
-      <a href="#faqs">FAQs</a>
-      <a href="#book" class="menu-book-btn">Book Now</a>
+  <!-- Pull-down menu -->
+  <nav class="pull-menu" aria-label="Main navigation">
+    <div>
+      <div class="pull-menu-links">
+        <a href="#about">About</a>
+        <a href="#tattooers">Tattooers</a>
+        <a href="#faqs">FAQs</a>
+        <a href="#book" class="menu-book-btn">Book Now</a>
+      </div>
+
+      <p class="no-piercer-note">✶ No piercing services</p>
     </div>
 
-    <div class="hero-text">
-  <h1>Custom Tattooing in Omaha’s<br>Old Market</h1>
-  <p class="walkins">Walk-Ins Welcome</p>
-  <a href="#book" class="hero-btn">Book Now</a>
-</div>
-    
-    <p class="no-piercer-note">✶ NO PIERCING SERVICES</p>
-  </div>
+    <img src="Images/logo.PNG" alt="Tenth Sanctum Tattoo" class="menu-logo-small" />
+  </nav>
 
-  <img src="Images/logo.PNG" alt="Tenth Sanctum Tattoo" class="menu-logo-small" />
-</nav>
-
+  <!-- Hero section -->
   <main>
     <section class="hero">
+      <!-- Hero image -->
       <div class="hero-media" aria-hidden="true">
         <img src="Images/hero-image.jpeg" alt="" class="hero-img" />
+      </div>
+
+      <!-- Hero text belongs here, on top of the hero image -->
+      <div class="hero-text">
+        <h1>Custom Tattooing in Omaha’s<br>Old Market</h1>
+        <p class="walkins">Walk-Ins Welcome</p>
+        <a href="#book" class="hero-btn">Book Now</a>
       </div>
     </section>
   </main>
 
-<script>
-  window.addEventListener("load", () => {
-    setTimeout(() => {
-      document.body.classList.add("logo-settling");
-    }, 650);
+  <script>
+    /* =========================
+       INTRO ANIMATION TIMING
+    ========================== */
+    window.addEventListener("load", () => {
+      // Move logo from center to top.
+      setTimeout(() => {
+        document.body.classList.add("logo-settling");
+      }, 650);
 
-    setTimeout(() => {
-      document.body.classList.add("hero-live");
-    }, 1650);
+      // Reveal hero image, still dark.
+      setTimeout(() => {
+        document.body.classList.add("hero-live");
+      }, 1650);
 
-    setTimeout(() => {
-      document.body.classList.add("hero-bright");
-    }, 2050);
+      // Brighten hero image.
+      setTimeout(() => {
+        document.body.classList.add("hero-bright");
+      }, 2050);
 
-    setTimeout(() => {
-      document.body.classList.add("nav-live");
-      document.body.classList.remove("intro-running");
-    }, 2600);
+      // Reveal menu, CTA, and hero text.
+      setTimeout(() => {
+        document.body.classList.add("nav-live");
+        document.body.classList.remove("intro-running");
+      }, 2600);
 
-    setTimeout(() => {
-      const blackout = document.querySelector(".blackout");
-      if (blackout) blackout.remove();
-    }, 3100);
-  });
+      // Remove blackout layer after animation.
+      setTimeout(() => {
+        const blackout = document.querySelector(".blackout");
+        if (blackout) blackout.remove();
+      }, 3100);
+    });
 
-  const menuToggle = document.querySelector(".menu-toggle");
-  const menuBackdrop = document.querySelector(".menu-backdrop");
-  const menuLinks = document.querySelectorAll(".pull-menu a");
+    /* =========================
+       PULL-DOWN MENU CONTROLS
+    ========================== */
+    const menuToggle = document.querySelector(".menu-toggle");
+    const menuBackdrop = document.querySelector(".menu-backdrop");
+    const menuLinks = document.querySelectorAll(".pull-menu a");
 
-  function closeMenu() {
-    document.body.classList.remove("menu-open");
-    menuToggle.setAttribute("aria-expanded", "false");
-  }
+    function closeMenu() {
+      document.body.classList.remove("menu-open");
+      menuToggle.setAttribute("aria-expanded", "false");
+    }
 
-  menuToggle.addEventListener("click", () => {
-    const isOpen = document.body.classList.toggle("menu-open");
-    menuToggle.setAttribute("aria-expanded", isOpen ? "true" : "false");
-  });
+    menuToggle.addEventListener("click", () => {
+      const isOpen = document.body.classList.toggle("menu-open");
+      menuToggle.setAttribute("aria-expanded", isOpen ? "true" : "false");
+    });
 
-  menuBackdrop.addEventListener("click", closeMenu);
+    menuBackdrop.addEventListener("click", closeMenu);
 
-  menuLinks.forEach((link) => {
-    link.addEventListener("click", closeMenu);
-  });
-</script>
+    menuLinks.forEach((link) => {
+      link.addEventListener("click", closeMenu);
+    });
+  </script>
 </body>
 </html>
