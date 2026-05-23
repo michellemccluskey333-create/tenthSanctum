@@ -177,7 +177,10 @@ body.menu-open .pull-menu {
   bottom: 0;
   width: 0;
   height: 1px;
-  background: #b6251d;
+  background: #ff2a1f;
+  box-shadow:
+    0 0 6px rgba(255, 42, 31, 0.85),
+    0 0 14px rgba(255, 42, 31, 0.45);
   transition: width 0.22s ease;
 }
 
@@ -187,8 +190,10 @@ body.menu-open .pull-menu {
 
 .pull-menu a:hover {
   color: #fff;
+  text-shadow:
+    0 0 6px rgba(255, 42, 31, 0.55),
+    0 0 14px rgba(255, 42, 31, 0.25);
 }
-
 .no-piercer-note {
   margin-top: 18px;
   color: #c7b8a1;
@@ -382,10 +387,10 @@ body.hero-live .blackout {
       <a href="#about">About</a>
       <a href="#tattooers">Tattooers</a>
       <a href="#faqs">FAQs</a>
-      <a href="#book">Book Now</a>
+      <a href="#book" class="menu-book-btn">Book Now</a>
     </div>
 
-    <p class="no-piercer-note">✶ No piercer</p>
+    <p class="no-piercer-note">✶ NO PIERCING SERVICES</p>
   </div>
 
   <img src="Images/logo.PNG" alt="Tenth Sanctum Tattoo" class="menu-logo-small" />
