@@ -5,12 +5,22 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <title>Tenth Sanctum Tattoo</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&display=swap" rel="stylesheet">
 
   <style>
+    /* =========================
+       GLOBAL VARIABLES
+       These keep your main colors and motion settings consistent.
+    ========================== */
     :root {
       --bg: #000;
+      --cream: #e8dece;
+      --muted: #c7b8a1;
+      --red: #ff2a1f;
+      --deep-red: #b6251d;
       --line: rgba(232, 222, 206, 0.12);
-      --header-h: 108px;
       --ease: cubic-bezier(.22, .61, .36, 1);
     }
 
@@ -33,76 +43,311 @@
       max-width: 100%;
     }
 
-    .intro {
-      position: fixed;
-      inset: 0;
-      z-index: 1000;
-      background: #000;
-      pointer-events: none;
-      opacity: 1;
+    a {
+      color: inherit;
     }
 
-    .intro-logo {
-      position: absolute;
+    /* =========================
+       BLACKOUT INTRO LAYER
+       This creates the black screen at page load.
+    ========================== */
+    .blackout {
+      position: fixed;
+      inset: 0;
+      z-index: 900;
+      background: #000;
+      opacity: 1;
+      pointer-events: none;
+      transition: opacity 0.9s ease;
+    }
+
+    body.hero-live .blackout {
+      opacity: 0;
+    }
+
+    /* =========================
+       SINGLE ANIMATED LOGO
+       This is the only main logo.
+       It starts large in the center, then moves to the top.
+    ========================== */
+    .site-logo {
+      position: fixed;
+      z-index: 1000;
       top: 50%;
       left: 50%;
       width: min(76vw, 800px);
       transform: translate(-50%, -50%);
       transform-origin: center center;
-      opacity: 1;
       filter:
         drop-shadow(0 0 12px rgba(182, 37, 29, 0.26))
         drop-shadow(0 0 32px rgba(182, 37, 29, 0.14));
       transition:
         top 1.05s var(--ease),
         width 1.05s var(--ease),
-        transform 1.05s var(--ease),
-        opacity 0.35s ease;
+        transform 1.05s var(--ease);
     }
 
-    body.logo-settling .intro-logo {
-      top: 28px;
-      width: min(42vw, 440px);
-      transform: translate(-50%, 0);
+    body.logo-settling .site-logo {
+    top: 22px;
+    width: min(52vw, 600px);
+    transform: translate(-50%, 0);
     }
 
-    body.intro-complete .intro {
-      opacity: 0;
-      transition: opacity 0.45s ease;
-    }
-
-    .site-header {
+    /* =========================
+       HAMBURGER MENU BUTTON
+       Appears after the intro animation.
+    ========================== */
+    .menu-toggle {
       position: fixed;
-      top: 0;
-      left: 0;
-      z-index: 300;
-      width: 100%;
-      height: var(--header-h);
-      padding: 22px 42px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: linear-gradient(
-        to bottom,
-        rgba(0,0,0,0.92),
-        rgba(0,0,0,0.38),
-        rgba(0,0,0,0)
-      );
+      top: 28px;
+      left: 32px;
+      z-index: 1100;
+      width: 44px;
+      height: 36px;
+      border: 1px solid rgba(232, 222, 206, 0.28);
+      background: rgba(0, 0, 0, 0.18);
+      cursor: pointer;
       opacity: 0;
-      transition: opacity 0.45s ease;
+      pointer-events: none;
+      transition:
+        opacity 0.7s ease,
+        border-color 0.2s ease,
+        background 0.2s ease;
     }
 
-    body.content-live .site-header {
+    body.nav-live .menu-toggle {
       opacity: 1;
+      pointer-events: auto;
     }
 
-    .header-logo {
-      width: min(42vw, 440px);
-      filter:
-        drop-shadow(0 0 9px rgba(182, 37, 29, 0.18))
-        drop-shadow(0 0 22px rgba(182, 37, 29, 0.1));
+    .menu-toggle:hover {
+      border-color: rgba(255, 42, 31, 0.65);
+      background: rgba(182, 37, 29, 0.1);
     }
 
+    .menu-toggle span {
+      display: block;
+      width: 24px;
+      height: 1px;
+      margin: 6px auto;
+      background: var(--cream);
+      transition: transform 0.25s ease, opacity 0.25s ease;
+    }
+
+    body.menu-open .menu-toggle span:nth-child(1) {
+      transform: translateY(7px) rotate(45deg);
+    }
+
+    body.menu-open .menu-toggle span:nth-child(2) {
+      opacity: 0;
+    }
+
+    body.menu-open .menu-toggle span:nth-child(3) {
+      transform: translateY(-7px) rotate(-45deg);
+    }
+
+    /* =========================
+       TOP RIGHT BOOK BUTTON
+       This remains as the main CTA.
+    ========================== */
+.book-top {
+  position: fixed;
+  top: 28px;
+  right: 32px;
+  z-index: 1100;
+  padding: 13px 22px;
+  border: 1px solid rgba(216, 91, 79, 0.78);
+  color: var(--cream);
+  background: rgba(0, 0, 0, 0.24);
+  font-family: Arial, sans-serif;
+  font-size: 0.72rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  text-decoration: none;
+  opacity: 0;
+  pointer-events: none;
+  box-shadow:
+    inset 0 0 10px rgba(216, 91, 79, 0.06),
+    0 0 12px rgba(216, 91, 79, 0.08);
+  transition:
+    opacity 0.7s ease,
+    background 0.2s ease,
+    color 0.2s ease,
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+body.nav-live .book-top {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.book-top:hover {
+  background: rgba(216, 91, 79, 0.14);
+  color: #fff;
+  border-color: #d85b4f;
+  box-shadow:
+    0 0 8px rgba(216, 91, 79, 0.35),
+    0 0 22px rgba(216, 91, 79, 0.14),
+    inset 0 0 12px rgba(216, 91, 79, 0.08);
+}
+
+.book-top:hover {
+  background: rgba(184, 90, 77, 0.14);
+  color: #fff;
+  border-color: #b85a4d;
+  box-shadow: 0 0 10px rgba(184, 90, 77, 0.12);
+}
+
+    body.nav-live .book-top {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .book-top:hover {
+      background: rgba(182, 37, 29, 0.18);
+      color: #fff;
+      box-shadow:
+        0 0 8px rgba(255, 42, 31, 0.35),
+        0 0 20px rgba(255, 42, 31, 0.14);
+    }
+
+    /* =========================
+       PULL-DOWN MENU
+    ========================== */
+    .pull-menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1050;
+  width: min(360px, 88vw);
+  height: 100vh;
+  padding: 96px 34px 32px;
+  background:
+    linear-gradient(to bottom, rgba(0,0,0,0.98), rgba(8,8,8,0.96)),
+    #000;
+  border-right: 1px solid var(--line);
+  transform: translateX(-100%);
+  transition: transform 0.45s var(--ease);
+}
+    .menu-content {
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+    body.menu-open .pull-menu {
+      transform: translateX(0);
+    }
+
+    .pull-menu-links {
+  display: flex;
+  flex-direction: column;
+  gap: 26px;
+}
+
+    .pull-menu a {
+      position: relative;
+      width: fit-content;
+      color: var(--cream);
+      font-family: Arial, sans-serif;
+      font-size: 0.82rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      text-decoration: none;
+      padding-bottom: 8px;
+    }
+
+    .pull-menu a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 0;
+      height: 1px;
+      background: var(--red);
+      box-shadow:
+        0 0 6px rgba(255, 42, 31, 0.85),
+        0 0 14px rgba(255, 42, 31, 0.45);
+      transition: width 0.22s ease;
+    }
+
+    .pull-menu a:hover::after {
+      width: 100%;
+    }
+
+    .pull-menu a:hover {
+      color: #fff;
+      text-shadow:
+        0 0 6px rgba(255, 42, 31, 0.55),
+        0 0 14px rgba(255, 42, 31, 0.25);
+    }
+
+    /* Pull-down Book Now button */
+    .pull-menu .menu-book-btn {
+      margin-top: 8px;
+      width: 100%;
+      max-width: 220px;
+      padding: 13px 18px;
+      border: 1px solid rgba(255, 42, 31, 0.8);
+      color: var(--cream);
+      text-align: center;
+      background: rgba(182, 37, 29, 0.08);
+      box-shadow:
+        inset 0 0 10px rgba(255, 42, 31, 0.08),
+        0 0 14px rgba(255, 42, 31, 0.08);
+    }
+
+    .pull-menu .menu-book-btn::after {
+      display: none;
+    }
+
+    .pull-menu .menu-book-btn:hover {
+      color: #fff;
+      background: rgba(182, 37, 29, 0.18);
+      border-color: var(--red);
+      box-shadow:
+        0 0 8px rgba(255, 42, 31, 0.45),
+        0 0 22px rgba(255, 42, 31, 0.18),
+        inset 0 0 12px rgba(255, 42, 31, 0.12);
+    }
+
+    .no-piercer-note {
+  margin-top: 34px;
+  color: var(--muted);
+  font-family: Arial, sans-serif;
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+    .menu-logo-small {
+  width: 190px;
+  margin: 0 0 58px;
+  opacity: 0.9;
+  filter:
+    drop-shadow(0 0 8px rgba(182, 37, 29, 0.18))
+    drop-shadow(0 0 18px rgba(182, 37, 29, 0.1));
+}
+
+    .menu-backdrop {
+      position: fixed;
+      inset: 0;
+      z-index: 1040;
+      background: rgba(0, 0, 0, 0.5);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+    }
+
+    body.menu-open .menu-backdrop {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    /* =========================
+       HERO IMAGE
+    ========================== */
     .hero {
       position: relative;
       min-height: 100vh;
@@ -139,18 +384,19 @@
       background:
         linear-gradient(
           to bottom,
-          rgba(0,0,0,0.86) 0%,
-          rgba(0,0,0,0.26) 30%,
-          rgba(0,0,0,0.22) 60%,
-          rgba(0,0,0,0.88) 100%
+          rgba(0,0,0,0.82) 0%,
+          rgba(0,0,0,0.22) 34%,
+          rgba(0,0,0,0.18) 64%,
+          rgba(0,0,0,0.86) 100%
         ),
         linear-gradient(
           to right,
-          rgba(0,0,0,0.62) 0%,
-          rgba(0,0,0,0.18) 40%,
-          rgba(0,0,0,0.18) 70%,
-          rgba(0,0,0,0.58) 100%
+          rgba(0,0,0,0.68) 0%,
+          rgba(0,0,0,0.36) 32%,
+          rgba(0,0,0,0.14) 72%,
+          rgba(0,0,0,0.42) 100%
         );
+      pointer-events: none;
     }
 
     .hero-img {
@@ -163,123 +409,250 @@
       object-position: center center;
     }
 
+    /* =========================
+       HERO TEXT
+       This sits directly on the hero image.
+       No button under Walk-Ins Welcome.
+    ========================== */
+.hero-text {
+  position: absolute;
+  left: 56px;
+  bottom: 150px;
+  z-index: 20;
+  max-width: 520px;
+  color: var(--cream);
+  opacity: 0;
+  transform: translateY(14px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+body.nav-live .hero-text {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.hero-text h1 {
+  margin: 0 0 18px;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: clamp(2rem, 3.3vw, 3.2rem);
+  line-height: 1.02;
+  font-weight: 600;
+  color: var(--cream);
+  letter-spacing: 0.01em;
+}
+
+.hero-text .walkins {
+  display: inline-block;
+  margin: 4px 0 0;
+  padding: 8px 0 0;
+  border-top: 1px solid rgba(184, 90, 77, 0.65);
+  font-family: Arial, sans-serif;
+  font-size: 0.82rem;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: #d85b4f;
+  text-shadow:
+    0 0 5px rgba(216, 91, 79, 0.35),
+    0 0 12px rgba(216, 91, 79, 0.14);
+}
+
+    /* =========================
+       TABLET
+    ========================== */
     @media (max-width: 1050px) {
-      :root {
-        --header-h: 138px;
+      .site-logo {
+        width: min(78vw, 620px);
       }
 
-      .site-header {
-        padding: 18px 24px;
-      }
-
-      .header-logo,
-      body.logo-settling .intro-logo {
+      body.logo-settling .site-logo {
+        top: 24px;
         width: min(54vw, 340px);
+        transform: translate(-50%, 0);
+      }
+
+      .hero-text {
+        max-width: 560px;
       }
     }
 
+    /* =========================
+       MOBILE
+    ========================== */
     @media (max-width: 640px) {
-      :root {
-        --header-h: 120px;
-      }
-
-      .header-logo,
-      body.logo-settling .intro-logo {
-        width: min(72vw, 300px);
-      }
-
-      .intro-logo {
+      .site-logo {
         width: min(84vw, 520px);
       }
-    }
 
-    @media (prefers-reduced-motion: reduce) {
-      *,
-      *::before,
-      *::after {
-        transition: none !important;
-        animation: none !important;
+      body.logo-settling .site-logo {
+        top: 18px;
+        width: min(58vw, 250px);
+        transform: translate(-50%, 0);
       }
 
-      body {
-        overflow: auto !important;
+      .menu-toggle {
+        top: 22px;
+        left: 18px;
       }
 
-      .intro {
-        display: none;
+      .book-top {
+        top: 22px;
+        right: 18px;
+        padding: 9px 12px;
+        font-size: 0.62rem;
+        letter-spacing: 0.12em;
       }
 
-      .site-header,
+    .pull-menu {
+  width: 86vw;
+  padding: 88px 28px 28px;
+}
+
+      .menu-logo-small {
+  width: 165px;
+  margin-bottom: 48px;
+}
+
+      .hero-img {
+        object-fit: cover;
+        object-position: center center;
+      }
+
       .hero-media {
-        opacity: 1 !important;
-        transform: none !important;
+        filter: brightness(0.08) contrast(1.08) saturate(0.45);
       }
 
-      .hero-media {
-        filter: brightness(0.72) contrast(1.06) saturate(0.72) !important;
+      body.hero-bright .hero-media {
+        filter: brightness(0.72) contrast(1.06) saturate(0.72);
+      }
+
+     .hero-text {
+      left: 24px;
+      right: 24px;
+      bottom: 90px;
+      max-width: none;
+      text-align: left;
+      }
+
+      .hero-text h1 {
+      font-size: clamp(1.9rem, 8.8vw, 2.85rem);
+      line-height: 1.05;
+      }
+
+    .hero-text .walkins {
+    font-size: 0.68rem;
+    letter-spacing: 0.18em;
       }
     }
   </style>
 </head>
 
 <body class="intro-running">
-  <div class="intro" aria-hidden="true">
-    <img src="Images/logo.PNG" alt="" class="intro-logo" />
+  <!-- Black overlay for intro animation -->
+  <div class="blackout" aria-hidden="true"></div>
+
+  <!-- Single animated logo -->
+  <img src="Images/logo.PNG" alt="Tenth Sanctum Tattoo" class="site-logo" />
+
+  <!-- Hamburger menu button -->
+  <button class="menu-toggle" type="button" aria-label="Open menu" aria-expanded="false">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
+
+  <!-- Top-right Book Now button -->
+  <a href="#book" class="book-top">Book Now</a>
+
+  <!-- Menu backdrop -->
+  <div class="menu-backdrop" aria-hidden="true"></div>
+
+  <!-- Pull-down menu -->
+  <<nav class="pull-menu" aria-label="Main navigation">
+  <div class="menu-content">
+    <img src="Images/logo.PNG" alt="Tenth Sanctum Tattoo" class="menu-logo-small" />
+
+    <div class="pull-menu-links">
+      <a href="#about">About</a>
+      <a href="#tattooers">Tattooers</a>
+      <a href="#faqs">FAQs</a>
+      <a href="#book" class="menu-book-btn">Book Now</a>
+    </div>
+
+    <p class="no-piercer-note">✶ No piercing services</p>
   </div>
+</nav>
 
-  <header class="site-header">
-    <img src="Images/logo.PNG" alt="Tenth Sanctum Tattoo" class="header-logo" />
-  </header>
-
+  <!-- Hero section -->
   <main>
     <section class="hero">
+      <!-- Hero image -->
       <div class="hero-media" aria-hidden="true">
         <img src="Images/hero-image.jpeg" alt="" class="hero-img" />
+      </div>
+
+      <!-- Hero text on the image -->
+      <div class="hero-text">
+        <h1>Custom Tattooing in<br>Omaha’s Old Market</h1>
+        <p class="walkins">Walk-Ins Welcome</p>
       </div>
     </section>
   </main>
 
   <script>
-    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    /* =========================
+       INTRO ANIMATION TIMING
+    ========================== */
+    window.addEventListener("load", () => {
+      // Move logo from center to top.
+      setTimeout(() => {
+        document.body.classList.add("logo-settling");
+      }, 650);
 
-    if (reduceMotion) {
-      document.body.classList.remove("intro-running");
-      document.body.classList.add(
-        "logo-settling",
-        "hero-live",
-        "hero-bright",
-        "content-live",
-        "intro-complete"
-      );
-    } else {
-      window.addEventListener("load", () => {
-        setTimeout(() => {
-          document.body.classList.add("logo-settling");
-        }, 650);
+      // Reveal hero image, still dark.
+      setTimeout(() => {
+        document.body.classList.add("hero-live");
+      }, 1650);
 
-        setTimeout(() => {
-          document.body.classList.add("hero-live");
-        }, 1650);
+      // Brighten hero image.
+      setTimeout(() => {
+        document.body.classList.add("hero-bright");
+      }, 2050);
 
-        setTimeout(() => {
-          document.body.classList.add("hero-bright");
-        }, 2050);
+      // Reveal menu, CTA, and hero text.
+      setTimeout(() => {
+        document.body.classList.add("nav-live");
+        document.body.classList.remove("intro-running");
+      }, 2600);
 
-        setTimeout(() => {
-          document.body.classList.add("content-live");
-          document.body.classList.remove("intro-running");
-        }, 2600);
+      // Remove blackout layer after animation.
+      setTimeout(() => {
+        const blackout = document.querySelector(".blackout");
+        if (blackout) blackout.remove();
+      }, 3100);
+    });
 
-        setTimeout(() => {
-          document.body.classList.add("intro-complete");
-        }, 2850);
+    /* =========================
+       PULL-DOWN MENU CONTROLS
+    ========================== */
+    const menuToggle = document.querySelector(".menu-toggle");
+    const menuBackdrop = document.querySelector(".menu-backdrop");
+    const menuLinks = document.querySelectorAll(".pull-menu a");
 
-        setTimeout(() => {
-          const intro = document.querySelector(".intro");
-          if (intro) intro.remove();
-        }, 3350);
-      });
+    function closeMenu() {
+      document.body.classList.remove("menu-open");
+      menuToggle.setAttribute("aria-expanded", "false");
     }
+
+    menuToggle.addEventListener("click", () => {
+      const isOpen = document.body.classList.toggle("menu-open");
+      menuToggle.setAttribute("aria-expanded", isOpen ? "true" : "false");
+    });
+
+    menuBackdrop.addEventListener("click", closeMenu);
+
+    menuLinks.forEach((link) => {
+      link.addEventListener("click", closeMenu);
+    });
   </script>
 </body>
 </html>
