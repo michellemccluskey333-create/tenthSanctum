@@ -60,11 +60,15 @@
         opacity 0.35s ease;
     }
 
-    body.logo-settling .intro-logo {
-      top: 28px;
-      width: min(42vw, 440px);
-      transform: translate(-50%, 0);
-    }
+  body.logo-settling .intro-logo {
+  top: 32px;
+  width: min(42vw, 440px);
+  transform: translate(-50%, 0);
+}
+
+body.logo-handoff .intro-logo {
+  opacity: 0;
+}
 
     body.intro-complete .intro {
       opacity: 0;
@@ -92,9 +96,9 @@
       transition: opacity 0.45s ease;
     }
 
-    body.content-live .site-header {
-      opacity: 1;
-    }
+ body.logo-handoff .site-header {
+  opacity: 1;
+}
 
     .header-logo {
       width: min(42vw, 440px);
@@ -246,39 +250,52 @@
       document.body.classList.remove("intro-running");
       document.body.classList.add(
         "logo-settling",
+         "logo-handoff",
         "hero-live",
         "hero-bright",
         "content-live",
         "intro-complete"
       );
     } else {
-      window.addEventListener("load", () => {
-        setTimeout(() => {
-          document.body.classList.add("logo-settling");
-        }, 650);
+  window.addEventListener("load", () => {
+  // 1. Black screen + large centered logo is already visible.
 
-        setTimeout(() => {
-          document.body.classList.add("hero-live");
-        }, 1650);
+  // 2. Logo shrinks/moves upward.
+  setTimeout(() => {
+    document.body.classList.add("logo-settling");
+  }, 650);
 
-        setTimeout(() => {
-          document.body.classList.add("hero-bright");
-        }, 2050);
+  // 3. Fade intro logo out while real header logo fades in.
+  setTimeout(() => {
+    document.body.classList.add("logo-handoff");
+  }, 1450);
 
-        setTimeout(() => {
-          document.body.classList.add("content-live");
-          document.body.classList.remove("intro-running");
-        }, 2600);
+  // 4. Hero image appears, still very dark/blackened.
+  setTimeout(() => {
+    document.body.classList.add("hero-live");
+  }, 1750);
 
-        setTimeout(() => {
-          document.body.classList.add("intro-complete");
-        }, 2850);
+  // 5. Hero image brightens into visibility.
+  setTimeout(() => {
+    document.body.classList.add("hero-bright");
+  }, 2150);
 
-        setTimeout(() => {
-          const intro = document.querySelector(".intro");
-          if (intro) intro.remove();
-        }, 3350);
-      });
+  // 6. Allow scrolling again.
+  setTimeout(() => {
+    document.body.classList.add("content-live");
+    document.body.classList.remove("intro-running");
+  }, 2600);
+
+  // 7. Remove black intro layer.
+  setTimeout(() => {
+    document.body.classList.add("intro-complete");
+  }, 2850);
+
+  setTimeout(() => {
+    const intro = document.querySelector(".intro");
+    if (intro) intro.remove();
+  }, 3350);
+});
     }
   </script>
 </body>
