@@ -323,6 +323,52 @@ body.hero-live .blackout {
       object-fit: cover;
       object-position: center center;
     }
+    .hero-text {
+  position: absolute;
+  left: 48px;
+  bottom: 54px;
+  z-index: 20;
+  max-width: 520px;
+  color: #e8dece;
+}
+
+.hero-text h1 {
+  margin: 0 0 14px;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(2.3rem, 5vw, 4.6rem);
+  line-height: 0.98;
+  font-weight: 500;
+}
+
+.hero-text .walkins {
+  margin: 0 0 22px;
+  font-family: Arial, sans-serif;
+  font-size: 0.95rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #ff2a1f;
+}
+
+.hero-btn {
+  display: inline-block;
+  padding: 13px 22px;
+  border: 1px solid rgba(255, 42, 31, 0.8);
+  color: #e8dece;
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  font-family: Arial, sans-serif;
+  font-size: 0.75rem;
+  background: rgba(182, 37, 29, 0.08);
+}
+
+.hero-btn:hover {
+  color: #fff;
+  background: rgba(182, 37, 29, 0.18);
+  box-shadow:
+    0 0 8px rgba(255, 42, 31, 0.45),
+    0 0 22px rgba(255, 42, 31, 0.18);
+}
 
 @media (max-width: 1050px) {
   .site-logo {
@@ -413,6 +459,12 @@ body.hero-live .blackout {
       <a href="#book" class="menu-book-btn">Book Now</a>
     </div>
 
+    <div class="hero-text">
+  <h1>Custom Tattooing in Omaha’s<br>Old Market</h1>
+  <p class="walkins">Walk-Ins Welcome</p>
+  <a href="#book" class="hero-btn">Book Now</a>
+</div>
+    
     <p class="no-piercer-note">✶ NO PIERCING SERVICES</p>
   </div>
 
