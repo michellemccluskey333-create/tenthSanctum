@@ -75,7 +75,6 @@
 
     /* =========================
        SINGLE ANIMATED MAIN LOGO
-       This is the main logo only.
        Starts large/centered, then settles large at the top.
     ========================== */
     .site-logo {
@@ -95,6 +94,7 @@
         transform 1.05s var(--ease);
     }
 
+    /* Restored larger settled logo */
     body.logo-settling .site-logo {
       top: 22px;
       width: min(56vw, 680px);
@@ -157,7 +157,6 @@
 
     /* =========================
        TOP RIGHT BOOK BUTTON
-       Uses the same red system as the pull-down.
     ========================== */
     .book-top {
       position: fixed;
@@ -209,9 +208,9 @@
       top: 0;
       left: 0;
       z-index: 1050;
-      width: min(340px, 88vw);
+      width: min(310px, 86vw);
       height: 100vh;
-      padding: 96px 34px 34px;
+      padding: 88px 34px 34px;
       background:
         linear-gradient(to bottom, rgba(0,0,0,0.98), rgba(8,8,8,0.96)),
         #000;
@@ -224,11 +223,11 @@
       transform: translateX(0);
     }
 
+    /* Keeps the drawer content compact instead of pushing the emblem too low */
     .menu-content {
       min-height: 100%;
       display: flex;
       flex-direction: column;
-      justify-content: space-between;
     }
 
     .pull-menu-links {
@@ -305,7 +304,7 @@
 
     /* Note, not a menu choice */
     .no-piercer-note {
-      margin: 42px 0 0;
+      margin: 46px 0 0;
       padding-top: 18px;
       border-top: 1px solid rgba(232, 222, 206, 0.14);
       color: rgba(232, 222, 206, 0.72);
@@ -315,11 +314,11 @@
       text-transform: uppercase;
     }
 
-    /* Large emblem at the bottom of the pull-down */
+    /* Emblem sits below the note, not stranded at the bottom */
     .menu-logo-small {
-      width: 160px;
-      margin: 48px auto 0;
-      opacity: 0.92;
+      width: 150px;
+      margin: 72px auto 0;
+      opacity: 0.9;
       filter:
         drop-shadow(0 0 8px rgba(216, 91, 79, 0.22))
         drop-shadow(0 0 18px rgba(216, 91, 79, 0.12));
@@ -406,6 +405,7 @@
 
     /* =========================
        HERO TEXT
+       Font stays as-is. Only Walk-Ins sizing is restored.
     ========================== */
     .hero-text {
       position: absolute;
@@ -440,7 +440,7 @@
       padding: 8px 0 0;
       border-top: 1px solid var(--red-border);
       font-family: Arial, sans-serif;
-      font-size: 0.82rem;
+      font-size: 0.95rem;
       letter-spacing: 0.24em;
       text-transform: uppercase;
       color: var(--red);
@@ -501,8 +501,8 @@
       }
 
       .menu-logo-small {
-        width: 140px;
-        margin-top: 44px;
+        width: 125px;
+        margin-top: 58px;
       }
 
       .hero-img {
@@ -532,7 +532,7 @@
       }
 
       .hero-text .walkins {
-        font-size: 0.68rem;
+        font-size: 0.78rem;
         letter-spacing: 0.18em;
       }
     }
@@ -571,10 +571,10 @@
         </div>
 
         <p class="no-piercer-note">No piercing services</p>
-      </div>
 
-      <!-- Bottom emblem. Make sure this file exists exactly as written. -->
-      <img src="Images/emblem.png" alt="Tenth Sanctum emblem" class="menu-logo-small" />
+        <!-- Bottom emblem. Make sure this file exists exactly as written. -->
+        <img src="Images/emblem.png" alt="Tenth Sanctum emblem" class="menu-logo-small" />
+      </div>
     </div>
   </nav>
 
