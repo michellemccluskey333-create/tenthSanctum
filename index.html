@@ -475,71 +475,77 @@
     /* =========================
        MOBILE
     ========================== */
-    @media (max-width: 640px) {
-      .site-logo {
-        width: min(84vw, 520px);
-      }
+@media (max-width: 640px) {
+  /* Use the visible mobile viewport so Safari's address bar doesn't hide content */
+  .hero {
+    min-height: 100svh;
+  }
 
-      body.logo-settling .site-logo {
-        top: 18px;
-        width: min(68vw, 330px);
-        transform: translate(-50%, 0);
-      }
+  .site-logo {
+    width: min(84vw, 520px);
+  }
 
-      .menu-toggle {
-        top: 22px;
-        left: 18px;
-      }
+  body.logo-settling .site-logo {
+    top: calc(env(safe-area-inset-top) + 82px);
+    width: min(58vw, 285px);
+    transform: translate(-50%, 0);
+  }
 
-      .book-top {
-        top: 22px;
-        right: 18px;
-        padding: 9px 12px;
-        font-size: 0.62rem;
-        letter-spacing: 0.12em;
-      }
+  .menu-toggle {
+    top: calc(env(safe-area-inset-top) + 18px);
+    left: 18px;
+  }
 
-      .pull-menu {
-        width: 86vw;
-        padding: 88px 28px 30px;
-      }
+  .book-top {
+    top: calc(env(safe-area-inset-top) + 18px);
+    right: 18px;
+    padding: 10px 14px;
+    font-size: 0.62rem;
+    letter-spacing: 0.12em;
+  }
 
-      .menu-logo-small {
-        width: 125px;
-        margin-top: 58px;
-      }
+  .pull-menu {
+    width: 86vw;
+    padding: 88px 28px 30px;
+  }
 
-      .hero-img {
-        object-fit: cover;
-        object-position: center center;
-      }
+  .menu-logo-small {
+    width: 125px;
+    margin-top: 58px;
+  }
 
-      .hero-media {
-        filter: brightness(0.08) contrast(1.08) saturate(0.45);
-      }
+  .hero-img {
+    object-fit: cover;
+    object-position: center center;
+  }
 
-      body.hero-bright .hero-media {
-        filter: brightness(0.72) contrast(1.06) saturate(0.72);
-      }
+  .hero-media {
+    filter: brightness(0.08) contrast(1.08) saturate(0.45);
+  }
 
-      .hero-text {
-        left: 24px;
-        right: 24px;
-        bottom: 90px;
-        max-width: none;
-        text-align: left;
-      }
+  body.hero-bright .hero-media {
+    filter: brightness(0.72) contrast(1.06) saturate(0.72);
+  }
 
-    .hero-text h1 {
-  font-size: clamp(2.1rem, 9.5vw, 3.15rem);
-  line-height: 1.05;
+  /* Move the hero text higher so it is visible on first mobile load */
+  .hero-text {
+    left: 24px;
+    right: 24px;
+    bottom: clamp(145px, 18svh, 190px);
+    max-width: none;
+    text-align: left;
+  }
+
+  .hero-text h1 {
+    font-size: clamp(2rem, 9.2vw, 3.05rem);
+    line-height: 1.04;
+  }
+
+  .hero-text .walkins {
+    font-size: 0.82rem;
+    letter-spacing: 0.18em;
+  }
 }
-
-      .hero-text .walkins {
-        font-size: 0.78rem;
-        letter-spacing: 0.18em;
-      }
-    }
   </style>
 </head>
 
