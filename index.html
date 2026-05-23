@@ -59,7 +59,168 @@
     width 1.05s cubic-bezier(.22, .61, .36, 1),
     transform 1.05s cubic-bezier(.22, .61, .36, 1);
 }
+.menu-toggle {
+  position: fixed;
+  top: 28px;
+  left: 32px;
+  z-index: 1100;
+  width: 44px;
+  height: 36px;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.7s ease;
+}
 
+body.nav-live .menu-toggle {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.menu-toggle span {
+  display: block;
+  width: 30px;
+  height: 1px;
+  margin: 7px 0;
+  background: #e8dece;
+  transition: transform 0.25s ease, opacity 0.25s ease;
+}
+
+body.menu-open .menu-toggle span:nth-child(1) {
+  transform: translateY(8px) rotate(45deg);
+}
+
+body.menu-open .menu-toggle span:nth-child(2) {
+  opacity: 0;
+}
+
+body.menu-open .menu-toggle span:nth-child(3) {
+  transform: translateY(-8px) rotate(-45deg);
+}
+
+.book-top {
+  position: fixed;
+  top: 28px;
+  right: 32px;
+  z-index: 1100;
+  padding: 12px 18px;
+  border: 1px solid rgba(182, 37, 29, 0.75);
+  color: #e8dece;
+  background: rgba(0, 0, 0, 0.22);
+  font-family: Arial, sans-serif;
+  font-size: 0.72rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  text-decoration: none;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.7s ease, background 0.2s ease, color 0.2s ease;
+}
+
+body.nav-live .book-top {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.book-top:hover {
+  background: rgba(182, 37, 29, 0.18);
+  color: #fff;
+}
+
+.pull-menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1050;
+  width: min(360px, 88vw);
+  height: 100vh;
+  padding: 110px 34px 32px;
+  background:
+    linear-gradient(to bottom, rgba(0,0,0,0.98), rgba(8,8,8,0.96)),
+    #000;
+  border-right: 1px solid rgba(232, 222, 206, 0.12);
+  transform: translateX(-100%);
+  transition: transform 0.45s cubic-bezier(.22, .61, .36, 1);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+body.menu-open .pull-menu {
+  transform: translateX(0);
+}
+
+.pull-menu-links {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.pull-menu a {
+  position: relative;
+  width: fit-content;
+  color: #e8dece;
+  font-family: Arial, sans-serif;
+  font-size: 0.82rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  text-decoration: none;
+  padding-bottom: 8px;
+}
+
+.pull-menu a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 0;
+  height: 1px;
+  background: #b6251d;
+  transition: width 0.22s ease;
+}
+
+.pull-menu a:hover::after {
+  width: 100%;
+}
+
+.pull-menu a:hover {
+  color: #fff;
+}
+
+.no-piercer-note {
+  margin-top: 18px;
+  color: #c7b8a1;
+  font-family: Arial, sans-serif;
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.menu-logo-small {
+  width: 140px;
+  opacity: 0.85;
+  filter:
+    drop-shadow(0 0 8px rgba(182, 37, 29, 0.16))
+    drop-shadow(0 0 18px rgba(182, 37, 29, 0.08));
+}
+
+.menu-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 1040;
+  background: rgba(0, 0, 0, 0.5);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+body.menu-open .menu-backdrop {
+  opacity: 1;
+  pointer-events: auto;
+}
+    
 body.logo-settling .site-logo {
   top: 28px;
   width: min(42vw, 440px);
@@ -175,6 +336,27 @@ body.hero-live .blackout {
   body.hero-bright .hero-media {
     filter: brightness(0.72) contrast(1.06) saturate(0.72);
   }
+  .menu-toggle {
+  top: 22px;
+  left: 18px;
+}
+
+.book-top {
+  top: 22px;
+  right: 18px;
+  padding: 9px 12px;
+  font-size: 0.62rem;
+  letter-spacing: 0.12em;
+}
+
+.pull-menu {
+  width: 86vw;
+  padding: 96px 28px 28px;
+}
+
+.menu-logo-small {
+  width: 120px;
+}
 }
 
   </style>
@@ -184,6 +366,30 @@ body.hero-live .blackout {
   <div class="blackout" aria-hidden="true"></div>
 
   <img src="Images/logo.PNG" alt="Tenth Sanctum Tattoo" class="site-logo" />
+  <button class="menu-toggle" type="button" aria-label="Open menu" aria-expanded="false">
+  <span></span>
+  <span></span>
+  <span></span>
+</button>
+
+<a href="#book" class="book-top">Book Now</a>
+
+<div class="menu-backdrop" aria-hidden="true"></div>
+
+<nav class="pull-menu" aria-label="Main navigation">
+  <div>
+    <div class="pull-menu-links">
+      <a href="#about">About</a>
+      <a href="#tattooers">Tattooers</a>
+      <a href="#faqs">FAQs</a>
+      <a href="#book">Book Now</a>
+    </div>
+
+    <p class="no-piercer-note">✶ No piercer</p>
+  </div>
+
+  <img src="Images/logo.PNG" alt="Tenth Sanctum Tattoo" class="menu-logo-small" />
+</nav>
 
   <main>
     <section class="hero">
@@ -195,39 +401,47 @@ body.hero-live .blackout {
 
 <script>
   window.addEventListener("load", () => {
-    // 1. Black screen + large centered logo is already visible.
-
-    // 2. Logo moves/shrinks to top center.
     setTimeout(() => {
       document.body.classList.add("logo-settling");
     }, 650);
 
-    // 3. Hero image appears, still very dark/blackened.
     setTimeout(() => {
       document.body.classList.add("hero-live");
     }, 1650);
 
-    // 4. Hero image brightens into visibility.
     setTimeout(() => {
       document.body.classList.add("hero-bright");
     }, 2050);
 
-    // 5. Header/logo becomes visible.
     setTimeout(() => {
-      document.body.classList.add("content-live");
+      document.body.classList.add("nav-live");
       document.body.classList.remove("intro-running");
     }, 2600);
 
-    // 6. Fade away black intro layer.
     setTimeout(() => {
-      document.body.classList.add("intro-complete");
-    }, 2850);
+      const blackout = document.querySelector(".blackout");
+      if (blackout) blackout.remove();
+    }, 3100);
+  });
 
-    // 7. Remove intro layer.
-    setTimeout(() => {
-      const intro = document.querySelector(".intro");
-      if (intro) intro.remove();
-    }, 3350);
+  const menuToggle = document.querySelector(".menu-toggle");
+  const menuBackdrop = document.querySelector(".menu-backdrop");
+  const menuLinks = document.querySelectorAll(".pull-menu a");
+
+  function closeMenu() {
+    document.body.classList.remove("menu-open");
+    menuToggle.setAttribute("aria-expanded", "false");
+  }
+
+  menuToggle.addEventListener("click", () => {
+    const isOpen = document.body.classList.toggle("menu-open");
+    menuToggle.setAttribute("aria-expanded", isOpen ? "true" : "false");
+  });
+
+  menuBackdrop.addEventListener("click", closeMenu);
+
+  menuLinks.forEach((link) => {
+    link.addEventListener("click", closeMenu);
   });
 </script>
 </body>
