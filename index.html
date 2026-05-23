@@ -33,75 +33,42 @@
       max-width: 100%;
     }
 
-    .intro {
-      position: fixed;
-      inset: 0;
-      z-index: 1000;
-      background: #000;
-      pointer-events: none;
-      opacity: 1;
-    }
+    .blackout {
+  position: fixed;
+  inset: 0;
+  z-index: 900;
+  background: #000;
+  opacity: 1;
+  pointer-events: none;
+  transition: opacity 0.9s ease;
+}
 
-    .intro-logo {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      width: min(76vw, 800px);
-      transform: translate(-50%, -50%);
-      transform-origin: center center;
-      opacity: 1;
-      filter:
-        drop-shadow(0 0 12px rgba(182, 37, 29, 0.26))
-        drop-shadow(0 0 32px rgba(182, 37, 29, 0.14));
-      transition:
-        top 1.05s var(--ease),
-        width 1.05s var(--ease),
-        transform 1.05s var(--ease),
-        opacity 0.35s ease;
-    }
+.site-logo {
+  position: fixed;
+  z-index: 1000;
+  top: 50%;
+  left: 50%;
+  width: min(76vw, 800px);
+  transform: translate(-50%, -50%);
+  transform-origin: center center;
+  filter:
+    drop-shadow(0 0 12px rgba(182, 37, 29, 0.26))
+    drop-shadow(0 0 32px rgba(182, 37, 29, 0.14));
+  transition:
+    top 1.05s cubic-bezier(.22, .61, .36, 1),
+    width 1.05s cubic-bezier(.22, .61, .36, 1),
+    transform 1.05s cubic-bezier(.22, .61, .36, 1);
+}
 
-    body.logo-settling .intro-logo {
-      top: 27px;
-      width: min(42vw, 440px);
-      transform: translate(-50%, 0);
-    }
+body.logo-settling .site-logo {
+  top: 28px;
+  width: min(42vw, 440px);
+  transform: translate(-50%, 0);
+}
 
-    body.intro-complete .intro {
-      opacity: 0;
-      transition: opacity 0.45s ease;
-    }
-
-    .site-header {
-      position: fixed;
-      top: 0;
-      left: 0;
-      z-index: 300;
-      width: 100%;
-      height: var(--header-h);
-      padding: 22px 42px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: linear-gradient(
-        to bottom,
-        rgba(0,0,0,0.92),
-        rgba(0,0,0,0.38),
-        rgba(0,0,0,0)
-      );
-      opacity: 0;
-      transition: opacity 0.45s ease;
-    }
-
-    body.content-live .site-header {
-      opacity: 1;
-    }
-
-    .header-logo {
-      width: min(42vw, 440px);
-      filter:
-        drop-shadow(0 0 9px rgba(182, 37, 29, 0.18))
-        drop-shadow(0 0 22px rgba(182, 37, 29, 0.1));
-    }
+body.hero-live .blackout {
+  opacity: 0;
+}
 
     .hero {
       position: relative;
@@ -214,13 +181,9 @@
 </head>
 
 <body class="intro-running">
-  <div class="intro" aria-hidden="true">
-    <img src="Images/logo.PNG" alt="" class="intro-logo" />
-  </div>
+  <div class="blackout" aria-hidden="true"></div>
 
-  <header class="site-header">
-    <img src="Images/logo.PNG" alt="Tenth Sanctum Tattoo" class="header-logo" />
-  </header>
+  <img src="Images/logo.PNG" alt="Tenth Sanctum Tattoo" class="site-logo" />
 
   <main>
     <section class="hero">
