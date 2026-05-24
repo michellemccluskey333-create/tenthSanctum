@@ -498,6 +498,67 @@ body.nav-live .hero-text {
     0 0 5px rgba(255, 42, 31, 0.5),
     0 0 16px rgba(255, 42, 31, 0.26);
 }
+
+    /* =========================
+       Artist Section
+    ========================== */
+    .artists-section {
+  padding: 110px 8vw;
+  background: #000;
+  border-top: 1px solid var(--line);
+  color: var(--cream);
+}
+
+.artists-section h2 {
+  margin: 0 0 42px;
+  font-family: "Raleway", Arial, sans-serif;
+  font-size: clamp(2rem, 4vw, 4rem);
+  font-weight: 300;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.artist-row {
+  display: grid;
+  grid-template-columns: repeat(7, minmax(120px, 1fr));
+  gap: 22px;
+}
+
+.artist-card {
+  text-decoration: none;
+  color: var(--cream);
+}
+
+.artist-card img {
+  width: 100%;
+  aspect-ratio: 1 / 1.15;
+  object-fit: cover;
+  border: 1px solid rgba(232, 222, 206, 0.14);
+  filter: grayscale(0.2);
+  transition: transform 0.25s ease, filter 0.25s ease, border-color 0.25s ease;
+}
+
+.artist-card:hover img {
+  transform: translateY(-4px);
+  filter: grayscale(0);
+  border-color: var(--red-border);
+}
+
+.artist-card h3 {
+  margin: 14px 0 5px;
+  font-family: "Raleway", Arial, sans-serif;
+  font-size: 1rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.artist-card p {
+  margin: 0;
+  color: rgba(232, 222, 206, 0.58);
+  font-family: Arial, sans-serif;
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+}
     /* =========================
        Site Footer
     ========================== */
@@ -663,6 +724,14 @@ body.nav-live .hero-text {
 .about-copy h2 {
   font-size: clamp(1.85rem, 8vw, 2.8rem);
 }
+      .artist-row {
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px 16px;
+}
+
+.artists-section {
+  padding: 76px 28px;
+}
       .hero-img {
         object-fit: cover;
         object-position: center center;
@@ -798,6 +867,55 @@ body.nav-live .hero-text {
   <img src="Images/interior_4.png" alt="Tenth Sanctum Tattoo interior details" class="about-slide" />
     <img src="Images/interior_5.png" alt="Tenth Sanctum Tattoo interior details" class="about-slide" />
 </div>
+
+      <section class="artists-section" id="tattooers">
+  <p class="section-kicker">Tattooers</p>
+  <h2>Meet the Artists</h2>
+
+  <div class="artist-row">
+    <a href="jeremy.html" class="artist-card">
+      <img src="Images/artists/jeremy.jpg" alt="Jeremy" />
+      <h3>Jeremy</h3>
+      <p>@fierto402</p>
+    </a>
+
+    <a href="kaitlin.html" class="artist-card">
+      <img src="Images/artists/kaitlin.jpg" alt="Kaitlin" />
+      <h3>Kaitlin</h3>
+      <p>@kkstattoos</p>
+    </a>
+
+    <a href="austin.html" class="artist-card">
+      <img src="Images/artists/austin.jpg" alt="Austin L'Ecuyer" />
+      <h3>Austin</h3>
+      <p>@the_chaotic_ginger</p>
+    </a>
+
+    <a href="tobias.html" class="artist-card">
+      <img src="Images/artists/tobias.jpg" alt="Tobias Caballero" />
+      <h3>Tobias</h3>
+      <p>@tobias10thtattoos</p>
+    </a>
+
+    <a href="asa.html" class="artist-card">
+      <img src="Images/artists/asa.jpg" alt="Asa Larson" />
+      <h3>Asa</h3>
+      <p>@asa_tattoos</p>
+    </a>
+
+    <a href="alex.html" class="artist-card">
+      <img src="Images/artists/alex.jpg" alt="Alex Downing" />
+      <h3>Alex</h3>
+      <p>@alex.downing</p>
+    </a>
+
+    <a href="felipe.html" class="artist-card">
+      <img src="Images/artists/felipe.jpg" alt="Felipe Morales" />
+      <h3>Felipe</h3>
+      <p>@felipemorales</p>
+    </a>
+  </div>
+      
   <div class="about-copy">
     <p class="section-kicker">About the shop</p>
     <h2>Tenth Sanctum Tattoo</h2>
