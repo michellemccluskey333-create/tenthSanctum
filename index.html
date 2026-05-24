@@ -499,10 +499,10 @@ body.nav-live .hero-text {
     0 0 16px rgba(255, 42, 31, 0.26);
 }
 
-    /* =========================
-       Artist Section
-    ========================== */
-    .artists-section {
+/* =========================
+   ARTISTS CAROUSEL
+========================== */
+.artists-section {
   padding: 110px 8vw;
   background: #000;
   border-top: 1px solid var(--line);
@@ -518,13 +518,26 @@ body.nav-live .hero-text {
   text-transform: uppercase;
 }
 
-.artist-row {
+.artist-carousel {
   display: grid;
-  grid-template-columns: repeat(7, minmax(120px, 1fr));
-  gap: 22px;
+  grid-template-columns: auto 1fr auto;
+  gap: 18px;
+  align-items: center;
+}
+
+.artist-window {
+  overflow: hidden;
+  width: 100%;
+}
+
+.artist-track {
+  display: flex;
+  gap: 24px;
+  transition: transform 0.4s var(--ease);
 }
 
 .artist-card {
+  flex: 0 0 calc((100% - 48px) / 3);
   text-decoration: none;
   color: var(--cream);
 }
@@ -558,6 +571,21 @@ body.nav-live .hero-text {
   font-family: Arial, sans-serif;
   font-size: 0.72rem;
   letter-spacing: 0.08em;
+}
+
+.artist-arrow {
+  width: 42px;
+  height: 42px;
+  border: 1px solid var(--red-border);
+  background: rgba(0, 0, 0, 0.35);
+  color: var(--cream);
+  font-size: 2rem;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.artist-arrow:hover {
+  background: var(--red-soft);
 }
     /* =========================
        Site Footer
@@ -724,11 +752,25 @@ body.nav-live .hero-text {
 .about-copy h2 {
   font-size: clamp(1.85rem, 8vw, 2.8rem);
 }
-      .artist-row {
-  grid-template-columns: repeat(2, 1fr);
-  gap: 24px 16px;
+.artist-carousel {
+  grid-template-columns: 1fr;
 }
 
+.artist-arrow {
+  display: none;
+}
+
+.artist-window {
+  overflow-x: auto;
+}
+
+.artist-track {
+  gap: 16px;
+}
+
+.artist-card {
+  flex: 0 0 72%;
+}
 .artists-section {
   padding: 76px 28px;
 }
