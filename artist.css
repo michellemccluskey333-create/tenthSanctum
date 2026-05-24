@@ -1,0 +1,175 @@
+:root {
+  --bg: #000;
+  --cream: #e8dece;
+  --red: #ff3b2f;
+  --red-border: rgba(255, 59, 47, 0.58);
+  --red-soft: rgba(255, 59, 47, 0.12);
+  --line: rgba(232, 222, 206, 0.12);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: #000;
+  color: var(--cream);
+  font-family: "Raleway", Arial, sans-serif;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+a {
+  color: inherit;
+}
+
+.artist-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 28px 8vw;
+  border-bottom: 1px solid var(--line);
+}
+
+.back-link {
+  font-family: Arial, sans-serif;
+  font-size: 0.72rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: rgba(232, 222, 206, 0.72);
+}
+
+.back-link:hover {
+  color: var(--red);
+}
+
+.artist-logo {
+  width: min(320px, 45vw);
+}
+
+.artist-profile {
+  display: grid;
+  grid-template-columns: minmax(280px, 0.8fr) minmax(320px, 1fr);
+  gap: 70px;
+  align-items: center;
+  padding: 90px 8vw;
+  border-bottom: 1px solid var(--line);
+}
+
+.artist-profile-photo {
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  border: 1px solid rgba(232, 222, 206, 0.14);
+  filter: grayscale(0.15);
+}
+
+.section-kicker {
+  margin: 0 0 16px;
+  color: rgba(184, 118, 92, 0.92);
+  font-family: Arial, sans-serif;
+  font-size: 0.72rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+}
+
+.artist-profile-copy h1 {
+  margin: 0;
+  font-size: clamp(2.8rem, 6vw, 6rem);
+  line-height: 0.95;
+  font-weight: 300;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.artist-handle {
+  margin: 18px 0 28px;
+  color: rgba(232, 222, 206, 0.58);
+  font-family: Arial, sans-serif;
+  font-size: 0.82rem;
+  letter-spacing: 0.12em;
+}
+
+.artist-bio {
+  max-width: 620px;
+  margin: 0 0 34px;
+  color: rgba(232, 222, 206, 0.75);
+  font-size: 1rem;
+  line-height: 1.75;
+}
+
+.artist-contact h2,
+.artist-gallery-section h2 {
+  margin: 0 0 22px;
+  font-size: clamp(1.8rem, 3.4vw, 3.2rem);
+  font-weight: 300;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.artist-button {
+  display: inline-block;
+  margin: 0 12px 12px 0;
+  padding: 13px 22px;
+  border: 1px solid var(--red-border);
+  color: var(--cream);
+  background: rgba(0, 0, 0, 0.24);
+  font-family: Arial, sans-serif;
+  font-size: 0.72rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  text-decoration: none;
+}
+
+.artist-button:hover {
+  background: var(--red-soft);
+  color: #fff;
+}
+
+.artist-button.secondary {
+  border-color: rgba(232, 222, 206, 0.22);
+}
+
+.artist-gallery-section {
+  padding: 90px 8vw 110px;
+}
+
+.artist-gallery {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+}
+
+.artist-gallery img {
+  width: 100%;
+  aspect-ratio: 1 / 1.15;
+  object-fit: cover;
+  border: 1px solid rgba(232, 222, 206, 0.12);
+}
+
+@media (max-width: 760px) {
+  .artist-header {
+    align-items: flex-start;
+    gap: 20px;
+  }
+
+  .artist-profile {
+    grid-template-columns: 1fr;
+    gap: 38px;
+    padding: 70px 28px;
+  }
+
+  .artist-gallery-section {
+    padding: 70px 28px;
+  }
+
+  .artist-gallery {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+}
