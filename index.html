@@ -1016,11 +1016,25 @@ body.nav-live .hero-text {
     /* =========================
        INTRO ANIMATION TIMING
     ========================== */
-    window.addEventListener("load", () => {
-      // Move logo from center to top.
-      setTimeout(() => {
-        document.body.classList.add("logo-settling");
-      }, 650);
+  window.addEventListener("load", () => {
+  if (window.location.hash) {
+    document.body.classList.add("logo-settling", "hero-live", "hero-bright", "nav-live");
+    document.body.classList.remove("intro-running");
+
+    const blackout = document.querySelector(".blackout");
+    if (blackout) blackout.remove();
+
+    setTimeout(() => {
+      document.querySelector(window.location.hash)?.scrollIntoView();
+    }, 50);
+
+    return;
+  }
+
+  // Move logo from center to top.
+  setTimeout(() => {
+    document.body.classList.add("logo-settling");
+  }, 650);
 
       // Reveal hero image, still dark.
       setTimeout(() => {
