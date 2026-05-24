@@ -403,61 +403,92 @@
       object-position: center center;
     }
 
-    /* =========================
-       HERO TEXT
-       Font inspired by the cleaner modern tattoo-site reference.
-    ========================== */
- .hero-text .old-market::before {
+   /* =========================
+   HERO TEXT
+   Anchored hero copy. Keep this block together.
+========================== */
+.hero-text {
+  position: absolute;
+  left: 56px;
+  bottom: 135px;
+  z-index: 20;
+  max-width: 720px;
+  color: var(--cream);
+  opacity: 0;
+  transform: translateY(14px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+body.nav-live .hero-text {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.hero-text h1 {
+  margin: 0 0 22px;
+  font-family: "Raleway", Arial, sans-serif;
+  font-size: clamp(2.35rem, 4.35vw, 4.35rem);
+  line-height: 1.02;
+  font-weight: 300;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--cream);
+}
+
+.hero-text h1 span {
+  display: block;
+}
+
+/* This controls OLD MARKET */
+.hero-text .old-market {
+  position: relative;
+  display: block;
+  margin-top: 12px;
+  padding-top: 18px;
+  font-weight: 700;
+  letter-spacing: 0.09em;
+}
+
+/* Cream line above OLD MARKET */
+.hero-text .old-market::before {
   content: "";
   position: absolute;
   top: 0;
   left: 0;
-  width: min(58vw, 240px);
+  width: 275px;
   height: 2px;
   background: rgba(232, 222, 206, 0.78);
   box-shadow: none;
 }
 
-    body.nav-live .hero-text {
-      opacity: 1;
-      transform: translateY(0);
-    }
+/* Smaller cream supporting line */
+.hero-subline {
+  max-width: 520px;
+  margin: 0 0 22px;
+  font-family: "Raleway", Arial, sans-serif;
+  font-size: clamp(0.85rem, 1.05vw, 1rem);
+  line-height: 1.55;
+  font-weight: 300;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: rgba(232, 222, 206, 0.78);
+}
 
-    .hero-text h1 {
-      margin: 0 0 22px;
-      font-family: "Raleway", Arial, sans-serif;
-     font-size: clamp(2.35rem, 4.35vw, 4.35rem);
-      line-height: 1.02;
-      font-weight: 300;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: var(--cream);
-    }
-
-    .hero-text h1 span {
-      display: block;
-    }
-
-    .hero-text .old-market {
-      font-weight: 700;
-      letter-spacing: 0.09em;
-    }
-
-    .hero-text .walkins {
-      display: inline-block;
-      margin: 4px 0 0;
-      padding: 14px 0 0;
-      border-top: 2px solid var(--red);
-      font-family: Arial, sans-serif;
-      font-size: 0.98rem;
-      letter-spacing: 0.24em;
-      text-transform: uppercase;
-      color: var(--red);
-      text-shadow:
-        0 0 5px rgba(255, 42, 31, 0.5),
-        0 0 16px rgba(255, 42, 31, 0.26);
-    }
-
+/* Only this line is red */
+.hero-text .walkins {
+  display: inline-block;
+  margin: 0;
+  padding: 0;
+  border-top: none;
+  font-family: Arial, sans-serif;
+  font-size: 0.98rem;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--red);
+  text-shadow:
+    0 0 5px rgba(255, 42, 31, 0.5),
+    0 0 16px rgba(255, 42, 31, 0.26);
+}
     /* =========================
        TABLET
     ========================== */
@@ -535,7 +566,7 @@
         filter: brightness(0.72) contrast(1.06) saturate(0.72);
       }
 
-      .hero-text {
+.hero-text {
   left: 28px;
   right: 24px;
   bottom: clamp(128px, 18svh, 172px);
@@ -544,8 +575,8 @@
 }
 
 .hero-text h1 {
-  font-size: clamp(1.95rem, 8.8vw, 3.1rem);
-  line-height: 1.05;
+  font-size: clamp(1.85rem, 8.2vw, 2.9rem);
+  line-height: 1.06;
   letter-spacing: 0.055em;
 }
 
@@ -556,8 +587,8 @@
 .hero-text .old-market {
   position: relative;
   display: block;
-  margin-top: 12px;
-  padding-top: 18px;
+  margin-top: 10px;
+  padding-top: 16px;
   font-weight: 700;
   letter-spacing: 0.07em;
 }
@@ -567,17 +598,15 @@
   position: absolute;
   top: 0;
   left: 0;
-  width: min(58vw, 240px);
+  width: min(58vw, 230px);
   height: 2px;
-  background: var(--red);
-  box-shadow:
-    0 0 6px rgba(255, 42, 31, 0.45),
-    0 0 14px rgba(255, 42, 31, 0.18);
+  background: rgba(232, 222, 206, 0.78);
+  box-shadow: none;
 }
 
 .hero-subline {
   max-width: 310px;
-  margin: 18px 0 18px;
+  margin: 16px 0 18px;
   font-family: "Raleway", Arial, sans-serif;
   font-size: 0.72rem;
   line-height: 1.45;
