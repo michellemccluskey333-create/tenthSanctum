@@ -6,27 +6,26 @@
 
   <title>Tenth Sanctum Tattoo</title>
 
-  <!-- Google Font: Cormorant Garamond -->
+  <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;600;700&display=swap" rel="stylesheet">
 
   <style>
     /* =========================
        GLOBAL VARIABLES
-       One unified color system for the whole page.
     ========================== */
     :root {
       --bg: #000;
       --cream: #e8dece;
       --muted: #c7b8a1;
 
-      /* Unified muted red system */
-      --red: #d85b4f;
+      /* Neon red accent system */
+      --red: #ff2a1f;
       --red-dark: #8f211c;
-      --red-soft: rgba(216, 91, 79, 0.16);
-      --red-border: rgba(216, 91, 79, 0.72);
-      --red-glow: rgba(216, 91, 79, 0.32);
+      --red-soft: rgba(255, 42, 31, 0.14);
+      --red-border: rgba(255, 42, 31, 0.72);
+      --red-glow: rgba(255, 42, 31, 0.45);
 
       --line: rgba(232, 222, 206, 0.12);
       --ease: cubic-bezier(.22, .61, .36, 1);
@@ -57,7 +56,6 @@
 
     /* =========================
        BLACKOUT INTRO LAYER
-       Creates the black screen on load.
     ========================== */
     .blackout {
       position: fixed;
@@ -75,8 +73,7 @@
 
     /* =========================
        SINGLE ANIMATED MAIN LOGO
-       This is the main logo only.
-       Starts large/centered, then settles large at the top.
+       Starts large/centered, then settles large at top.
     ========================== */
     .site-logo {
       position: fixed;
@@ -87,8 +84,8 @@
       transform: translate(-50%, -50%);
       transform-origin: center center;
       filter:
-        drop-shadow(0 0 12px rgba(216, 91, 79, 0.26))
-        drop-shadow(0 0 32px rgba(216, 91, 79, 0.14));
+        drop-shadow(0 0 12px rgba(255, 42, 31, 0.26))
+        drop-shadow(0 0 32px rgba(255, 42, 31, 0.14));
       transition:
         top 1.05s var(--ease),
         width 1.05s var(--ease),
@@ -131,7 +128,9 @@
     .menu-toggle:hover {
       border-color: var(--red-border);
       background: var(--red-soft);
-      box-shadow: 0 0 12px rgba(216, 91, 79, 0.12);
+      box-shadow:
+        0 0 8px var(--red-glow),
+        0 0 20px rgba(255, 42, 31, 0.14);
     }
 
     .menu-toggle span {
@@ -157,7 +156,6 @@
 
     /* =========================
        TOP RIGHT BOOK BUTTON
-       Uses the same red system as the pull-down.
     ========================== */
     .book-top {
       position: fixed;
@@ -176,8 +174,8 @@
       opacity: 0;
       pointer-events: none;
       box-shadow:
-        inset 0 0 10px rgba(216, 91, 79, 0.06),
-        0 0 12px rgba(216, 91, 79, 0.08);
+        inset 0 0 10px rgba(255, 42, 31, 0.07),
+        0 0 14px rgba(255, 42, 31, 0.1);
       transition:
         opacity 0.7s ease,
         background 0.2s ease,
@@ -197,8 +195,8 @@
       border-color: var(--red);
       box-shadow:
         0 0 8px var(--red-glow),
-        0 0 22px rgba(216, 91, 79, 0.14),
-        inset 0 0 12px rgba(216, 91, 79, 0.08);
+        0 0 24px rgba(255, 42, 31, 0.18),
+        inset 0 0 12px rgba(255, 42, 31, 0.1);
     }
 
     /* =========================
@@ -209,9 +207,9 @@
       top: 0;
       left: 0;
       z-index: 1050;
-      width: min(340px, 88vw);
+      width: min(310px, 86vw);
       height: 100vh;
-      padding: 96px 34px 34px;
+      padding: 88px 34px 34px;
       background:
         linear-gradient(to bottom, rgba(0,0,0,0.98), rgba(8,8,8,0.96)),
         #000;
@@ -228,7 +226,6 @@
       min-height: 100%;
       display: flex;
       flex-direction: column;
-      justify-content: space-between;
     }
 
     .pull-menu-links {
@@ -259,7 +256,7 @@
       background: var(--red);
       box-shadow:
         0 0 6px var(--red-glow),
-        0 0 14px rgba(216, 91, 79, 0.18);
+        0 0 14px rgba(255, 42, 31, 0.25);
       transition: width 0.22s ease;
     }
 
@@ -270,8 +267,8 @@
     .pull-menu a:hover {
       color: #fff;
       text-shadow:
-        0 0 6px rgba(216, 91, 79, 0.35),
-        0 0 14px rgba(216, 91, 79, 0.16);
+        0 0 6px rgba(255, 42, 31, 0.45),
+        0 0 14px rgba(255, 42, 31, 0.2);
     }
 
     /* Pull-down Book Now button */
@@ -283,10 +280,10 @@
       border: 1px solid var(--red-border);
       color: var(--cream);
       text-align: center;
-      background: rgba(216, 91, 79, 0.07);
+      background: rgba(255, 42, 31, 0.07);
       box-shadow:
-        inset 0 0 10px rgba(216, 91, 79, 0.06),
-        0 0 14px rgba(216, 91, 79, 0.08);
+        inset 0 0 10px rgba(255, 42, 31, 0.08),
+        0 0 14px rgba(255, 42, 31, 0.1);
     }
 
     .pull-menu .menu-book-btn::after {
@@ -299,30 +296,33 @@
       border-color: var(--red);
       box-shadow:
         0 0 8px var(--red-glow),
-        0 0 22px rgba(216, 91, 79, 0.14),
-        inset 0 0 12px rgba(216, 91, 79, 0.08);
+        0 0 24px rgba(255, 42, 31, 0.18),
+        inset 0 0 12px rgba(255, 42, 31, 0.1);
     }
 
-    /* Note, not a menu choice */
+    /* Note, not a menu option */
     .no-piercer-note {
-      margin: 42px 0 0;
+      margin: 46px 0 0;
       padding-top: 18px;
-      border-top: 1px solid rgba(232, 222, 206, 0.14);
-      color: rgba(232, 222, 206, 0.72);
+      border-top: 1px solid var(--red-border);
+      color: var(--red);
       font-family: Arial, sans-serif;
-      font-size: 0.68rem;
-      letter-spacing: 0.12em;
+      font-size: 0.82rem;
+      letter-spacing: 0.14em;
       text-transform: uppercase;
+      text-shadow:
+        0 0 5px rgba(255, 42, 31, 0.42),
+        0 0 14px rgba(255, 42, 31, 0.18);
     }
 
-    /* Large emblem at the bottom of the pull-down */
+    /* Emblem sits below the note, not stranded at the bottom */
     .menu-logo-small {
-      width: 160px;
-      margin: 48px auto 0;
+      width: 150px;
+      margin: 72px auto 0;
       opacity: 0.92;
       filter:
-        drop-shadow(0 0 8px rgba(216, 91, 79, 0.22))
-        drop-shadow(0 0 18px rgba(216, 91, 79, 0.12));
+        drop-shadow(0 0 8px rgba(255, 42, 31, 0.25))
+        drop-shadow(0 0 18px rgba(255, 42, 31, 0.14));
     }
 
     .menu-backdrop {
@@ -406,13 +406,14 @@
 
     /* =========================
        HERO TEXT
+       Font inspired by the cleaner modern tattoo-site reference.
     ========================== */
     .hero-text {
       position: absolute;
       left: 56px;
-      bottom: 150px;
+      bottom: 135px;
       z-index: 20;
-      max-width: 520px;
+      max-width: 720px;
       color: var(--cream);
       opacity: 0;
       transform: translateY(14px);
@@ -425,28 +426,38 @@
     }
 
     .hero-text h1 {
-      margin: 0 0 18px;
-      font-family: "Cormorant Garamond", Georgia, serif;
-      font-size: clamp(2rem, 3.3vw, 3.2rem);
+      margin: 0 0 22px;
+      font-family: "Raleway", Arial, sans-serif;
+     font-size: clamp(2.35rem, 4.35vw, 4.35rem);
       line-height: 1.02;
-      font-weight: 600;
+      font-weight: 300;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
       color: var(--cream);
-      letter-spacing: 0.01em;
+    }
+
+    .hero-text h1 span {
+      display: block;
+    }
+
+    .hero-text .old-market {
+      font-weight: 700;
+      letter-spacing: 0.09em;
     }
 
     .hero-text .walkins {
       display: inline-block;
       margin: 4px 0 0;
-      padding: 8px 0 0;
-      border-top: 1px solid var(--red-border);
+      padding: 14px 0 0;
+      border-top: 2px solid var(--red);
       font-family: Arial, sans-serif;
-      font-size: 0.82rem;
+      font-size: 0.98rem;
       letter-spacing: 0.24em;
       text-transform: uppercase;
       color: var(--red);
       text-shadow:
-        0 0 5px rgba(216, 91, 79, 0.35),
-        0 0 12px rgba(216, 91, 79, 0.14);
+        0 0 5px rgba(255, 42, 31, 0.5),
+        0 0 16px rgba(255, 42, 31, 0.26);
     }
 
     /* =========================
@@ -464,7 +475,11 @@
       }
 
       .hero-text {
-        max-width: 560px;
+        max-width: 620px;
+      }
+
+      .hero-text h1 {
+        font-size: clamp(2.4rem, 6.4vw, 4.2rem);
       }
     }
 
@@ -472,25 +487,29 @@
        MOBILE
     ========================== */
     @media (max-width: 640px) {
+      .hero {
+        min-height: 100svh;
+      }
+
       .site-logo {
         width: min(84vw, 520px);
       }
 
       body.logo-settling .site-logo {
-        top: 18px;
-        width: min(68vw, 330px);
+        top: calc(env(safe-area-inset-top) + 82px);
+        width: min(58vw, 285px);
         transform: translate(-50%, 0);
       }
 
       .menu-toggle {
-        top: 22px;
+        top: calc(env(safe-area-inset-top) + 18px);
         left: 18px;
       }
 
       .book-top {
-        top: 22px;
+        top: calc(env(safe-area-inset-top) + 18px);
         right: 18px;
-        padding: 9px 12px;
+        padding: 10px 14px;
         font-size: 0.62rem;
         letter-spacing: 0.12em;
       }
@@ -501,8 +520,8 @@
       }
 
       .menu-logo-small {
-        width: 140px;
-        margin-top: 44px;
+        width: 125px;
+        margin-top: 58px;
       }
 
       .hero-img {
@@ -519,20 +538,25 @@
       }
 
       .hero-text {
-        left: 24px;
+        left: 28px;
         right: 24px;
-        bottom: 90px;
+        bottom: clamp(132px, 18svh, 178px);
         max-width: none;
         text-align: left;
       }
 
       .hero-text h1 {
-        font-size: clamp(1.9rem, 8.8vw, 2.85rem);
-        line-height: 1.05;
+        font-size: clamp(2.1rem, 10vw, 3.35rem);
+        line-height: 1.08;
+        letter-spacing: 0.06em;
+      }
+
+      .hero-text .old-market {
+        letter-spacing: 0.07em;
       }
 
       .hero-text .walkins {
-        font-size: 0.68rem;
+        font-size: 0.82rem;
         letter-spacing: 0.18em;
       }
     }
@@ -571,10 +595,10 @@
         </div>
 
         <p class="no-piercer-note">No piercing services</p>
-      </div>
 
-      <!-- Bottom emblem. Make sure this file exists exactly as written. -->
-      <img src="Images/emblem.png" alt="Tenth Sanctum emblem" class="menu-logo-small" />
+        <!-- Bottom emblem. Make sure this file exists exactly as written. -->
+        <img src="Images/emblem.png" alt="Tenth Sanctum emblem" class="menu-logo-small" />
+      </div>
     </div>
   </nav>
 
@@ -588,7 +612,11 @@
 
       <!-- Hero text on the image -->
       <div class="hero-text">
-        <h1>Custom Tattooing in<br>Omaha’s Old Market</h1>
+        <h1>
+          <span>Custom Tattooing</span>
+          <span>in Omaha’s</span>
+          <span class="old-market">Old Market</span>
+        </h1>
         <p class="walkins">Walk-Ins Welcome</p>
       </div>
     </section>
