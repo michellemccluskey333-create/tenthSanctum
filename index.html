@@ -20,12 +20,17 @@
       --cream: #e8dece;
       --muted: #c7b8a1;
 
-      /* Neon red accent system */
+      /* Neon red accent system 
       --red: #ff2a1f;
       --red-dark: #8f211c;
       --red-soft: rgba(255, 42, 31, 0.14);
       --red-border: rgba(255, 42, 31, 0.72);
-      --red-glow: rgba(255, 42, 31, 0.45);
+      --red-glow: rgba(255, 42, 31, 0.45);*/
+
+      --red: #ff3b2f;
+--red-soft: rgba(255, 59, 47, 0.12);
+--red-border: rgba(255, 59, 47, 0.58);
+--red-glow: rgba(255, 59, 47, 0.32);
 
       --line: rgba(232, 222, 206, 0.12);
       --ease: cubic-bezier(.22, .61, .36, 1);
@@ -202,21 +207,23 @@
     /* =========================
        PULL-DOWN MENU
     ========================== */
-    .pull-menu {
-      position: fixed;
-      top: 0;
-      left: 0;
-      z-index: 1050;
-      width: min(310px, 86vw);
-      height: 100vh;
-      padding: 88px 34px 34px;
-      background:
-        linear-gradient(to bottom, rgba(0,0,0,0.98), rgba(8,8,8,0.96)),
-        #000;
-      border-right: 1px solid var(--line);
-      transform: translateX(-100%);
-      transition: transform 0.45s var(--ease);
-    }
+.pull-menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1050;
+  width: min(285px, 84vw);
+  height: 100vh;
+  padding: 108px 30px 34px;
+  background:
+    linear-gradient(to bottom, rgba(0,0,0,0.98), rgba(8,8,8,0.96)),
+    #000;
+  border-right: 1px solid var(--line);
+  transform: translateX(-100%);
+  transition: transform 0.45s var(--ease);
+  overflow: hidden;
+}
+
 
     body.menu-open .pull-menu {
       transform: translateX(0);
@@ -228,11 +235,11 @@
       flex-direction: column;
     }
 
-    .pull-menu-links {
-      display: flex;
-      flex-direction: column;
-      gap: 26px;
-    }
+.pull-menu-links {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
 
     .pull-menu a {
       position: relative;
@@ -272,19 +279,19 @@
     }
 
     /* Pull-down Book Now button */
-    .pull-menu .menu-book-btn {
-      margin-top: 8px;
-      width: 100%;
-      max-width: 220px;
-      padding: 13px 18px;
-      border: 1px solid var(--red-border);
-      color: var(--cream);
-      text-align: center;
-      background: rgba(255, 42, 31, 0.07);
-      box-shadow:
-        inset 0 0 10px rgba(255, 42, 31, 0.08),
-        0 0 14px rgba(255, 42, 31, 0.1);
-    }
+   .pull-menu .menu-book-btn {
+  margin-top: 18px;
+  width: 100%;
+  max-width: 190px;
+  padding: 12px 16px;
+  border: 1px solid var(--red-border);
+  color: var(--cream);
+  text-align: center;
+  background: rgba(255, 42, 31, 0.055);
+  box-shadow:
+    inset 0 0 8px rgba(255, 42, 31, 0.06),
+    0 0 12px rgba(255, 42, 31, 0.08);
+}
 
     .pull-menu .menu-book-btn::after {
       display: none;
@@ -300,30 +307,44 @@
         inset 0 0 12px rgba(255, 42, 31, 0.1);
     }
 
-    /* Note, not a menu option */
-    .no-piercer-note {
-      margin: 46px 0 0;
-      padding-top: 18px;
-      border-top: 1px solid var(--red-border);
-      color: var(--red);
-      font-family: Arial, sans-serif;
-      font-size: 0.82rem;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      text-shadow:
-        0 0 5px rgba(255, 42, 31, 0.42),
-        0 0 14px rgba(255, 42, 31, 0.18);
-    }
+.no-piercer-note {
+  margin: 34px 0 0;
+  padding-top: 16px;
+  border-top: 1px solid rgba(232, 222, 206, 0.14);
+
+  color: rgba(184, 118, 92, 0.92);
+
+  font-family: Arial, sans-serif;
+  font-size: 0.76rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  text-align: left;
+
+  text-shadow:
+    0 0 6px rgba(184, 118, 92, 0.22);
+}
 
     /* Emblem sits below the note, not stranded at the bottom */
-    .menu-logo-small {
-      width: 150px;
-      margin: 72px auto 0;
-      opacity: 0.92;
-      filter:
-        drop-shadow(0 0 8px rgba(255, 42, 31, 0.25))
-        drop-shadow(0 0 18px rgba(255, 42, 31, 0.14));
-    }
+  
+.menu-logo-small {
+  position: absolute;
+  left: 50%;
+  bottom: 86px;
+  width: 225px;
+  transform: translateX(-50%);
+  opacity: 0.26;
+  filter:
+    grayscale(0.1)
+    drop-shadow(0 0 12px rgba(255, 42, 31, 0.18));
+  pointer-events: none;
+}
+    .menu-content {
+  position: relative;
+  z-index: 2;
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+}
 
     .menu-backdrop {
       position: fixed;
@@ -404,62 +425,105 @@
       object-position: center center;
     }
 
+   /* =========================
+   HERO TEXT
+   Anchored hero copy. Keep this block together.
+========================== */
+.hero-text {
+  position: absolute;
+  left: 56px;
+
+  bottom: 38px;
+
+  z-index: 20;
+  max-width: 720px;
+  color: var(--cream);
+  opacity: 0;
+  transform: translateY(14px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+body.nav-live .hero-text {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.hero-text h1 {
+  margin: 0 0 22px;
+  font-family: "Raleway", Arial, sans-serif;
+  font-size: clamp(2.35rem, 4.35vw, 4.35rem);
+  line-height: 1.02;
+  font-weight: 300;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(245, 245, 240, 0.92);
+}
+
+.hero-text h1 span {
+  display: block;
+}
+
+/* This controls OLD MARKET */
+.hero-text .old-market {
+  display: block;
+  font-weight: 700;
+  letter-spacing: 0.09em;
+  color: rgba(248, 248, 242, 0.96);
+}
+
+/* Smaller cream supporting line */
+.hero-subline {
+  max-width: 520px;
+  margin: 0 0 22px;
+  font-family: "Raleway", Arial, sans-serif;
+  font-size: clamp(0.85rem, 1.05vw, 1rem);
+  line-height: 1.55;
+  font-weight: 300;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: rgba(210, 210, 205, 0.68);
+}
+
+/* Only this line is red */
+.hero-text .walkins {
+  display: inline-block;
+  margin: 4px 0 0;
+  padding: 14px 0 0;
+  border-top: 2px solid var(--red);
+  font-family: Arial, sans-serif;
+  font-size: 0.98rem;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--red);
+  text-shadow:
+    0 0 5px rgba(255, 42, 31, 0.5),
+    0 0 16px rgba(255, 42, 31, 0.26);
+}
     /* =========================
-       HERO TEXT
-       Font inspired by the cleaner modern tattoo-site reference.
+       Site Footer
     ========================== */
-    .hero-text {
-      position: absolute;
-      left: 56px;
-      bottom: 135px;
-      z-index: 20;
-      max-width: 720px;
-      color: var(--cream);
-      opacity: 0;
-      transform: translateY(14px);
-      transition: opacity 0.8s ease, transform 0.8s ease;
-    }
+    .site-footer {
+  padding: 42px 8vw;
+  background: #000;
+  border-top: 1px solid var(--line);
+  color: rgba(232, 222, 206, 0.68);
+  font-family: Arial, sans-serif;
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
 
-    body.nav-live .hero-text {
-      opacity: 1;
-      transform: translateY(0);
-    }
+.site-footer p {
+  margin: 0 0 8px;
+}
 
-    .hero-text h1 {
-      margin: 0 0 22px;
-      font-family: "Raleway", Arial, sans-serif;
-     font-size: clamp(2.35rem, 4.35vw, 4.35rem);
-      line-height: 1.02;
-      font-weight: 300;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: var(--cream);
-    }
+.site-footer a {
+  color: var(--cream);
+  text-decoration: none;
+}
 
-    .hero-text h1 span {
-      display: block;
-    }
-
-    .hero-text .old-market {
-      font-weight: 700;
-      letter-spacing: 0.09em;
-    }
-
-    .hero-text .walkins {
-      display: inline-block;
-      margin: 4px 0 0;
-      padding: 14px 0 0;
-      border-top: 2px solid var(--red);
-      font-family: Arial, sans-serif;
-      font-size: 0.98rem;
-      letter-spacing: 0.24em;
-      text-transform: uppercase;
-      color: var(--red);
-      text-shadow:
-        0 0 5px rgba(255, 42, 31, 0.5),
-        0 0 16px rgba(255, 42, 31, 0.26);
-    }
-
+.site-footer a:hover {
+  color: var(--red);
+}
     /* =========================
        TABLET
     ========================== */
@@ -519,11 +583,10 @@
         padding: 88px 28px 30px;
       }
 
-      .menu-logo-small {
-        width: 125px;
-        margin-top: 58px;
-      }
-
+.menu-logo-small {
+  width: 135px;
+  bottom: 72px;
+}
       .hero-img {
         object-fit: cover;
         object-position: center center;
@@ -533,32 +596,54 @@
         filter: brightness(0.08) contrast(1.08) saturate(0.45);
       }
 
-      body.hero-bright .hero-media {
-        filter: brightness(0.72) contrast(1.06) saturate(0.72);
-      }
+    body.hero-bright .hero-media {
+  filter: brightness(0.66) contrast(1.12) saturate(0.45);
+}
 
-      .hero-text {
-        left: 28px;
-        right: 24px;
-        bottom: clamp(132px, 18svh, 178px);
-        max-width: none;
-        text-align: left;
-      }
+.hero-text {
+  left: 28px;
+  right: 24px;
+  bottom: clamp(128px, 18svh, 172px);
+  max-width: none;
+  text-align: left;
+}
 
-      .hero-text h1 {
-        font-size: clamp(2.1rem, 10vw, 3.35rem);
-        line-height: 1.08;
-        letter-spacing: 0.06em;
-      }
+.hero-text h1 {
+  font-size: clamp(1.85rem, 8.2vw, 2.9rem);
+  line-height: 1.06;
+  letter-spacing: 0.055em;
+}
 
-      .hero-text .old-market {
-        letter-spacing: 0.07em;
-      }
+.hero-text h1 span {
+  display: block;
+}
 
-      .hero-text .walkins {
-        font-size: 0.82rem;
-        letter-spacing: 0.18em;
-      }
+.hero-text .old-market {
+  display: block;
+  font-weight: 700;
+  letter-spacing: 0.07em;
+}
+
+
+.hero-subline {
+  max-width: 310px;
+  margin: 16px 0 18px;
+  font-family: "Raleway", Arial, sans-serif;
+  font-size: 0.72rem;
+  line-height: 1.45;
+  font-weight: 300;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: rgba(232, 222, 206, 0.78);
+}
+
+.hero-text .walkins {
+  display: inline-block;
+  font-size: 0.82rem;
+  letter-spacing: 0.18em;
+  padding-top: 12px;
+  border-top: 2px solid var(--red);
+}
     }
   </style>
 </head>
@@ -594,7 +679,9 @@
           <a href="#book" class="menu-book-btn">Book Now</a>
         </div>
 
-        <p class="no-piercer-note">No piercing services</p>
+        
+
+        <p class="no-piercer-note">NO PIERCING SERVICES</p>
 
         <!-- Bottom emblem. Make sure this file exists exactly as written. -->
         <img src="Images/emblem.png" alt="Tenth Sanctum emblem" class="menu-logo-small" />
@@ -611,17 +698,45 @@
       </div>
 
       <!-- Hero text on the image -->
-      <div class="hero-text">
-        <h1>
-          <span>Custom Tattooing</span>
-          <span>in Omaha’s</span>
-          <span class="old-market">Old Market</span>
-        </h1>
-        <p class="walkins">Walk-Ins Welcome</p>
-      </div>
-    </section>
-  </main>
+ <div class="hero-text">
+  <h1>
+    <span>Custom and Flash Tattooing</span>
+    <span>in the</span>
+    <span class="old-market">Old Market</span>
+  </h1>
 
+  <p class="hero-subline">Located in Omaha’s historic arts and entertainment district</p>
+
+  <p class="walkins">Walk-Ins Welcome</p>
+</div>
+    </section>
+
+    <section class="about-section" id="about">
+  <div class="about-slideshow">
+    <img src="Images/shop-1.jpg" alt="Tenth Sanctum Tattoo shop interior" class="about-slide active" />
+    <img src="Images/shop-2.jpg" alt="Tenth Sanctum Tattoo interior" class="about-slide" />
+    <img src="Images/shop-3.jpg" alt="Tenth Sanctum Tattoo studio space" class="about-slide" />
+  </div>
+  <div class="about-copy">
+    <p class="section-kicker">About the shop</p>
+    <h2>Tenth Sanctum Tattoo</h2>
+    <p>
+      Established in 2013, Tenth Sanctum Tattoo is located in Omaha’s historic Old Market,
+      surrounded by the city’s arts, culture, and entertainment district.
+    </p>
+    <p>
+      The shop offers custom tattooing and flash work in a focused, artist-driven space.
+    </p>
+  </div>
+</section>
+  </main>
+<footer class="site-footer">
+  <p>Tenth Sanctum Tattoo</p>
+  <p>Old Market · Omaha, Nebraska</p>
+  <a href="https://www.instagram.com/tenthsanctum/?hl=en" target="_blank" rel="noopener">
+    Instagram
+  </a>
+</footer>
   <script>
     /* =========================
        INTRO ANIMATION TIMING
@@ -654,6 +769,12 @@
         if (blackout) blackout.remove();
       }, 3100);
     });
+   /* =========================
+       About Slide Show
+    ========================== */
+    const aboutSlides = document.querySelectorAll(".about-slide");
+let aboutSlideIndex = 0;
+
 
     /* =========================
        PULL-DOWN MENU CONTROLS
@@ -677,6 +798,16 @@
     menuLinks.forEach((link) => {
       link.addEventListener("click", closeMenu);
     });
+    const aboutSlides = document.querySelectorAll(".about-slide");
+let aboutSlideIndex = 0;
+
+if (aboutSlides.length > 1) {
+  setInterval(() => {
+    aboutSlides[aboutSlideIndex].classList.remove("active");
+    aboutSlideIndex = (aboutSlideIndex + 1) % aboutSlides.length;
+    aboutSlides[aboutSlideIndex].classList.add("active");
+  }, 4200);
+}
   </script>
 </body>
 </html>
