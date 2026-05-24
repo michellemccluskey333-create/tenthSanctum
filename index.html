@@ -499,6 +499,32 @@ body.nav-live .hero-text {
     0 0 16px rgba(255, 42, 31, 0.26);
 }
     /* =========================
+       Site Footer
+    ========================== */
+    .site-footer {
+  padding: 42px 8vw;
+  background: #000;
+  border-top: 1px solid var(--line);
+  color: rgba(232, 222, 206, 0.68);
+  font-family: Arial, sans-serif;
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.site-footer p {
+  margin: 0 0 8px;
+}
+
+.site-footer a {
+  color: var(--cream);
+  text-decoration: none;
+}
+
+.site-footer a:hover {
+  color: var(--red);
+}
+    /* =========================
        TABLET
     ========================== */
     @media (max-width: 1050px) {
@@ -653,6 +679,8 @@ body.nav-live .hero-text {
           <a href="#book" class="menu-book-btn">Book Now</a>
         </div>
 
+        
+
         <p class="no-piercer-note">NO PIERCING SERVICES</p>
 
         <!-- Bottom emblem. Make sure this file exists exactly as written. -->
@@ -682,8 +710,33 @@ body.nav-live .hero-text {
   <p class="walkins">Walk-Ins Welcome</p>
 </div>
     </section>
-  </main>
 
+    <section class="about-section" id="about">
+  <div class="about-slideshow">
+    <img src="Images/shop-1.jpg" alt="Tenth Sanctum Tattoo shop interior" class="about-slide active" />
+    <img src="Images/shop-2.jpg" alt="Tenth Sanctum Tattoo interior" class="about-slide" />
+    <img src="Images/shop-3.jpg" alt="Tenth Sanctum Tattoo studio space" class="about-slide" />
+  </div>
+  <div class="about-copy">
+    <p class="section-kicker">About the shop</p>
+    <h2>Tenth Sanctum Tattoo</h2>
+    <p>
+      Established in 2013, Tenth Sanctum Tattoo is located in Omaha’s historic Old Market,
+      surrounded by the city’s arts, culture, and entertainment district.
+    </p>
+    <p>
+      The shop offers custom tattooing and flash work in a focused, artist-driven space.
+    </p>
+  </div>
+</section>
+  </main>
+<footer class="site-footer">
+  <p>Tenth Sanctum Tattoo</p>
+  <p>Old Market · Omaha, Nebraska</p>
+  <a href="https://www.instagram.com/tenthsanctum/?hl=en" target="_blank" rel="noopener">
+    Instagram
+  </a>
+</footer>
   <script>
     /* =========================
        INTRO ANIMATION TIMING
@@ -716,6 +769,12 @@ body.nav-live .hero-text {
         if (blackout) blackout.remove();
       }, 3100);
     });
+   /* =========================
+       About Slide Show
+    ========================== */
+    const aboutSlides = document.querySelectorAll(".about-slide");
+let aboutSlideIndex = 0;
+
 
     /* =========================
        PULL-DOWN MENU CONTROLS
@@ -739,6 +798,16 @@ body.nav-live .hero-text {
     menuLinks.forEach((link) => {
       link.addEventListener("click", closeMenu);
     });
+    const aboutSlides = document.querySelectorAll(".about-slide");
+let aboutSlideIndex = 0;
+
+if (aboutSlides.length > 1) {
+  setInterval(() => {
+    aboutSlides[aboutSlideIndex].classList.remove("active");
+    aboutSlideIndex = (aboutSlideIndex + 1) % aboutSlides.length;
+    aboutSlides[aboutSlideIndex].classList.add("active");
+  }, 4200);
+}
   </script>
 </body>
 </html>
