@@ -537,7 +537,7 @@ body.nav-live .hero-text {
 }
 
 .artist-card {
-  flex: 0 0 calc((100% - 48px) / 3);
+  flex: 0 0 calc((100% - 48px) / 4);
   text-decoration: none;
   color: var(--cream);
 }
@@ -590,8 +590,13 @@ body.nav-live .hero-text {
     /* =========================
        Site Footer
     ========================== */
-    .site-footer {
-  padding: 42px 8vw;
+
+.site-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 28px;
+  padding: 34px 8vw;
   background: #000;
   border-top: 1px solid var(--line);
   color: rgba(232, 222, 206, 0.68);
@@ -602,7 +607,13 @@ body.nav-live .hero-text {
 }
 
 .site-footer p {
-  margin: 0 0 8px;
+  margin: 0;
+}
+
+.footer-socials {
+  display: flex;
+  gap: 18px;
+  align-items: center;
 }
 
 .site-footer a {
@@ -613,7 +624,15 @@ body.nav-live .hero-text {
 .site-footer a:hover {
   color: var(--red);
 }
-    .about-section {
+
+.social-icon {
+  color: var(--red);
+}
+
+  /* =========================
+       About Slide Show Section
+  ========================== */
+  .about-section {
   display: grid;
   grid-template-columns: minmax(280px, 0.9fr) minmax(320px, 1fr);
   gap: 64px;
@@ -623,9 +642,6 @@ body.nav-live .hero-text {
   border-top: 1px solid var(--line);
   color: var(--cream);
 }
-    /* =========================
-       About Slide Show Section
-    ========================== */
 .about-slideshow {
   position: relative;
   width: 100%;
