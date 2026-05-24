@@ -407,17 +407,16 @@
        HERO TEXT
        Font inspired by the cleaner modern tattoo-site reference.
     ========================== */
-    .hero-text {
-      position: absolute;
-      left: 56px;
-      bottom: 135px;
-      z-index: 20;
-      max-width: 720px;
-      color: var(--cream);
-      opacity: 0;
-      transform: translateY(14px);
-      transition: opacity 0.8s ease, transform 0.8s ease;
-    }
+ .hero-text .old-market::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: min(58vw, 240px);
+  height: 2px;
+  background: rgba(232, 222, 206, 0.78);
+  box-shadow: none;
+}
 
     body.nav-live .hero-text {
       opacity: 1;
