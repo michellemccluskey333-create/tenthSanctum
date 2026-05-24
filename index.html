@@ -537,27 +537,63 @@
       }
 
       .hero-text {
-        left: 28px;
-        right: 24px;
-        bottom: clamp(132px, 18svh, 178px);
-        max-width: none;
-        text-align: left;
-      }
+  left: 28px;
+  right: 24px;
+  bottom: clamp(128px, 18svh, 172px);
+  max-width: none;
+  text-align: left;
+}
 
-      .hero-text h1 {
-        font-size: clamp(2.1rem, 10vw, 3.35rem);
-        line-height: 1.08;
-        letter-spacing: 0.06em;
-      }
+.hero-text h1 {
+  font-size: clamp(1.95rem, 8.8vw, 3.1rem);
+  line-height: 1.05;
+  letter-spacing: 0.055em;
+}
 
-      .hero-text .old-market {
-        letter-spacing: 0.07em;
-      }
+.hero-text h1 span {
+  display: block;
+}
 
-      .hero-text .walkins {
-        font-size: 0.82rem;
-        letter-spacing: 0.18em;
-      }
+.hero-text .old-market {
+  position: relative;
+  display: block;
+  margin-top: 12px;
+  padding-top: 18px;
+  font-weight: 700;
+  letter-spacing: 0.07em;
+}
+
+.hero-text .old-market::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: min(58vw, 240px);
+  height: 2px;
+  background: var(--red);
+  box-shadow:
+    0 0 6px rgba(255, 42, 31, 0.45),
+    0 0 14px rgba(255, 42, 31, 0.18);
+}
+
+.hero-subline {
+  max-width: 310px;
+  margin: 18px 0 18px;
+  font-family: "Raleway", Arial, sans-serif;
+  font-size: 0.72rem;
+  line-height: 1.45;
+  font-weight: 300;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: rgba(232, 222, 206, 0.78);
+}
+
+.hero-text .walkins {
+  font-size: 0.82rem;
+  letter-spacing: 0.18em;
+  padding-top: 0;
+  border-top: none;
+}
     }
   </style>
 </head>
@@ -610,14 +646,17 @@
       </div>
 
       <!-- Hero text on the image -->
-      <div class="hero-text">
-        <h1>
-          <span>Custom Tattooing</span>
-          <span>in Omaha’s</span>
-          <span class="old-market">Old Market</span>
-        </h1>
-        <p class="walkins">Walk-Ins Welcome</p>
-      </div>
+ <div class="hero-text">
+  <h1>
+    <span>Custom and Flash Tattooing</span>
+    <span>in the</span>
+    <span class="old-market">Old Market</span>
+  </h1>
+
+  <p class="hero-subline">Located in Omaha’s historic arts and entertainment district</p>
+
+  <p class="walkins">Walk-Ins Welcome</p>
+</div>
     </section>
   </main>
 
