@@ -441,24 +441,9 @@ body.nav-live .hero-text {
 
 /* This controls OLD MARKET */
 .hero-text .old-market {
-  position: relative;
   display: block;
-  margin-top: 12px;
-  padding-top: 18px;
   font-weight: 700;
   letter-spacing: 0.09em;
-}
-
-/* Cream line above OLD MARKET */
-.hero-text .old-market::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 275px;
-  height: 2px;
-  background: rgba(232, 222, 206, 0.78);
-  box-shadow: none;
 }
 
 /* Smaller cream supporting line */
@@ -477,9 +462,9 @@ body.nav-live .hero-text {
 /* Only this line is red */
 .hero-text .walkins {
   display: inline-block;
-  margin: 0;
-  padding: 0;
-  border-top: none;
+  margin: 4px 0 0;
+  padding: 14px 0 0;
+  border-top: 2px solid var(--red);
   font-family: Arial, sans-serif;
   font-size: 0.98rem;
   letter-spacing: 0.24em;
@@ -585,24 +570,11 @@ body.nav-live .hero-text {
 }
 
 .hero-text .old-market {
-  position: relative;
   display: block;
-  margin-top: 10px;
-  padding-top: 16px;
   font-weight: 700;
   letter-spacing: 0.07em;
 }
 
-.hero-text .old-market::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: min(58vw, 230px);
-  height: 2px;
-  background: rgba(232, 222, 206, 0.78);
-  box-shadow: none;
-}
 
 .hero-subline {
   max-width: 310px;
@@ -617,10 +589,11 @@ body.nav-live .hero-text {
 }
 
 .hero-text .walkins {
+  display: inline-block;
   font-size: 0.82rem;
   letter-spacing: 0.18em;
-  padding-top: 0;
-  border-top: none;
+  padding-top: 12px;
+  border-top: 2px solid var(--red);
 }
     }
   </style>
