@@ -1031,34 +1031,28 @@ body.nav-live .hero-text {
     return;
   }
 
-  // Move logo from center to top.
   setTimeout(() => {
     document.body.classList.add("logo-settling");
   }, 650);
 
-      // Reveal hero image, still dark.
-      setTimeout(() => {
-        document.body.classList.add("hero-live");
-      }, 1650);
+  setTimeout(() => {
+    document.body.classList.add("hero-live");
+  }, 1650);
 
-      // Brighten hero image.
-      setTimeout(() => {
-        document.body.classList.add("hero-bright");
-      }, 2050);
+  setTimeout(() => {
+    document.body.classList.add("hero-bright");
+  }, 2050);
 
-      // Reveal menu, CTA, and hero text.
-      setTimeout(() => {
-        document.body.classList.add("nav-live");
-        document.body.classList.remove("intro-running");
-      }, 2600);
+  setTimeout(() => {
+    document.body.classList.add("nav-live");
+    document.body.classList.remove("intro-running");
+  }, 2600);
 
-      // Remove blackout layer after animation.
-      setTimeout(() => {
-        const blackout = document.querySelector(".blackout");
-        if (blackout) blackout.remove();
-      }, 3100);
-    });
- 
+  setTimeout(() => {
+    const blackout = document.querySelector(".blackout");
+    if (blackout) blackout.remove();
+  }, 3100);
+});
 
     /* =========================
        PULL-DOWN MENU CONTROLS
