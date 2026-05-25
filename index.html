@@ -80,34 +80,39 @@
        SINGLE ANIMATED MAIN LOGO
        Starts large/centered, then settles large at top.
     ========================== */
-    .site-logo {
-      position: absolute;
-      z-index: 1000;
-      top: 50%;
-      left: 50%;
-      width: min(76vw, 800px);
-      transform: translate(-50%, -50%);
-      transform-origin: center center;
-      filter:
-        drop-shadow(0 0 12px rgba(255, 42, 31, 0.26))
-        drop-shadow(0 0 32px rgba(255, 42, 31, 0.14));
-      transition:
-        top 1.05s var(--ease),
-        width 1.05s var(--ease),
-        transform 1.05s var(--ease);
-    }
-
+ .site-logo {
+  position: fixed;
+  z-index: 1000;
+  top: 50%;
+  left: 50%;
+  width: min(76vw, 800px);
+  transform: translate(-50%, -50%);
+  transform-origin: center center;
+  filter:
+    drop-shadow(0 0 12px rgba(255, 42, 31, 0.26))
+    drop-shadow(0 0 32px rgba(255, 42, 31, 0.14));
+  transition:
+    top 1.05s var(--ease),
+    width 1.05s var(--ease),
+    transform 1.05s var(--ease),
+    opacity 0.25s ease;
+}
     body.logo-settling .site-logo {
       top: 22px;
       width: min(56vw, 680px);
       transform: translate(-50%, 0);
     }
 
+  body.scrolled .site-logo {
+  top: 20px;
+  width: min(34vw, 260px);
+  transform: translate(-50%, 0);
+  }
     /* =========================
        HAMBURGER MENU BUTTON
     ========================== */
     .menu-toggle {
-      position: absolute;
+      position: fixed;
       top: 28px;
       left: 32px;
       z-index: 1100;
@@ -163,7 +168,7 @@
        TOP RIGHT BOOK BUTTON
     ========================== */
     .book-top {
-      position: absolute;
+      position: fixed;
       top: 28px;
       right: 32px;
       z-index: 1100;
@@ -1308,9 +1313,7 @@ body.nav-live .hero-text {
 </footer>
   <script>
     
-    if ("scrollRestoration" in history) {
-    history.scrollRestoration = "manual";
-    }
+  
     /* =========================
        INTRO ANIMATION TIMING
     ========================== */
@@ -1358,6 +1361,13 @@ document.addEventListener("DOMContentLoaded", () => {
   }, 3100);
 });
 
+    window.addEventListener("scroll", () => {
+  if (window.scrollY > 80) {
+    document.body.classList.add("scrolled");
+  } else {
+    document.body.classList.remove("scrolled");
+  }
+});
     /* =========================
        PULL-DOWN MENU CONTROLS
     ========================== */
@@ -1422,6 +1432,10 @@ artistPrev.addEventListener("click", () => {
 
   updateArtistCarousel();
 });
+
+      if ("scrollRestoration" in history) {
+    history.scrollRestoration = "manual";
+    }
   </script>
 </body>
 </html>
