@@ -1033,10 +1033,20 @@ body.nav-live .hero-text {
   </div>
 </footer>
   <script>
+    
+    if ("scrollRestoration" in history) {
+    history.scrollRestoration = "manual";
+    }
     /* =========================
        INTRO ANIMATION TIMING
     ========================== */
+    
 document.addEventListener("DOMContentLoaded", () => {
+
+  if (!window.location.hash) {
+    window.scrollTo(0, 0);
+  }
+  
   if (window.location.hash) {
     document.body.classList.add("logo-settling", "hero-live", "hero-bright", "nav-live");
     document.body.classList.remove("intro-running");
