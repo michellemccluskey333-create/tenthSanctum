@@ -552,9 +552,12 @@ body.nav-live .hero-text {
 }
 
 .artist-card:hover img {
-  transform: translateY(-4px);
-  filter: grayscale(0);
-  border-color: var(--red-border);
+  transform: translateY(-5px);
+  filter: grayscale(0) brightness(1.06);
+  border-color: var(--red);
+  box-shadow:
+    0 0 10px rgba(255, 59, 47, 0.45),
+    0 0 28px rgba(255, 59, 47, 0.22);
 }
 
 .artist-card h3 {
@@ -564,7 +567,13 @@ body.nav-live .hero-text {
   letter-spacing: 0.12em;
   text-transform: uppercase;
 }
-
+    
+.artist-card:hover h3 {
+  color: #fff;
+  text-shadow:
+    0 0 6px rgba(255, 59, 47, 0.5),
+    0 0 16px rgba(255, 59, 47, 0.28);
+}
 .artist-card p {
   margin: 0;
   color: rgba(232, 222, 206, 0.58);
