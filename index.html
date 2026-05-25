@@ -537,7 +537,7 @@ body.nav-live .hero-text {
 }
 
 .artist-card {
-  flex: 0 0 calc((100% - 48px) / 4);
+  flex: 0 0 calc((100% - 72px) / 4);
   text-decoration: none;
   color: var(--cream);
 }
@@ -1016,7 +1016,7 @@ body.nav-live .hero-text {
     /* =========================
        INTRO ANIMATION TIMING
     ========================== */
-  window.addEventListener("load", () => {
+document.addEventListener("DOMContentLoaded", () => {
   if (window.location.hash) {
     document.body.classList.add("logo-settling", "hero-live", "hero-bright", "nav-live");
     document.body.classList.remove("intro-running");
