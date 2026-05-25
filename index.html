@@ -714,6 +714,104 @@ body.nav-live .hero-text {
   color: rgba(232, 222, 206, 0.72);
 }
 
+   /* =========================
+      Review Section
+ ========================== */
+.reviews-section {
+  padding: 90px 8vw;
+  background: #050505;
+  color: var(--cream);
+  border-top: 1px solid rgba(232, 222, 206, 0.14);
+  border-bottom: 1px solid rgba(232, 222, 206, 0.14);
+}
+
+.reviews-inner {
+  max-width: 900px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.reviews-section .eyebrow {
+  margin-bottom: 14px;
+  color: var(--red);
+  font-family: Arial, sans-serif;
+  font-size: 0.72rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+}
+
+.reviews-section h2 {
+  margin: 0 0 18px;
+  font-size: clamp(2rem, 5vw, 4rem);
+  line-height: 0.95;
+  text-transform: uppercase;
+}
+
+.reviews-intro {
+  max-width: 660px;
+  margin: 0 auto 34px;
+  color: rgba(232, 222, 206, 0.72);
+  font-size: 1rem;
+  line-height: 1.7;
+}
+
+.review-card {
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 34px;
+  background: rgba(232, 222, 206, 0.045);
+  border: 1px solid rgba(232, 222, 206, 0.16);
+}
+
+.stars {
+  margin-bottom: 18px;
+  color: var(--red);
+  font-size: 1.1rem;
+  letter-spacing: 0.16em;
+}
+
+.review-text {
+  margin: 0 auto 26px;
+  color: rgba(232, 222, 206, 0.82);
+  font-size: 1.05rem;
+  line-height: 1.7;
+}
+
+.review-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 46px;
+  padding: 0 24px;
+  border: 1px solid var(--red);
+  color: var(--cream);
+  text-decoration: none;
+  font-family: Arial, sans-serif;
+  font-size: 0.74rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  transition: color 0.2s ease, background 0.2s ease;
+}
+
+.review-link:hover {
+  background: var(--red);
+  color: #000;
+}
+
+@media (max-width: 700px) {
+  .reviews-section {
+    padding: 64px 6vw;
+  }
+
+  .review-card {
+    padding: 26px 20px;
+  }
+
+  .reviews-intro,
+  .review-text {
+    font-size: 0.95rem;
+  }
+}
     /* =========================
       Location Section
     ========================== */
@@ -1099,7 +1197,36 @@ body.nav-live .hero-text {
   <button class="artist-arrow artist-next" type="button" aria-label="Next artists">›</button>
 </div>
   </section>
+<section class="reviews-section" aria-labelledby="reviews-title">
+  <div class="reviews-inner">
+    <p class="eyebrow">Client Trust</p>
 
+    <h2 id="reviews-title">Trusted by Omaha tattoo clients</h2>
+
+    <p class="reviews-intro">
+      Tenth Sanctum is highly rated by clients for custom work, flash tattoos,
+      and a welcoming shop experience.
+    </p>
+
+    <div class="review-card">
+      <div class="stars" aria-label="5 star rating">★★★★★</div>
+
+      <p class="review-text">
+        With 100+ Google reviews and a 4.9-star rating, clients consistently
+        recognize Tenth Sanctum for quality work, professionalism, and atmosphere.
+      </p>
+
+      <a
+        class="review-link"
+        href="PASTE-GOOGLE-REVIEWS-LINK-HERE"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Read Google Reviews
+      </a>
+    </div>
+  </div>
+</section>
   <section class="location-section" id="location">
   <p class="section-kicker">Visit the shop</p>
   <h2>Location</h2>
