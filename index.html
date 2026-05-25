@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" /> 
 
   <title>Tenth Sanctum Tattoo</title>
 
@@ -937,194 +937,191 @@ body.nav-live .hero-text {
       }
     }
 
-    /* =========================
-       MOBILE
-    ========================== */
-    @media (max-width: 640px) {
-      .hero {
-        min-height: 100svh;
-      }
+   /* =========================
+   MOBILE
+========================== */
+@media (max-width: 640px) {
+  .hero {
+    min-height: 100svh;
+  }
 
-      .site-logo {
-        width: min(84vw, 520px);
-      }
+  .site-logo {
+    width: min(84vw, 520px);
+  }
 
-      body.logo-settling .site-logo {
-        top: calc(env(safe-area-inset-top) + 82px);
-        width: min(58vw, 285px);
-        transform: translate(-50%, 0);
-      }
+  body.logo-settling .site-logo {
+    top: 82px;
+    width: min(58vw, 285px);
+    transform: translate(-50%, 0);
+  }
 
-      .menu-toggle {
-        top: calc(env(safe-area-inset-top) + 18px);
-        left: 18px;
-      }
+  .fixed-top-bar {
+    top: 0;
+    height: 104px;
+    background: rgba(0, 0, 0, 0.96);
+  }
 
-      .book-top {
-        top: calc(env(safe-area-inset-top) + 18px);
-        right: 18px;
-        padding: 10px 14px;
-        font-size: 0.62rem;
-        letter-spacing: 0.12em;
-      }
+  .menu-toggle {
+    top: 24px;
+    left: 18px;
+  }
 
-.pull-menu {
-  width: 86vw;
-  padding: 88px 28px 30px;
-}
+  .book-top {
+    top: 24px;
+    right: 18px;
+    padding: 10px 14px;
+    font-size: 0.62rem;
+    letter-spacing: 0.12em;
+  }
 
-.menu-logo-small {
-  width: 135px;
-  bottom: 72px;
-}
-.fixed-top-bar {
-  top: calc(env(safe-area-inset-top) * -1);
-  height: calc(env(safe-area-inset-top) + 118px);
-  background: rgba(0, 0, 0, 0.96);
-}
-.menu-toggle {
-  top: calc(env(safe-area-inset-top) + 18px);
-}
+  body.scrolled .site-logo {
+    top: 30px;
+    width: min(34vw, 155px);
+    transform: translate(-50%, 0);
+  }
 
-.book-top {
-  top: calc(env(safe-area-inset-top) + 18px);
-}
+  .pull-menu {
+    width: 86vw;
+    padding: 88px 28px 30px;
+  }
 
-body.scrolled .site-logo {
-  top: calc(env(safe-area-inset-top) + 20px);
-  width: min(36vw, 165px);
-}
-      .about-section {
-  grid-template-columns: 1fr;
-  gap: 38px;
-  padding: 76px 28px;
-}
+  .menu-logo-small {
+    width: 135px;
+    bottom: 72px;
+  }
 
-.about-slideshow {
-  aspect-ratio: 4 / 4.6;
-}
+  .hero-img {
+    object-fit: cover;
+    object-position: center center;
+  }
 
-.about-copy h2 {
-  font-size: clamp(1.85rem, 8vw, 2.8rem);
-}
-.artist-carousel {
-  grid-template-columns: 1fr;
-}
+  .hero-media {
+    filter: brightness(0.08) contrast(1.08) saturate(0.45);
+  }
 
-.artist-arrow {
-  display: none;
-}
+  body.hero-bright .hero-media {
+    filter: brightness(0.66) contrast(1.12) saturate(0.45);
+  }
 
-.artist-window {
-  overflow-x: auto;
-}
+  .hero-text {
+    left: 24px;
+    right: 24px;
+    bottom: clamp(96px, 14svh, 140px);
+    max-width: 330px;
+    text-align: left;
+  }
 
-.artist-track {
-  gap: 16px;
-}
+  .hero-text h1 {
+    font-size: clamp(1.85rem, 8vw, 2.75rem);
+    line-height: 1.05;
+    letter-spacing: 0.055em;
+  }
 
-.artist-card {
-  flex: 0 0 72%;
-}
-.artists-section {
-  padding: 76px 28px;
-}
+  .hero-text h1 span {
+    display: block;
+  }
+
+  .hero-text .old-market {
+    display: block;
+    font-weight: 700;
+    letter-spacing: 0.07em;
+  }
+
+  .hero-subline {
+    max-width: 310px;
+    margin: 16px 0 18px;
+    font-family: "Raleway", Arial, sans-serif;
+    font-size: 0.72rem;
+    line-height: 1.45;
+    font-weight: 300;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: rgba(232, 222, 206, 0.78);
+  }
+
+  .hero-text .walkins {
+    display: inline-block;
+    font-size: 0.82rem;
+    letter-spacing: 0.18em;
+    padding-top: 12px;
+    border-top: 2px solid var(--red);
+  }
+
+  .about-section {
+    grid-template-columns: 1fr;
+    gap: 38px;
+    padding: 76px 28px;
+  }
+
+  .about-slideshow {
+    aspect-ratio: 4 / 4.6;
+  }
+
+  .about-copy h2 {
+    font-size: clamp(1.85rem, 8vw, 2.8rem);
+  }
+
+  .artist-carousel {
+    grid-template-columns: 1fr;
+  }
+
+  .artist-arrow {
+    display: none;
+  }
+
+  .artist-window {
+    overflow-x: auto;
+  }
+
+  .artist-track {
+    gap: 16px;
+  }
+
+  .artist-card {
+    flex: 0 0 72%;
+  }
+
+  .artists-section {
+    padding: 76px 28px;
+  }
 
   .instagram-section {
-  padding: 76px 28px;
+    padding: 76px 28px;
+  }
+
+  .instagram-intro {
+    margin-bottom: 42px;
+  }
+
+  .instagram-group {
+    margin-top: 46px;
+  }
+
+  .instagram-group-heading {
+    display: block;
+  }
+
+  .instagram-group-heading h3 {
+    margin-bottom: 10px;
+  }
+
+  .instagram-photo-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+  }
+
+  .location-section {
+    padding: 76px 28px;
+  }
+
+  .location-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .location-map {
+    min-height: 280px;
+  }
 }
-
-.instagram-intro {
-  margin-bottom: 42px;
-}
-
-.instagram-group {
-  margin-top: 46px;
-}
-
-.instagram-group-heading {
-  display: block;
-}
-
-.instagram-group-heading h3 {
-  margin-bottom: 10px;
-}
-
-.instagram-photo-grid {
-  grid-template-columns: repeat(3, 1fr);
-  gap: 8px;
-}
-
-      
-      .location-section {
-  padding: 76px 28px;
-}
-
-.location-grid {
-  grid-template-columns: 1fr;
-}
-
-.location-map {
-  min-height: 280px;
-}
-      .hero-img {
-        object-fit: cover;
-        object-position: center center;
-      }
-
-      .hero-media {
-        filter: brightness(0.08) contrast(1.08) saturate(0.45);
-      }
-
-    body.hero-bright .hero-media {
-  filter: brightness(0.66) contrast(1.12) saturate(0.45);
-}
-
-.hero-text {
-  left: 24px;
-  right: 24px;
-  bottom: clamp(96px, 14svh, 140px);
-  max-width: 330px;
-  text-align: left;
-}
-
-.hero-text h1 {
-  font-size: clamp(1.85rem, 8vw, 2.75rem);
-  line-height: 1.05;
-  letter-spacing: 0.055em;
-}
-
-.hero-text h1 span {
-  display: block;
-}
-
-.hero-text .old-market {
-  display: block;
-  font-weight: 700;
-  letter-spacing: 0.07em;
-}
-
-
-.hero-subline {
-  max-width: 310px;
-  margin: 16px 0 18px;
-  font-family: "Raleway", Arial, sans-serif;
-  font-size: 0.72rem;
-  line-height: 1.45;
-  font-weight: 300;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  color: rgba(232, 222, 206, 0.78);
-}
-
-.hero-text .walkins {
-  display: inline-block;
-  font-size: 0.82rem;
-  letter-spacing: 0.18em;
-  padding-top: 12px;
-  border-top: 2px solid var(--red);
-}
-    }
   </style>
 </head>
 
