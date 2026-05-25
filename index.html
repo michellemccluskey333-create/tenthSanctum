@@ -937,7 +937,7 @@ body.nav-live .hero-text {
       }
     }
 
-   /* =========================
+/* =========================
    MOBILE
 ========================== */
 @media (max-width: 640px) {
@@ -956,9 +956,13 @@ body.nav-live .hero-text {
   }
 
   .fixed-top-bar {
-    top: 0;
-    height: 104px;
-    background: rgba(0, 0, 0, 0.96);
+  display: none;
+  }
+
+  .site-logo,
+  .menu-toggle,
+  .book-top {
+  position: absolute;
   }
 
   .menu-toggle {
@@ -972,12 +976,6 @@ body.nav-live .hero-text {
     padding: 10px 14px;
     font-size: 0.62rem;
     letter-spacing: 0.12em;
-  }
-
-  body.scrolled .site-logo {
-    top: 30px;
-    width: min(34vw, 155px);
-    transform: translate(-50%, 0);
   }
 
   .pull-menu {
