@@ -701,6 +701,63 @@ body.nav-live .hero-text {
   line-height: 1.75;
   color: rgba(232, 222, 206, 0.72);
 }
+
+    /* =========================
+      Location Section
+    ========================== */
+    .location-section {
+  padding: 100px 8vw;
+  background: #000;
+  border-top: 1px solid var(--line);
+  color: var(--cream);
+}
+
+.location-section h2 {
+  margin: 0 0 42px;
+  font-size: clamp(2rem, 4vw, 4rem);
+  font-weight: 300;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.location-grid {
+  display: grid;
+  grid-template-columns: minmax(260px, 0.7fr) minmax(320px, 1fr);
+  gap: 48px;
+  align-items: stretch;
+}
+
+.location-copy {
+  font-family: Arial, sans-serif;
+  font-size: 0.9rem;
+  line-height: 1.7;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(232, 222, 206, 0.75);
+}
+
+.location-copy a {
+  color: var(--cream);
+  text-decoration: none;
+}
+
+.location-copy a:hover {
+  color: var(--red);
+}
+
+.location-button {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 13px 20px;
+  border: 1px solid var(--red-border);
+}
+
+.location-map {
+  width: 100%;
+  min-height: 320px;
+  border: 1px solid rgba(232, 222, 206, 0.14);
+  filter: grayscale(1) invert(0.9) contrast(0.9);
+}
     /* =========================
        TABLET
     ========================== */
@@ -809,6 +866,17 @@ body.nav-live .hero-text {
   flex-direction: column;
   align-items: flex-start;
   gap: 10px;
+}
+      .location-section {
+  padding: 76px 28px;
+}
+
+.location-grid {
+  grid-template-columns: 1fr;
+}
+
+.location-map {
+  min-height: 280px;
 }
       .hero-img {
         object-fit: cover;
@@ -1013,6 +1081,41 @@ body.nav-live .hero-text {
   <button class="artist-arrow artist-next" type="button" aria-label="Next artists">›</button>
 </div>
   </section>
+
+  <section class="location-section" id="location">
+  <p class="section-kicker">Visit the shop</p>
+  <h2>Location</h2>
+
+  <div class="location-grid">
+    <div class="location-copy">
+      <p><strong>Tenth Sanctum Tattoo</strong></p>
+      <p>1010 S 10th St<br>Omaha, NE 68108</p>
+      <p><a href="tel:+14024221010">(402) 422-1010</a></p>
+
+      <p class="hours">
+        Open daily<br>
+        12 PM – 8 PM
+      </p>
+
+      <a
+        href="https://www.google.com/maps/search/?api=1&query=1010+S+10th+St+Omaha+NE+68108"
+        target="_blank"
+        rel="noopener"
+        class="location-button"
+      >
+        Open in Google Maps
+      </a>
+    </div>
+
+    <iframe
+      class="location-map"
+      src="https://www.google.com/maps?q=1010%20S%2010th%20St%20Omaha%20NE%2068108&output=embed"
+      loading="lazy"
+      referrerpolicy="no-referrer-when-downgrade"
+      title="Map to Tenth Sanctum Tattoo"
+    ></iframe>
+  </div>
+</section>
 </main>
 
 <!-- Site footer -->
