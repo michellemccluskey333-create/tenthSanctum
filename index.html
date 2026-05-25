@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />  
 
   <title>Tenth Sanctum Tattoo</title>
 
@@ -978,11 +978,10 @@ body.nav-live .hero-text {
   bottom: 72px;
 }
 .fixed-top-bar {
-  top: -60px;
-  height: 150px;
+  top: calc(env(safe-area-inset-top) * -1);
+  height: calc(env(safe-area-inset-top) + 118px);
   background: rgba(0, 0, 0, 0.96);
 }
-
 .menu-toggle {
   top: calc(env(safe-area-inset-top) + 18px);
 }
