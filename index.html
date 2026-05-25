@@ -622,6 +622,9 @@ body.nav-live .hero-text {
 }
 
 .site-footer a {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
   color: var(--cream);
   text-decoration: none;
 }
@@ -636,6 +639,12 @@ body.nav-live .hero-text {
 
 .site-footer a:hover {
   color: var(--red);
+}
+ .site-footer .footer-ig-icon {
+  width: 18px;
+  height: 18px;
+  max-width: 18px;
+  object-fit: contain;
 }
   /* =========================
        About Slide Show Section
@@ -860,10 +869,18 @@ body.nav-live .hero-text {
   text-align: center;
 }
 
-.site-footer a:first-child,
-.site-footer a:last-child {
+.site-footer a,
+.site-footer p {
+  justify-content: center;
   text-align: center;
 }
+
+.site-footer .footer-ig-icon {
+  width: 16px;
+  height: 16px;
+  max-width: 16px;
+}
+      
       .location-section {
   padding: 76px 28px;
 }
