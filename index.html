@@ -942,6 +942,11 @@ body.nav-live .hero-text {
         width: min(58vw, 285px);
         transform: translate(-50%, 0);
       }
+      body.scrolled .site-logo {
+      top: calc(env(safe-area-inset-top) + 14px);
+      width: min(34vw, 155px);
+      transform: translate(-50%, 0);
+    }
 
       .menu-toggle {
         top: calc(env(safe-area-inset-top) + 18px);
@@ -1067,17 +1072,17 @@ body.nav-live .hero-text {
 }
 
 .hero-text {
-  left: 28px;
+  left: 24px;
   right: 24px;
-  bottom: clamp(128px, 18svh, 172px);
-  max-width: none;
+  bottom: clamp(96px, 14svh, 140px);
+  max-width: 330px;
   text-align: left;
 }
 
 .hero-text h1 {
-  font-size: clamp(2.6rem, 13vw, 4.2rem);
-  line-height: 0.9;
-  letter-spacing: 0.06em;
+  font-size: clamp(1.85rem, 8vw, 2.75rem);
+  line-height: 1.05;
+  letter-spacing: 0.055em;
 }
 
 .hero-text h1 span {
