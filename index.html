@@ -110,7 +110,7 @@
     opacity 0.25s ease;
 }
     body.logo-settling .site-logo {
-      top: 22px;
+      top: 10px;
       width: min(56vw, 680px);
       transform: translate(-50%, 0);
     }
@@ -982,22 +982,22 @@ body.nav-live .hero-text {
   width: 135px;
   bottom: 72px;
 }
-.fixed-top-bar {
-  top: 0;
-  height: 138px;
+  .fixed-top-bar {
+  top: -90px;
+  height: 176px;
   background: rgba(0, 0, 0, 0.96);
 }
 
 .menu-toggle {
-  top: 52px;
+  top: calc(env(safe-area-inset-top) + 18px);
 }
 
 .book-top {
-  top: 52px;
+  top: calc(env(safe-area-inset-top) + 18px);
 }
 
 body.scrolled .site-logo {
-  top: 58px;
+  top: calc(env(safe-area-inset-top) + 20px);
   width: min(36vw, 165px);
 }
       .about-section {
