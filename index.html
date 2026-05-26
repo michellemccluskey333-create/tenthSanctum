@@ -1396,120 +1396,125 @@ body.nav-live .hero-text {
   </div>
 </section>
 </main>
-  <script>
-    
-  
-    /* =========================
-       INTRO ANIMATION TIMING
-    ========================== */
-    if ("scrollRestoration" in history) {
-  history.scrollRestoration = "manual";
-}
-
-if (!window.location.hash) {
-  window.scrollTo(0, 0);
-}
-    
-document.addEventListener("DOMContentLoaded", () => {
-
-  setTimeout(() => {
-    document.body.classList.add("logo-settling");
-  }, 650);
-
-  setTimeout(() => {
-    document.body.classList.add("hero-live");
-  }, 1650);
-
-  setTimeout(() => {
-    document.body.classList.add("hero-bright");
-  }, 2050);
-
-  setTimeout(() => {
-    document.body.classList.add("nav-live");
-    document.body.classList.remove("intro-running");
-  }, 2600);
-
-  setTimeout(() => {
-    const blackout = document.querySelector(".blackout");
-    if (blackout) blackout.remove();
-  }, 3100);
-});
-
-    window.addEventListener("scroll", () => {
-  if (window.scrollY > 80) {
-    document.body.classList.add("scrolled");
-  } else {
-    document.body.classList.remove("scrolled");
-  }
-});
-    /* =========================
-       PULL-DOWN MENU CONTROLS
-    ========================== */
-    const menuToggle = document.querySelector(".menu-toggle");
-    const menuBackdrop = document.querySelector(".menu-backdrop");
-    const menuLinks = document.querySelectorAll(".pull-menu a");
-
-    function closeMenu() {
-      document.body.classList.remove("menu-open");
-      menuToggle.setAttribute("aria-expanded", "false");
-    }
-
-    menuToggle.addEventListener("click", () => {
-      const isOpen = document.body.classList.toggle("menu-open");
-      menuToggle.setAttribute("aria-expanded", isOpen ? "true" : "false");
-    });
-
-    menuBackdrop.addEventListener("click", closeMenu);
-
-    menuLinks.forEach((link) => {
-      link.addEventListener("click", closeMenu);
-    });
-    const aboutSlides = document.querySelectorAll(".about-slide");
-let aboutSlideIndex = 0;
-
-if (aboutSlides.length > 1) {
-  setInterval(() => {
-    aboutSlides[aboutSlideIndex].classList.remove("active");
-    aboutSlideIndex = (aboutSlideIndex + 1) % aboutSlides.length;
-    aboutSlides[aboutSlideIndex].classList.add("active");
-  }, 3000);
-}
-    const artistTrack = document.querySelector(".artist-track");
-const artistNext = document.querySelector(".artist-next");
-const artistPrev = document.querySelector(".artist-prev");
-const artistCards = document.querySelectorAll(".artist-track .artist-card");
-
-let artistIndex = 0;
-const artistsPerView = 4;
-
-function updateArtistCarousel() {
-  const cardWidth = artistCards[0].offsetWidth + 24;
-  artistTrack.style.transform = `translateX(-${artistIndex * cardWidth}px)`;
-}
-
-artistNext.addEventListener("click", () => {
-  artistIndex += artistsPerView;
-
-  if (artistIndex >= artistCards.length) {
-    artistIndex = 0;
-  }
-
-  updateArtistCarousel();
-});
-
-artistPrev.addEventListener("click", () => {
-  artistIndex -= artistsPerView;
-
-  if (artistIndex < 0) {
-    artistIndex = Math.max(artistCards.length - artistsPerView, 0);
-  }
-
-  updateArtistCarousel();
-});
-
-      if ("scrollRestoration" in history) {
+<script>
+  /* =========================
+     INTRO ANIMATION TIMING
+  ========================== */
+  if ("scrollRestoration" in history) {
     history.scrollRestoration = "manual";
+  }
+
+  if (!window.location.hash) {
+    window.scrollTo(0, 0);
+  }
+
+  document.addEventListener("DOMContentLoaded", () => {
+    setTimeout(() => {
+      document.body.classList.add("logo-settling");
+    }, 650);
+
+    setTimeout(() => {
+      document.body.classList.add("hero-live");
+    }, 1650);
+
+    setTimeout(() => {
+      document.body.classList.add("hero-bright");
+    }, 2050);
+
+    setTimeout(() => {
+      document.body.classList.add("nav-live");
+      document.body.classList.remove("intro-running");
+    }, 2600);
+
+    setTimeout(() => {
+      const blackout = document.querySelector(".blackout");
+      if (blackout) blackout.remove();
+    }, 3100);
+  });
+
+  /* =========================
+     SCROLL STATE
+  ========================== */
+  window.addEventListener("scroll", () => {
+    if (window.scrollY > 80) {
+      document.body.classList.add("scrolled");
+    } else {
+      document.body.classList.remove("scrolled");
     }
-  </script>
+  });
+
+  /* =========================
+     PULL-DOWN MENU CONTROLS
+  ========================== */
+  const menuToggle = document.querySelector(".menu-toggle");
+  const menuBackdrop = document.querySelector(".menu-backdrop");
+  const menuLinks = document.querySelectorAll(".pull-menu a");
+
+  function closeMenu() {
+    document.body.classList.remove("menu-open");
+    menuToggle.setAttribute("aria-expanded", "false");
+  }
+
+  menuToggle.addEventListener("click", () => {
+    const isOpen = document.body.classList.toggle("menu-open");
+    menuToggle.setAttribute("aria-expanded", isOpen ? "true" : "false");
+  });
+
+  menuBackdrop.addEventListener("click", closeMenu);
+
+  menuLinks.forEach((link) => {
+    link.addEventListener("click", closeMenu);
+  });
+
+  /* =========================
+     ABOUT SLIDESHOW
+  ========================== */
+  const aboutSlides = document.querySelectorAll(".about-slide");
+  let aboutSlideIndex = 0;
+
+  if (aboutSlides.length > 1) {
+    setInterval(() => {
+      aboutSlides[aboutSlideIndex].classList.remove("active");
+      aboutSlideIndex = (aboutSlideIndex + 1) % aboutSlides.length;
+      aboutSlides[aboutSlideIndex].classList.add("active");
+    }, 3000);
+  }
+
+  /* =========================
+     ARTIST CAROUSEL
+  ========================== */
+  const artistTrack = document.querySelector(".artist-track");
+  const artistNext = document.querySelector(".artist-next");
+  const artistPrev = document.querySelector(".artist-prev");
+  const artistCards = document.querySelectorAll(".artist-track .artist-card");
+
+  let artistIndex = 0;
+  const artistsPerView = 4;
+
+  function updateArtistCarousel() {
+    const cardWidth = artistCards[0].offsetWidth + 24;
+    artistTrack.style.transform = `translateX(-${artistIndex * cardWidth}px)`;
+  }
+
+  artistNext.addEventListener("click", () => {
+    artistIndex += artistsPerView;
+
+    if (artistIndex >= artistCards.length) {
+      artistIndex = 0;
+    }
+
+    updateArtistCarousel();
+  });
+
+  artistPrev.addEventListener("click", () => {
+    artistIndex -= artistsPerView;
+
+    if (artistIndex < 0) {
+      artistIndex = Math.max(artistCards.length - artistsPerView, 0);
+    }
+
+    updateArtistCarousel();
+  });
+</script>
 </body>
 </html>
