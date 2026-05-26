@@ -968,14 +968,16 @@ body.nav-live .hero-text {
     transform: translate(-50%, 0);
   }
 
-  .fixed-top-bar {
+  .fixed-top-bar,
+  body.scrolled .fixed-top-bar {
     display: none;
+    opacity: 0;
   }
-}
+
   .site-logo,
   .menu-toggle,
   .book-top {
-  position: absolute;
+    position: absolute;
   }
 
   .menu-toggle {
@@ -990,18 +992,10 @@ body.nav-live .hero-text {
     font-size: 0.62rem;
     letter-spacing: 0.12em;
   }
-
   .pull-menu {
     width: 86vw;
     padding: 88px 28px 30px;
   }
-
-  
-  .menu-logo-small {
-    width: 135px;
-    bottom: 72px;
-  }
-
   .hero-img {
     object-fit: cover;
     object-position: center center;
