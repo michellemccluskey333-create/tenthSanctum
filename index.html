@@ -1,24 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <!-- Basic page setup -->
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" /> 
 
   <title>Tenth Sanctum Tattoo</title>
 
-  <!-- Social sharing preview -->
-<meta property="og:title" content="Tenth Sanctum Tattoo" />
-<meta property="og:description" content="Custom and flash tattooing in Omaha’s historic Old Market." />
-<meta property="og:image" content="https://michellemccluskey333-create.github.io/tenthSanctum/Images/tenth-sanctum-social-preview.JPG" />
-<meta property="og:url" content="https://michellemccluskey333-create.github.io/tenthSanctum/" />
-<meta property="og:type" content="website" />
+  <!-- Social sharing preview: controls how the site appears when shared on Facebook, iMessage, LinkedIn, etc. -->
+  <meta property="og:title" content="Tenth Sanctum Tattoo" />
+  <meta property="og:description" content="Custom and flash tattooing in Omaha’s historic Old Market." />
+  <meta property="og:image" content="https://michellemccluskey333-create.github.io/tenthSanctum/Images/tenth-sanctum-social-preview.JPG" />
+  <meta property="og:url" content="https://michellemccluskey333-create.github.io/tenthSanctum/" />
+  <meta property="og:type" content="website" />
 
-<meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:title" content="Tenth Sanctum Tattoo" />
-<meta name="twitter:description" content="Custom and flash tattooing in Omaha’s historic Old Market." />
-<meta name="twitter:image" content="https://michellemccluskey333-create.github.io/tenthSanctum/Images/tenth-sanctum-social-preview.JPG" />
+  <!-- Twitter/X sharing preview -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Tenth Sanctum Tattoo" />
+  <meta name="twitter:description" content="Custom and flash tattooing in Omaha’s historic Old Market." />
+  <meta name="twitter:image" content="https://michellemccluskey333-create.github.io/tenthSanctum/Images/tenth-sanctum-social-preview.JPG" />
 
-  <!-- Google Fonts -->
+  <!-- Google Fonts: loads Raleway font family -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;600;700&display=swap" rel="stylesheet">
@@ -26,53 +28,62 @@
   <style>
     /* =========================
        GLOBAL VARIABLES
+       Reusable colors, borders, glow effects, and easing
     ========================== */
     :root {
       --bg: #000;
       --cream: #e8dece;
       --muted: #c7b8a1;
 
-      /* Neon red accent system 
+      /* Previous neon red accent system - saved but commented out
       --red: #ff2a1f;
       --red-dark: #8f211c;
       --red-soft: rgba(255, 42, 31, 0.14);
       --red-border: rgba(255, 42, 31, 0.72);
-      --red-glow: rgba(255, 42, 31, 0.45);*/
+      --red-glow: rgba(255, 42, 31, 0.45);
+      */
 
+      /* Active red accent system */
       --red: #ff3b2f;
---red-soft: rgba(255, 59, 47, 0.12);
---red-border: rgba(255, 59, 47, 0.58);
---red-glow: rgba(255, 59, 47, 0.32);
+      --red-soft: rgba(255, 59, 47, 0.12);
+      --red-border: rgba(255, 59, 47, 0.58);
+      --red-glow: rgba(255, 59, 47, 0.32);
 
       --line: rgba(232, 222, 206, 0.12);
       --ease: cubic-bezier(.22, .61, .36, 1);
     }
 
+    /* Makes width/padding calculations easier and more predictable */
     * {
       box-sizing: border-box;
     }
 
+    /* Main page body */
     body {
       margin: 0;
       background: var(--bg);
       overflow-x: hidden;
     }
 
+    /* Prevents scrolling while intro animation is running */
     body.intro-running {
       overflow: hidden;
     }
 
+    /* Makes images responsive by default */
     img {
       display: block;
       max-width: 100%;
     }
 
+    /* Keeps links inheriting the surrounding text color */
     a {
       color: inherit;
     }
 
     /* =========================
        BLACKOUT INTRO LAYER
+       Full-screen black overlay used during intro animation
     ========================== */
     .blackout {
       position: fixed;
@@ -84,62 +95,78 @@
       transition: opacity 0.9s ease;
     }
 
+    /* Fades blackout away once hero is live */
     body.hero-live .blackout {
       opacity: 0;
     }
 
     /* =========================
        SINGLE ANIMATED MAIN LOGO
-       Starts large/centered, then settles large at top.
+       Starts large/centered, then settles near the top
     ========================== */
- .site-logo {
-  position: fixed;
-  z-index: 1000;
-  top: 50%;
-  left: 50%;
-  width: min(76vw, 800px);
-  transform: translate(-50%, -50%);
-  transform-origin: center center;
-  filter:
-    drop-shadow(0 0 12px rgba(255, 42, 31, 0.26))
-    drop-shadow(0 0 32px rgba(255, 42, 31, 0.14));
-  transition:
-    top 1.05s var(--ease),
-    width 1.05s var(--ease),
-    transform 1.05s var(--ease),
-    opacity 0.25s ease;
-}
+    .site-logo {
+      position: fixed;
+      z-index: 1000;
+      top: 50%;
+      left: 50%;
+      width: min(76vw, 800px);
+      transform: translate(-50%, -50%);
+      transform-origin: center center;
+
+      /* Red glow around logo */
+      filter:
+        drop-shadow(0 0 12px rgba(255, 42, 31, 0.26))
+        drop-shadow(0 0 32px rgba(255, 42, 31, 0.14));
+
+      /* Smooth movement/resize during intro and scroll states */
+      transition:
+        top 1.05s var(--ease),
+        width 1.05s var(--ease),
+        transform 1.05s var(--ease),
+        opacity 0.25s ease;
+    }
+
+    /* Logo position after intro begins settling */
     body.logo-settling .site-logo {
       top: 20px;
       width: min(56vw, 680px);
       transform: translate(-50%, 0);
     }
 
-  body.scrolled .site-logo {
-  top: 10px;
-  width: min(34vw, 260px);
-  transform: translate(-50%, 0);
-  }
-.fixed-top-bar {
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 950;
-  width: 100%;
-  height: 92px;
-  background: rgba(0, 0, 0, 0.92);
-  border-bottom: 1px solid rgba(232, 222, 206, 0.12);
-  backdrop-filter: blur(8px);
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.25s ease;
-}
+    /* Smaller logo after user scrolls */
+    body.scrolled .site-logo {
+      top: 10px;
+      width: min(34vw, 260px);
+      transform: translate(-50%, 0);
+    }
 
-body.scrolled .fixed-top-bar {
-  opacity: 1;
-}
+    /* =========================
+       FIXED TOP BAR
+       Appears after scrolling to give the header structure
+    ========================== */
+    .fixed-top-bar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 950;
+      width: 100%;
+      height: 92px;
+      background: rgba(0, 0, 0, 0.92);
+      border-bottom: 1px solid rgba(232, 222, 206, 0.12);
+      backdrop-filter: blur(8px);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.25s ease;
+    }
+
+    /* Shows top bar only after body gets scrolled class */
+    body.scrolled .fixed-top-bar {
+      opacity: 1;
+    }
+
     /* =========================
        HAMBURGER MENU BUTTON
+       Fixed button in top-left corner
     ========================== */
     .menu-toggle {
       position: fixed;
@@ -151,8 +178,11 @@ body.scrolled .fixed-top-bar {
       border: 1px solid rgba(232, 222, 206, 0.28);
       background: rgba(0, 0, 0, 0.18);
       cursor: pointer;
+
+      /* Hidden until nav becomes active */
       opacity: 0;
       pointer-events: none;
+
       transition:
         opacity 0.7s ease,
         border-color 0.2s ease,
@@ -160,11 +190,13 @@ body.scrolled .fixed-top-bar {
         box-shadow 0.2s ease;
     }
 
+    /* Reveals menu button once nav is live */
     body.nav-live .menu-toggle {
       opacity: 1;
       pointer-events: auto;
     }
 
+    /* Red glow hover state */
     .menu-toggle:hover {
       border-color: var(--red-border);
       background: var(--red-soft);
@@ -173,6 +205,7 @@ body.scrolled .fixed-top-bar {
         0 0 20px rgba(255, 42, 31, 0.14);
     }
 
+    /* Hamburger lines */
     .menu-toggle span {
       display: block;
       width: 24px;
@@ -182,20 +215,24 @@ body.scrolled .fixed-top-bar {
       transition: transform 0.25s ease, opacity 0.25s ease;
     }
 
+    /* Top hamburger line rotates into X */
     body.menu-open .menu-toggle span:nth-child(1) {
       transform: translateY(7px) rotate(45deg);
     }
 
+    /* Middle hamburger line disappears */
     body.menu-open .menu-toggle span:nth-child(2) {
       opacity: 0;
     }
 
+    /* Bottom hamburger line rotates into X */
     body.menu-open .menu-toggle span:nth-child(3) {
       transform: translateY(-7px) rotate(-45deg);
     }
 
     /* =========================
        TOP RIGHT BOOK BUTTON
+       Fixed booking CTA in top-right corner
     ========================== */
     .book-top {
       position: fixed;
@@ -211,11 +248,15 @@ body.scrolled .fixed-top-bar {
       letter-spacing: 0.18em;
       text-transform: uppercase;
       text-decoration: none;
+
+      /* Hidden until nav becomes active */
       opacity: 0;
       pointer-events: none;
+
       box-shadow:
         inset 0 0 10px rgba(255, 42, 31, 0.07),
         0 0 14px rgba(255, 42, 31, 0.1);
+
       transition:
         opacity 0.7s ease,
         background 0.2s ease,
@@ -224,11 +265,13 @@ body.scrolled .fixed-top-bar {
         box-shadow 0.2s ease;
     }
 
+    /* Reveals book button once nav is live */
     body.nav-live .book-top {
       opacity: 1;
       pointer-events: auto;
     }
 
+    /* Book button hover state */
     .book-top:hover {
       background: var(--red-soft);
       color: #fff;
@@ -239,38 +282,58 @@ body.scrolled .fixed-top-bar {
         inset 0 0 12px rgba(255, 42, 31, 0.1);
     }
 
-    /* =========================
-       PULL-DOWN MENU
-    ========================== */
+   /* =========================
+   PULL-DOWN MENU
+   Sliding side menu that opens from the left
+========================== */
 .pull-menu {
   position: fixed;
   top: 0;
   left: 0;
   z-index: 1050;
+
+  /* Keeps menu narrow on desktop but responsive on small screens */
   width: min(285px, 84vw);
   height: 100vh;
+
+  /* Top padding leaves room for the hamburger/header area */
   padding: 108px 30px 34px;
+
   background: #020202;
   border-right: 1px solid var(--line);
+
+  /* Starts hidden off-screen to the left */
   transform: translateX(-100%);
+
+  /* Smooth slide-in animation */
   transition: transform 0.45s var(--ease);
+
+  /* Prevents wallpaper pattern from spilling outside menu */
   overflow: hidden;
 }
+
+/* Repeating emblem wallpaper behind the menu content */
 .pull-menu::before {
   content: "";
   position: absolute;
   inset: 0;
+
   background-image: url("Images/emblem.png");
   background-size: 145px;
   background-repeat: repeat;
   background-position: -22px 28px;
+
+  /* Keeps wallpaper subtle behind links */
   opacity: 0.08;
   pointer-events: none;
 }
 
-    body.menu-open .pull-menu {
-      transform: translateX(0);
-    }
+/* Opens the menu when body has menu-open class */
+body.menu-open .pull-menu {
+  transform: translateX(0);
+}
+
+/* Wrapper that keeps menu content above the wallpaper */
 .menu-content {
   position: relative;
   z-index: 2;
@@ -279,78 +342,97 @@ body.scrolled .fixed-top-bar {
   flex-direction: column;
 }
 
+/* Vertical stack of menu links */
 .pull-menu-links {
   display: flex;
   flex-direction: column;
   gap: 22px;
 }
 
-    .pull-menu a {
-      position: relative;
-      width: fit-content;
-      color: var(--cream);
-      font-family: Arial, sans-serif;
-      font-size: 0.82rem;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      text-decoration: none;
-      padding-bottom: 8px;
-    }
+/* Standard menu link styling */
+.pull-menu a {
+  position: relative;
+  width: fit-content;
+  color: var(--cream);
+  font-family: Arial, sans-serif;
+  font-size: 0.82rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  text-decoration: none;
+  padding-bottom: 8px;
+}
 
-    .pull-menu a::after {
-      content: "";
-      position: absolute;
-      left: 0;
-      bottom: 0;
-      width: 0;
-      height: 1px;
-      background: var(--red);
-      box-shadow:
-        0 0 6px var(--red-glow),
-        0 0 14px rgba(255, 42, 31, 0.25);
-      transition: width 0.22s ease;
-    }
+/* Animated red underline for menu links */
+.pull-menu a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
 
-    .pull-menu a:hover::after {
-      width: 100%;
-    }
+  width: 0;
+  height: 1px;
 
-    .pull-menu a:hover {
-      color: #fff;
-      text-shadow:
-        0 0 6px rgba(255, 42, 31, 0.45),
-        0 0 14px rgba(255, 42, 31, 0.2);
-    }
+  background: var(--red);
+  box-shadow:
+    0 0 6px var(--red-glow),
+    0 0 14px rgba(255, 42, 31, 0.25);
 
-    /* Pull-down Book Now button */
-   .pull-menu .menu-book-btn {
+  transition: width 0.22s ease;
+}
+
+/* Expands underline on hover */
+.pull-menu a:hover::after {
+  width: 100%;
+}
+
+/* Brightens link text on hover */
+.pull-menu a:hover {
+  color: #fff;
+  text-shadow:
+    0 0 6px rgba(255, 42, 31, 0.45),
+    0 0 14px rgba(255, 42, 31, 0.2);
+}
+
+/* =========================
+   PULL-DOWN BOOK NOW BUTTON
+   CTA button inside the menu
+========================== */
+.pull-menu .menu-book-btn {
   margin-top: 18px;
   width: 100%;
   max-width: 190px;
   padding: 12px 16px;
+
   border: 1px solid var(--red-border);
   color: var(--cream);
   text-align: center;
   background: rgba(255, 42, 31, 0.055);
+
   box-shadow:
     inset 0 0 8px rgba(255, 42, 31, 0.06),
     0 0 12px rgba(255, 42, 31, 0.08);
 }
 
-    .pull-menu .menu-book-btn::after {
-      display: none;
-    }
+/* Removes normal link underline animation from the Book Now button */
+.pull-menu .menu-book-btn::after {
+  display: none;
+}
 
-    .pull-menu .menu-book-btn:hover {
-      color: #fff;
-      background: var(--red-soft);
-      border-color: var(--red);
-      box-shadow:
-        0 0 8px var(--red-glow),
-        0 0 24px rgba(255, 42, 31, 0.18),
-        inset 0 0 12px rgba(255, 42, 31, 0.1);
-    }
+/* Book Now hover state */
+.pull-menu .menu-book-btn:hover {
+  color: #fff;
+  background: var(--red-soft);
+  border-color: var(--red);
+  box-shadow:
+    0 0 8px var(--red-glow),
+    0 0 24px rgba(255, 42, 31, 0.18),
+    inset 0 0 12px rgba(255, 42, 31, 0.1);
+}
 
+/* =========================
+   NO PIERCER NOTE
+   Small informational note inside menu
+========================== */
 .no-piercer-note {
   margin: 34px 0 0;
   padding-top: 16px;
@@ -368,24 +450,16 @@ body.scrolled .fixed-top-bar {
     0 0 6px rgba(184, 118, 92, 0.22);
 }
 
-    /* Emblem sits below the note, not stranded at the bottom
-  
+/* Small menu logo hidden by default */
 .menu-logo-small {
-  position: absolute;
-  left: 50%;
-  bottom: 86px;
-  width: 225px;
-  transform: translateX(-50%);
-  opacity: 0.26;
-  filter:
-    grayscale(0.1)
-    drop-shadow(0 0 12px rgba(255, 42, 31, 0.18));
-  pointer-events: none;
-}*/
-    .menu-logo-small {
   display: none;
 }
- .menu-content {
+
+/* NOTE:
+   This .menu-content block is duplicated above.
+   You can delete this second copy unless you intentionally need it repeated.
+*/
+.menu-content {
   position: relative;
   z-index: 2;
   min-height: 100%;
@@ -393,107 +467,135 @@ body.scrolled .fixed-top-bar {
   flex-direction: column;
 }
 
-    .menu-backdrop {
-      position: fixed;
-      inset: 0;
-      z-index: 1040;
-      background: rgba(0, 0, 0, 0.5);
-      opacity: 0;
-      pointer-events: none;
-      transition: opacity 0.3s ease;
-    }
+/* =========================
+   MENU BACKDROP
+   Dark overlay behind the open menu
+========================== */
+.menu-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 1040;
 
-    body.menu-open .menu-backdrop {
-      opacity: 1;
-      pointer-events: auto;
-    }
+  background: rgba(0, 0, 0, 0.5);
 
-    /* =========================
-       HERO IMAGE
-    ========================== */
-    .hero {
-      position: relative;
-      min-height: 100vh;
-      background: #000;
-      overflow: hidden;
-    }
+  /* Hidden until menu opens */
+  opacity: 0;
+  pointer-events: none;
 
-    .hero-media {
-      position: absolute;
-      inset: 0;
-      opacity: 0;
-      transform: scale(1.025);
-      transition:
-        opacity 1.1s ease,
-        transform 1.4s var(--ease),
-        filter 1.4s ease;
-      filter: brightness(0.12) contrast(1.08) saturate(0.45);
-    }
+  transition: opacity 0.3s ease;
+}
 
-    body.hero-live .hero-media {
-      opacity: 1;
-      transform: scale(1);
-    }
+/* Shows clickable backdrop when menu is open */
+body.menu-open .menu-backdrop {
+  opacity: 1;
+  pointer-events: auto;
+}
 
-    body.hero-bright .hero-media {
-      filter: brightness(0.72) contrast(1.06) saturate(0.72);
-    }
+/* =========================
+   HERO IMAGE
+   Full-screen landing image area
+========================== */
+.hero {
+  position: relative;
+  min-height: 100vh;
+  background: #000;
+  overflow: hidden;
+}
 
-    .hero-media::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      z-index: 2;
-      background:
-        linear-gradient(
-          to bottom,
-          rgba(0,0,0,0.82) 0%,
-          rgba(0,0,0,0.22) 34%,
-          rgba(0,0,0,0.18) 64%,
-          rgba(0,0,0,0.86) 100%
-        ),
-        linear-gradient(
-          to right,
-          rgba(0,0,0,0.68) 0%,
-          rgba(0,0,0,0.36) 32%,
-          rgba(0,0,0,0.14) 72%,
-          rgba(0,0,0,0.42) 100%
-        );
-      pointer-events: none;
-    }
+/* Hero image wrapper with intro fade/zoom effects */
+.hero-media {
+  position: absolute;
+  inset: 0;
 
-    .hero-img {
-      position: absolute;
-      inset: 0;
-      z-index: 1;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: center center;
-    }
+  /* Starts dark and slightly zoomed in */
+  opacity: 0;
+  transform: scale(1.025);
 
-   /* =========================
+  transition:
+    opacity 1.1s ease,
+    transform 1.4s var(--ease),
+    filter 1.4s ease;
+
+  filter: brightness(0.12) contrast(1.08) saturate(0.45);
+}
+
+/* Reveals hero media after intro starts */
+body.hero-live .hero-media {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* Brightens hero image after intro progresses */
+body.hero-bright .hero-media {
+  filter: brightness(0.72) contrast(1.06) saturate(0.72);
+}
+
+/* Dark gradient overlay on top of hero image for mood/readability */
+.hero-media::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+
+  background:
+    linear-gradient(
+      to bottom,
+      rgba(0,0,0,0.82) 0%,
+      rgba(0,0,0,0.22) 34%,
+      rgba(0,0,0,0.18) 64%,
+      rgba(0,0,0,0.86) 100%
+    ),
+    linear-gradient(
+      to right,
+      rgba(0,0,0,0.68) 0%,
+      rgba(0,0,0,0.36) 32%,
+      rgba(0,0,0,0.14) 72%,
+      rgba(0,0,0,0.42) 100%
+    );
+
+  pointer-events: none;
+}
+
+/* Actual hero image */
+.hero-img {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+  object-position: center center;
+}
+ /* =========================
    HERO TEXT
-   Anchored hero copy. Keep this block together.
+   Anchored text block over the hero image.
+   Keep this section together.
 ========================== */
 .hero-text {
   position: absolute;
   left: 56px;
-
   bottom: 38px;
-
   z-index: 20;
+
   max-width: 720px;
   color: var(--cream);
+
+  /* Hidden until navigation/intro is ready */
   opacity: 0;
   transform: translateY(14px);
+
   transition: opacity 0.8s ease, transform 0.8s ease;
 }
+
+/* Reveals hero text after body gets nav-live class */
 body.nav-live .hero-text {
   opacity: 1;
   transform: translateY(0);
 }
 
+/* Main hero headline */
 .hero-text h1 {
   margin: 0 0 22px;
   font-family: "Raleway", Arial, sans-serif;
@@ -505,11 +607,12 @@ body.nav-live .hero-text {
   color: rgba(232, 222, 206, 0.82);
 }
 
+/* Forces each headline span onto its own line */
 .hero-text h1 span {
   display: block;
 }
 
-/* This controls OLD MARKET */
+/* Highlight styling for OLD MARKET */
 .hero-text .old-market {
   display: block;
   font-weight: 700;
@@ -517,7 +620,7 @@ body.nav-live .hero-text {
   color: rgba(184, 118, 92, 0.92);
 }
 
-/* Smaller cream supporting line */
+/* Smaller supporting line beneath the headline */
 .hero-subline {
   max-width: 520px;
   margin: 0 0 22px;
@@ -530,17 +633,19 @@ body.nav-live .hero-text {
   color: rgba(210, 210, 205, 0.68);
 }
 
-/* Only this line is red */
+/* Red walk-ins line under the supporting copy */
 .hero-text .walkins {
   display: inline-block;
   margin: 4px 0 0;
   padding: 14px 0 0;
   border-top: 2px solid var(--red);
+
   font-family: Arial, sans-serif;
   font-size: 0.98rem;
   letter-spacing: 0.24em;
   text-transform: uppercase;
   color: var(--red);
+
   text-shadow:
     0 0 5px rgba(255, 42, 31, 0.5),
     0 0 16px rgba(255, 42, 31, 0.26);
@@ -548,6 +653,7 @@ body.nav-live .hero-text {
 
 /* =========================
    ARTISTS CAROUSEL
+   Section containing artist cards and carousel arrows
 ========================== */
 .artists-section {
   padding: 110px 8vw;
@@ -556,6 +662,7 @@ body.nav-live .hero-text {
   color: var(--cream);
 }
 
+/* Artists section heading */
 .artists-section h2 {
   margin: 0 0 42px;
   font-family: "Raleway", Arial, sans-serif;
@@ -565,6 +672,7 @@ body.nav-live .hero-text {
   text-transform: uppercase;
 }
 
+/* Carousel layout: left arrow, card window, right arrow */
 .artist-carousel {
   display: grid;
   grid-template-columns: auto 1fr auto;
@@ -572,23 +680,27 @@ body.nav-live .hero-text {
   align-items: center;
 }
 
+/* Visible carousel window that hides overflowing cards */
 .artist-window {
   overflow: hidden;
   width: 100%;
 }
 
+/* Moving horizontal track of artist cards */
 .artist-track {
   display: flex;
   gap: 24px;
   transition: transform 0.4s var(--ease);
 }
 
+/* Individual artist card */
 .artist-card {
   flex: 0 0 calc((100% - 72px) / 4);
   text-decoration: none;
   color: var(--cream);
 }
 
+/* Artist image styling */
 .artist-card img {
   width: 100%;
   aspect-ratio: 1 / 1.15;
@@ -598,6 +710,7 @@ body.nav-live .hero-text {
   transition: transform 0.25s ease, filter 0.25s ease, border-color 0.25s ease;
 }
 
+/* Artist image hover lift/glow */
 .artist-card:hover img {
   transform: translateY(-5px);
   filter: grayscale(0) brightness(1.06);
@@ -607,6 +720,7 @@ body.nav-live .hero-text {
     0 0 28px rgba(255, 59, 47, 0.22);
 }
 
+/* Artist name */
 .artist-card h3 {
   margin: 14px 0 5px;
   font-family: "Raleway", Arial, sans-serif;
@@ -614,13 +728,16 @@ body.nav-live .hero-text {
   letter-spacing: 0.12em;
   text-transform: uppercase;
 }
-    
+
+/* Artist name hover glow */
 .artist-card:hover h3 {
   color: #fff;
   text-shadow:
     0 0 6px rgba(255, 59, 47, 0.5),
     0 0 16px rgba(255, 59, 47, 0.28);
 }
+
+/* Artist role/style description */
 .artist-card p {
   margin: 0;
   color: rgba(232, 222, 206, 0.58);
@@ -629,6 +746,7 @@ body.nav-live .hero-text {
   letter-spacing: 0.08em;
 }
 
+/* Carousel arrow buttons */
 .artist-arrow {
   width: 42px;
   height: 42px;
@@ -640,21 +758,25 @@ body.nav-live .hero-text {
   cursor: pointer;
 }
 
+/* Arrow hover state */
 .artist-arrow:hover {
   background: var(--red-soft);
 }
-    /* =========================
-       Site Footer
-    ========================== */
 
+/* =========================
+   SITE FOOTER
+   Three-column footer layout
+========================== */
 .site-footer {
   display: grid;
   grid-template-columns: 1fr auto 1fr;
   align-items: center;
   gap: 28px;
+
   padding: 34px 8vw;
   background: #000;
   border-top: 1px solid var(--line);
+
   color: rgba(232, 222, 206, 0.68);
   font-family: Arial, sans-serif;
   font-size: 0.72rem;
@@ -662,12 +784,15 @@ body.nav-live .hero-text {
   text-transform: uppercase;
 }
 
+/* Footer center text */
 .site-footer p {
   margin: 0;
   color: rgba(232, 222, 206, 0.72);
   text-align: center;
+  justify-self: center;
 }
 
+/* Footer links */
 .site-footer a {
   display: inline-flex;
   align-items: center;
@@ -676,63 +801,81 @@ body.nav-live .hero-text {
   text-decoration: none;
 }
 
+/* Left footer link */
 .site-footer a:first-child {
   justify-self: start;
 }
 
-.site-footer p {
-  justify-self: center;
-}
-
+/* Right footer link */
 .site-footer a:last-child {
   justify-self: end;
 }
 
+/* Footer link hover state */
 .site-footer a:hover {
   color: var(--red);
 }
- .site-footer .footer-ig-icon {
+
+/* Instagram icon in footer */
+.site-footer .footer-ig-icon {
   width: 18px;
   height: 18px;
   max-width: 18px;
   object-fit: contain;
 }
   /* =========================
-       About Slide Show Section
-  ========================== */
-  .about-section {
+   ABOUT SLIDESHOW SECTION
+   Two-column section with image slideshow on one side
+   and written studio/about copy on the other
+========================== */
+.about-section {
   display: grid;
+
+  /* Left column: slideshow, right column: copy */
   grid-template-columns: minmax(280px, 0.9fr) minmax(320px, 1fr);
+
   gap: 64px;
   align-items: center;
+
   padding: 110px 8vw;
   background: #000;
   border-top: 1px solid var(--line);
   color: var(--cream);
 }
+
+/* Slideshow frame */
 .about-slideshow {
   position: relative;
   width: 100%;
+
+  /* Tall portrait-style image ratio */
   aspect-ratio: 4 / 5;
+
   overflow: hidden;
   border: 1px solid rgba(232, 222, 206, 0.14);
   box-shadow: 0 0 30px rgba(255, 59, 47, 0.08);
 }
 
+/* Individual slideshow image */
 .about-slide {
   position: absolute;
   inset: 0;
+
   width: 100%;
   height: 100%;
   object-fit: cover;
+
+  /* Hidden by default until active class is added */
   opacity: 0;
   transition: opacity 1.2s ease;
 }
 
+/* Visible slideshow image */
 .about-slide.active {
   opacity: 1;
 }
 
+/* Small uppercase label above section headings */
 .section-kicker {
   margin: 0 0 16px;
   color: rgba(184, 118, 92, 0.92);
@@ -741,10 +884,14 @@ body.nav-live .hero-text {
   letter-spacing: 0.22em;
   text-transform: uppercase;
 }
+
+/* About-specific kicker styling */
 .about-copy .section-kicker {
   color: rgba(184, 118, 92, 0.92);
   font-size: 0.82rem;
 }
+
+/* About section headline */
 .about-copy h2 {
   margin: 0 0 24px;
   font-family: "Raleway", Arial, sans-serif;
@@ -755,6 +902,7 @@ body.nav-live .hero-text {
   text-transform: uppercase;
 }
 
+/* About paragraph text */
 .about-copy p {
   max-width: 560px;
   margin: 0 0 18px;
@@ -765,21 +913,25 @@ body.nav-live .hero-text {
 }
 
 /* =========================
-   Instagram Section
+   INSTAGRAM SECTION
+   Grouped artist Instagram preview grids
 ========================== */
 .instagram-section {
   padding: 100px 8vw;
   background: #050505;
   color: var(--cream);
+
   border-top: 1px solid rgba(232, 222, 206, 0.14);
   border-bottom: 1px solid rgba(232, 222, 206, 0.14);
 }
 
+/* Centers and limits width of Instagram content */
 .instagram-inner {
   max-width: 1180px;
   margin: 0 auto;
 }
 
+/* Instagram section headline */
 .instagram-section h2 {
   margin: 0 0 20px;
   font-family: "Raleway", Arial, sans-serif;
@@ -790,6 +942,7 @@ body.nav-live .hero-text {
   text-transform: uppercase;
 }
 
+/* Intro paragraph below Instagram heading */
 .instagram-intro {
   max-width: 720px;
   margin: 0 0 56px;
@@ -799,24 +952,29 @@ body.nav-live .hero-text {
   color: rgba(232, 222, 206, 0.72);
 }
 
+/* Individual Instagram artist group */
 .instagram-group {
   margin-top: 54px;
 }
 
+/* Removes top margin from first Instagram group */
 .instagram-group:first-of-type {
   margin-top: 0;
 }
 
+/* Header row for each Instagram group */
 .instagram-group-heading {
   display: flex;
   align-items: end;
   justify-content: space-between;
   gap: 24px;
+
   margin-bottom: 20px;
   padding-bottom: 14px;
   border-bottom: 1px solid rgba(232, 222, 206, 0.14);
 }
 
+/* Artist/group name */
 .instagram-group-heading h3 {
   margin: 0;
   font-family: "Raleway", Arial, sans-serif;
@@ -826,6 +984,7 @@ body.nav-live .hero-text {
   color: var(--cream);
 }
 
+/* Instagram profile link */
 .instagram-group-heading a {
   color: rgba(184, 118, 92, 0.92);
   font-family: Arial, sans-serif;
@@ -835,51 +994,61 @@ body.nav-live .hero-text {
   text-decoration: none;
 }
 
+/* Instagram profile link hover state */
 .instagram-group-heading a:hover {
   color: var(--red);
 }
 
+/* Three-column Instagram image grid */
 .instagram-photo-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 18px;
 }
 
+/* Makes links and images fill the grid cells */
 .instagram-photo-grid a,
 .instagram-photo-grid img {
   display: block;
   width: 100%;
 }
 
+/* Square image container */
 .instagram-photo-grid a {
   aspect-ratio: 1 / 1;
   overflow: hidden;
   border: 1px solid rgba(232, 222, 206, 0.12);
 }
 
+/* Instagram preview image styling */
 .instagram-photo-grid img {
   height: 100%;
   object-fit: cover;
   filter: grayscale(0.15);
+
   transition:
     transform 0.25s ease,
     filter 0.25s ease;
 }
 
+/* Image hover zoom/brighten effect */
 .instagram-photo-grid a:hover img {
   transform: scale(1.04);
   filter: grayscale(0) brightness(1.06);
 }
-    /* =========================
-      Location Section
-    ========================== */
-    .location-section {
+
+/* =========================
+   LOCATION SECTION
+   Address/contact details and embedded map
+========================== */
+.location-section {
   padding: 100px 8vw;
   background: #000;
   border-top: 1px solid var(--line);
   color: var(--cream);
 }
 
+/* Location section headline */
 .location-section h2 {
   margin: 0 0 42px;
   font-size: clamp(2rem, 4vw, 4rem);
@@ -888,6 +1057,7 @@ body.nav-live .hero-text {
   text-transform: uppercase;
 }
 
+/* Two-column layout for location copy and map */
 .location-grid {
   display: grid;
   grid-template-columns: minmax(260px, 0.7fr) minmax(320px, 1fr);
@@ -895,6 +1065,7 @@ body.nav-live .hero-text {
   align-items: stretch;
 }
 
+/* Address/contact copy */
 .location-copy {
   font-family: Arial, sans-serif;
   font-size: 0.9rem;
@@ -904,15 +1075,18 @@ body.nav-live .hero-text {
   color: rgba(232, 222, 206, 0.75);
 }
 
+/* Location links */
 .location-copy a {
   color: var(--cream);
   text-decoration: none;
 }
 
+/* Location link hover state */
 .location-copy a:hover {
   color: var(--red);
 }
 
+/* Map/directions button */
 .location-button {
   display: inline-block;
   margin-top: 20px;
@@ -920,68 +1094,84 @@ body.nav-live .hero-text {
   border: 1px solid var(--red-border);
 }
 
+/* Embedded map styling */
 .location-map {
   width: 100%;
   min-height: 320px;
   border: 1px solid rgba(232, 222, 206, 0.14);
+
+  /* Dark, desaturated map treatment */
   filter: grayscale(1) invert(0.9) contrast(0.9);
 }
-    /* =========================
-       TABLET
-    ========================== */
-    @media (max-width: 1050px) {
-      .site-logo {
-        width: min(78vw, 620px);
-      }
+   /* =========================
+   TABLET
+   Responsive adjustments for medium-width screens
+========================== */
+@media (max-width: 1050px) {
+  /* Slightly reduces main logo size on tablet */
+  .site-logo {
+    width: min(78vw, 620px);
+  }
 
-      body.logo-settling .site-logo {
-        top: 22px;
-        width: min(62vw, 460px);
-        transform: translate(-50%, 0);
-      }
+  /* Tablet position/size for logo after intro settles */
+  body.logo-settling .site-logo {
+    top: 22px;
+    width: min(62vw, 460px);
+    transform: translate(-50%, 0);
+  }
 
-      .hero-text {
-        max-width: 620px;
-      }
+  /* Keeps hero text from getting too wide on tablet */
+  .hero-text {
+    max-width: 620px;
+  }
 
-      .hero-text h1 {
-        font-size: clamp(2.4rem, 6.4vw, 4.2rem);
-      }
-    }
+  /* Scales hero headline for tablet screens */
+  .hero-text h1 {
+    font-size: clamp(2.4rem, 6.4vw, 4.2rem);
+  }
+}
 
 /* =========================
    MOBILE
+   Responsive adjustments for small screens
 ========================== */
 @media (max-width: 640px) {
+  /* Uses small viewport height to behave better on mobile browser bars */
   .hero {
     min-height: 100svh;
   }
 
+  /* Initial mobile logo size */
   .site-logo {
     width: min(84vw, 520px);
   }
 
+  /* Mobile logo position/size after intro settles */
   body.logo-settling .site-logo {
     top: 82px;
     width: min(58vw, 285px);
     transform: translate(-50%, 0);
   }
 
+  /* Hides fixed desktop-style top bar on mobile */
   .fixed-top-bar {
-  display: none;
+    display: none;
   }
 
+  /* Changes header elements from fixed to absolute on mobile */
   .site-logo,
   .menu-toggle,
   .book-top {
-  position: absolute;
+    position: absolute;
   }
 
+  /* Mobile hamburger button position */
   .menu-toggle {
     top: 24px;
     left: 18px;
   }
 
+  /* Mobile Book Now button position and sizing */
   .book-top {
     top: 24px;
     right: 18px;
@@ -990,29 +1180,35 @@ body.nav-live .hero-text {
     letter-spacing: 0.12em;
   }
 
+  /* Wider pull menu on mobile */
   .pull-menu {
     width: 86vw;
     padding: 88px 28px 30px;
   }
 
+  /* Small menu logo sizing/positioning if enabled */
   .menu-logo-small {
     width: 135px;
     bottom: 72px;
   }
 
+  /* Ensures hero image fills mobile hero area */
   .hero-img {
     object-fit: cover;
     object-position: center center;
   }
 
+  /* Starts hero image darker on mobile */
   .hero-media {
     filter: brightness(0.08) contrast(1.08) saturate(0.45);
   }
 
+  /* Brightened mobile hero image state */
   body.hero-bright .hero-media {
     filter: brightness(0.66) contrast(1.12) saturate(0.45);
   }
 
+  /* Mobile hero text placement */
   .hero-text {
     left: 24px;
     right: 24px;
@@ -1021,22 +1217,26 @@ body.nav-live .hero-text {
     text-align: left;
   }
 
+  /* Mobile hero headline sizing */
   .hero-text h1 {
     font-size: clamp(1.85rem, 8vw, 2.75rem);
     line-height: 1.05;
     letter-spacing: 0.055em;
   }
 
+  /* Keeps each headline span on its own line */
   .hero-text h1 span {
     display: block;
   }
 
+  /* Mobile styling for OLD MARKET line */
   .hero-text .old-market {
     display: block;
     font-weight: 700;
     letter-spacing: 0.07em;
   }
 
+  /* Mobile supporting hero copy */
   .hero-subline {
     max-width: 310px;
     margin: 16px 0 18px;
@@ -1049,6 +1249,7 @@ body.nav-live .hero-text {
     color: rgba(232, 222, 206, 0.78);
   }
 
+  /* Mobile walk-ins line */
   .hero-text .walkins {
     display: inline-block;
     font-size: 0.82rem;
@@ -1057,92 +1258,112 @@ body.nav-live .hero-text {
     border-top: 2px solid var(--red);
   }
 
+  /* Stacks about section into one column on mobile */
   .about-section {
     grid-template-columns: 1fr;
     gap: 38px;
     padding: 76px 28px;
   }
 
+  /* Slightly shorter slideshow ratio on mobile */
   .about-slideshow {
     aspect-ratio: 4 / 4.6;
   }
 
+  /* Mobile about headline size */
   .about-copy h2 {
     font-size: clamp(1.85rem, 8vw, 2.8rem);
   }
 
+  /* Converts artist carousel to one-column layout */
   .artist-carousel {
     grid-template-columns: 1fr;
   }
 
+  /* Hides carousel arrow buttons on mobile */
   .artist-arrow {
     display: none;
   }
 
+  /* Allows horizontal swipe scrolling for artist cards */
   .artist-window {
     overflow-x: auto;
   }
 
+  /* Smaller spacing between artist cards on mobile */
   .artist-track {
     gap: 16px;
   }
 
+  /* Shows partial next card to imply horizontal scroll */
   .artist-card {
     flex: 0 0 72%;
   }
 
+  /* Mobile artist section spacing */
   .artists-section {
     padding: 76px 28px;
   }
 
+  /* Mobile Instagram section spacing */
   .instagram-section {
     padding: 76px 28px;
   }
 
+  /* Reduces space after Instagram intro on mobile */
   .instagram-intro {
     margin-bottom: 42px;
   }
 
+  /* Adjusts space between Instagram groups on mobile */
   .instagram-group {
     margin-top: 46px;
   }
 
+  /* Stacks Instagram group heading text/link on mobile */
   .instagram-group-heading {
     display: block;
   }
 
+  /* Adds spacing below Instagram group title */
   .instagram-group-heading h3 {
     margin-bottom: 10px;
   }
 
+  /* Keeps Instagram grid at 3 columns but tightens gaps */
   .instagram-photo-grid {
     grid-template-columns: repeat(3, 1fr);
     gap: 8px;
   }
 
+  /* Mobile location section spacing */
   .location-section {
     padding: 76px 28px;
   }
 
+  /* Stacks location copy and map on mobile */
   .location-grid {
     grid-template-columns: 1fr;
   }
 
+  /* Slightly shorter map on mobile */
   .location-map {
     min-height: 280px;
   }
 }
-  </style>
+
+/* Ends embedded CSS */
+</style>
 </head>
 
 <body class="intro-running">
-   <div class="fixed-top-bar" aria-hidden="true"></div>
-  <!-- Black overlay for intro animation -->
+  <!-- Fixed top bar that appears after scroll on desktop -->
+  <div class="fixed-top-bar" aria-hidden="true"></div>
+
+  <!-- Black overlay used during the intro animation -->
   <div class="blackout" aria-hidden="true"></div>
 
- 
-
-  <!-- Single animated main logo -->
+  <!-- Main animated logo -->
   <img src="Images/logo.PNG" alt="Tenth Sanctum Tattoo" class="site-logo" />
 
   <!-- Hamburger menu button -->
@@ -1152,16 +1373,17 @@ body.nav-live .hero-text {
     <span></span>
   </button>
 
-  <!-- Top-right Book Now button -->
+  <!-- Top-right booking button -->
   <a href="#book" class="book-top">Book Now</a>
 
-  <!-- Menu backdrop -->
+  <!-- Dark overlay behind the open menu -->
   <div class="menu-backdrop" aria-hidden="true"></div>
 
-  <!-- Pull-down menu -->
+  <!-- Pull-out navigation menu -->
   <nav class="pull-menu" aria-label="Main navigation">
     <div class="menu-content">
       <div>
+        <!-- Main menu links -->
         <div class="pull-menu-links">
           <a href="#about">About</a>
           <a href="#tattooers">Tattooers</a>
@@ -1169,346 +1391,417 @@ body.nav-live .hero-text {
           <a href="#book" class="menu-book-btn">Book Now</a>
         </div>
 
+        <!-- Shop service note -->
         <p class="no-piercer-note">NO PIERCING SERVICES</p>
 
-        <!-- Bottom emblem. Make sure this file exists exactly as written. -->
+        <!-- Small emblem inside the menu -->
         <img src="Images/emblem.png" alt="Tenth Sanctum emblem" class="menu-logo-small" />
       </div>
     </div>
   </nav>
 
-<!-- Main page content -->
-<main>
-  <!-- Hero section -->
-  <section class="hero">
-    <div class="hero-media" aria-hidden="true">
-      <img src="Images/hero-image.jpeg" alt="" class="hero-img" />
-    </div>
+  <!-- Main page content -->
+  <main>
 
-    <div class="hero-text">
-      <h1>
-        <span>Custom and Flash Tattooing</span>
-        <span>in the</span>
-        <span class="old-market">Old Market</span>
-      </h1>
-
-      <p class="hero-subline">Located in Omaha’s historic arts and entertainment district</p>
-      <p class="walkins">Walk-Ins Welcome</p>
-    </div>
-  </section>
-
-  <!-- About section -->
-  <section class="about-section" id="about">
-    <div class="about-slideshow">
-      <img src="Images/exterior.jpeg" alt="Tenth Sanctum Tattoo exterior" class="about-slide active" />
-      <img src="Images/interior_1.png" alt="Tenth Sanctum Tattoo interior" class="about-slide" />
-      <img src="Images/interior_2.png" alt="Tenth Sanctum Tattoo shop interior" class="about-slide" />
-      <img src="Images/tattooer.jpeg" alt="Tattoo artist working at Tenth Sanctum Tattoo" class="about-slide" />
-      <img src="Images/interior_3.png" alt="Tenth Sanctum Tattoo studio space" class="about-slide" />
-      <img src="Images/bees.jpeg" alt="Bee tattoo flash artwork" class="about-slide" />
-      <img src="Images/interior_4.png" alt="Tenth Sanctum Tattoo interior details" class="about-slide" />
-      <img src="Images/interior_5.png" alt="Tenth Sanctum Tattoo interior details" class="about-slide" />
-    </div>
-
-    <div class="about-copy">
-      <p class="section-kicker">About the shop</p>
-      <h2>Tenth Sanctum Tattoo</h2>
-      <p>
-        Established in 2013, Tenth Sanctum Tattoo is located in Omaha’s historic Old Market,
-        surrounded by the city’s arts, culture, and entertainment district.
-      </p>
-      <p>
-        The shop offers custom tattooing and flash work in a focused, artist-driven space.
-      </p>
-    </div>
-  </section>
-
-  <!-- Artists carousel section -->
-  <section class="artists-section" id="tattooers">
-    <p class="section-kicker">Tattooers</p>
-    <h2>Meet the Artists</h2>
-
-    <div class="artist-carousel">
-  <button class="artist-arrow artist-prev" type="button" aria-label="Previous artists">‹</button>
-
-  <div class="artist-window">
-    <div class="artist-track">
-      <a href="jeremy.html" class="artist-card">
-        <img src="Images/artists/jeremy.png" alt="Jeremy" />
-        <h3>Jeremy</h3>
-      </a>
-
-      <a href="tobias.html" class="artist-card">
-        <img src="Images/artists/tobias.png" alt="Tobias Caballero" />
-        <h3>Tobias</h3>
-      </a>
-
-      <a href="kaitlin.html" class="artist-card">
-        <img src="Images/artists/kaitlin-profile.png" alt="Kaitlin" />
-        <h3>Kaitlin</h3>
-      </a>
-
-      <a href="austin.html" class="artist-card">
-        <img src="Images/artists/austin-profile.png" alt="Austin L'Ecuyer" />
-        <h3>Austin</h3>
-      </a>
-
-      <a href="asa.html" class="artist-card">
-        <img src="Images/artists/asa.png" alt="Asa Larson" />
-        <h3>Asa</h3>
-      </a>
-
-      <a href="alex.html" class="artist-card">
-        <img src="Images/artists/alex-profile.png" alt="Alex Downing" />
-        <h3>Alex</h3>
-      </a>
-
-      <a href="felipe.html" class="artist-card">
-        <img src="Images/artists/felipe-profile.png" alt="Felipe Morales" />
-        <h3>Felipe</h3>
-      </a>
-
-      <a href="guest.html" class="artist-card">
-        <img src="Images/artists/guest.jpeg" alt="Guest Artist" />
-        <h3>Guest Artist</h3>
-      </a>
-    </div>
-  </div>
-
-  <button class="artist-arrow artist-next" type="button" aria-label="Next artists">›</button>
-</div>
-  </section>
-<section class="instagram-section" id="instagram" aria-labelledby="instagram-title">
-  <div class="instagram-inner">
-    <p class="section-kicker">Instagram</p>
-    <h2 id="instagram-title">Follow the Work</h2>
-
-    <p class="instagram-intro">
-      Follow us on Instagram for current work, shop updates, available flash, and announcements.
-    </p>
-
-    <div class="instagram-group">
-      <div class="instagram-group-heading">
-        <h3>The Shop</h3>
-        <a href="https://www.instagram.com/tenthsanctum/" target="_blank" rel="noopener noreferrer">
-          @tenthsanctum
-        </a>
+    <!-- Hero section -->
+    <section class="hero">
+      <!-- Background hero image wrapper -->
+      <div class="hero-media" aria-hidden="true">
+        <img src="Images/hero-image.jpeg" alt="" class="hero-img" />
       </div>
 
-      <div class="instagram-photo-grid">
-        <a href="https://www.instagram.com/p/B81bKwwBFLT/" target="_blank" rel="noopener noreferrer">
-          <img src="Images/instagram/shop-1.png" alt="Tattoo work from Tenth Sanctum" />
-        </a>
+      <!-- Hero headline and supporting text -->
+      <div class="hero-text">
+        <h1>
+          <span>Custom and Flash Tattooing</span>
+          <span>in the</span>
+          <span class="old-market">Old Market</span>
+        </h1>
 
-        <a href="https://www.instagram.com/p/CKR4MX9hCQ1/" target="_blank" rel="noopener noreferrer">
-          <img src="Images/instagram/shop-6.png" alt="Tenth Sanctum shop interior" />
-        </a>
-
-        <a href="https://www.instagram.com/p/DV1tCX9EfGU/" target="_blank" rel="noopener noreferrer">
-          <img src="Images/instagram/shop-2.png" alt="Tenth Sanctum shop interior" />
-        </a>
-
-        <a href="https://www.instagram.com/reel/C9a0ZvPPRSe/" target="_blank" rel="noopener noreferrer">
-          <img src="Images/instagram/shop-5.png" alt="Tenth Sanctum shop interior" />
-        </a>
-
-        <a href="https://www.instagram.com/reel/DMaenHtR1hr/" target="_blank" rel="noopener noreferrer">
-          <img src="Images/instagram/shop-3.png" alt="Tattoo work from Tenth Sanctum" />
-        </a>
-
-        <a href="https://www.instagram.com/p/B8Z9U7Uh-sy/" target="_blank" rel="noopener noreferrer">
-          <img src="Images/instagram/shop-4.png" alt="Tenth Sanctum shop interior" />
-        </a>
+        <p class="hero-subline">Located in Omaha’s historic arts and entertainment district</p>
+        <p class="walkins">Walk-Ins Welcome</p>
       </div>
-    </div>
+    </section>
 
-    <div class="instagram-group">
-      <div class="instagram-group-heading">
-        <h3>Flash Gallery</h3>
-        <a href="https://www.instagram.com/tenthsanctum_flashdays/" target="_blank" rel="noopener noreferrer">
-          @tenthsanctum_flashdays
-        </a>
+    <!-- About section -->
+    <section class="about-section" id="about">
+
+      <!-- Rotating shop slideshow -->
+      <div class="about-slideshow">
+        <img src="Images/exterior.jpeg" alt="Tenth Sanctum Tattoo exterior" class="about-slide active" />
+        <img src="Images/interior_1.png" alt="Tenth Sanctum Tattoo interior" class="about-slide" />
+        <img src="Images/interior_2.png" alt="Tenth Sanctum Tattoo shop interior" class="about-slide" />
+        <img src="Images/tattooer.jpeg" alt="Tattoo artist working at Tenth Sanctum Tattoo" class="about-slide" />
+        <img src="Images/interior_3.png" alt="Tenth Sanctum Tattoo studio space" class="about-slide" />
+        <img src="Images/bees.jpeg" alt="Bee tattoo flash artwork" class="about-slide" />
+        <img src="Images/interior_4.png" alt="Tenth Sanctum Tattoo interior details" class="about-slide" />
+        <img src="Images/interior_5.png" alt="Tenth Sanctum Tattoo interior details" class="about-slide" />
       </div>
 
-      <div class="instagram-photo-grid">
-        <a href="https://www.instagram.com/p/DOhespsjQHI/" target="_blank" rel="noopener noreferrer">
-          <img src="Images/instagram/flash-1.png" alt="Available flash tattoo design" />
-        </a>
+      <!-- About text content -->
+      <div class="about-copy">
+        <p class="section-kicker">About the shop</p>
+        <h2>Tenth Sanctum Tattoo</h2>
 
-        <a href="https://www.instagram.com/p/DO4JECQgbf2/" target="_blank" rel="noopener noreferrer">
-          <img src="Images/instagram/flash-2.png" alt="Flash tattoo artwork" />
-        </a>
+        <p>
+          Established in 2013, Tenth Sanctum Tattoo is located in Omaha’s historic Old Market,
+          surrounded by the city’s arts, culture, and entertainment district.
+        </p>
 
-        <a href="https://www.instagram.com/p/DNda3gENIxX/" target="_blank" rel="noopener noreferrer">
-          <img src="Images/instagram/flash-3.png" alt="Tenth Sanctum flash day tattoo designs" />
-        </a>
-
-        <a href="https://www.instagram.com/p/DJ7th1qtigs/" target="_blank" rel="noopener noreferrer">
-          <img src="Images/instagram/flash-4.png" alt="Available flash tattoo design" />
-        </a>
-
-        <a href="https://www.instagram.com/p/DI5NKettZQl/" target="_blank" rel="noopener noreferrer">
-          <img src="Images/instagram/flash-5.png" alt="Flash tattoo artwork" />
-        </a>
-
-        <a href="https://www.instagram.com/reel/DAlh6p5vbgr/" target="_blank" rel="noopener noreferrer">
-          <img src="Images/instagram/flash-6.png" alt="Tenth Sanctum flash day tattoo designs" />
-        </a>
+        <p>
+          The shop offers custom tattooing and flash work in a focused, artist-driven space.
+        </p>
       </div>
-    </div>
-  </div>
-</section>
-  
-  <section class="location-section" id="location">
-  <p class="section-kicker">Visit the shop</p>
-  <h2>Location</h2>
+    </section>
 
-  <div class="location-grid">
-    <div class="location-copy">
-      <p><strong>Tenth Sanctum Tattoo</strong></p>
-      <p>1010 S 10th St<br>Omaha, NE 68108</p>
-      <p><a href="tel:+14024221010">(402) 422-1010</a></p>
+    <!-- Artists carousel section -->
+    <section class="artists-section" id="tattooers">
+      <p class="section-kicker">Tattooers</p>
+      <h2>Meet the Artists</h2>
 
-      <p class="hours">
-        Open daily<br>
-        12 PM – 8 PM
-      </p>
+      <!-- Carousel wrapper -->
+      <div class="artist-carousel">
 
-      <a
-        href="https://www.google.com/maps/search/?api=1&query=1010+S+10th+St+Omaha+NE+68108"
-        target="_blank"
-        rel="noopener"
-        class="location-button"
-      >
-        Open in Google Maps
-      </a>
-    </div>
+        <!-- Previous carousel button -->
+        <button class="artist-arrow artist-prev" type="button" aria-label="Previous artists">‹</button>
 
-    <iframe
-      class="location-map"
-      src="https://www.google.com/maps?q=1010%20S%2010th%20St%20Omaha%20NE%2068108&output=embed"
-      loading="lazy"
-      referrerpolicy="no-referrer-when-downgrade"
-      title="Map to Tenth Sanctum Tattoo"
-    ></iframe>
-  </div>
-</section>
-</main>
+        <!-- Visible carousel window -->
+        <div class="artist-window">
+
+          <!-- Moving carousel track -->
+          <div class="artist-track">
+
+            <!-- Individual artist cards -->
+            <a href="jeremy.html" class="artist-card">
+              <img src="Images/artists/jeremy.png" alt="Jeremy" />
+              <h3>Jeremy</h3>
+            </a>
+
+            <a href="tobias.html" class="artist-card">
+              <img src="Images/artists/tobias.png" alt="Tobias Caballero" />
+              <h3>Tobias</h3>
+            </a>
+
+            <a href="kaitlin.html" class="artist-card">
+              <img src="Images/artists/kaitlin-profile.png" alt="Kaitlin" />
+              <h3>Kaitlin</h3>
+            </a>
+
+            <a href="austin.html" class="artist-card">
+              <img src="Images/artists/austin-profile.png" alt="Austin L'Ecuyer" />
+              <h3>Austin</h3>
+            </a>
+
+            <a href="asa.html" class="artist-card">
+              <img src="Images/artists/asa.png" alt="Asa Larson" />
+              <h3>Asa</h3>
+            </a>
+
+            <a href="alex.html" class="artist-card">
+              <img src="Images/artists/alex-profile.png" alt="Alex Downing" />
+              <h3>Alex</h3>
+            </a>
+
+            <a href="felipe.html" class="artist-card">
+              <img src="Images/artists/felipe-profile.png" alt="Felipe Morales" />
+              <h3>Felipe</h3>
+            </a>
+
+            <a href="guest.html" class="artist-card">
+              <img src="Images/artists/guest.jpeg" alt="Guest Artist" />
+              <h3>Guest Artist</h3>
+            </a>
+
+          </div>
+        </div>
+
+        <!-- Next carousel button -->
+        <button class="artist-arrow artist-next" type="button" aria-label="Next artists">›</button>
+      </div>
+    </section>
+
+    <!-- Instagram section -->
+    <section class="instagram-section" id="instagram" aria-labelledby="instagram-title">
+      <div class="instagram-inner">
+        <p class="section-kicker">Instagram</p>
+        <h2 id="instagram-title">Follow the Work</h2>
+
+        <p class="instagram-intro">
+          Follow us on Instagram for current work, shop updates, available flash, and announcements.
+        </p>
+
+        <!-- Shop Instagram group -->
+        <div class="instagram-group">
+          <div class="instagram-group-heading">
+            <h3>The Shop</h3>
+            <a href="https://www.instagram.com/tenthsanctum/" target="_blank" rel="noopener noreferrer">
+              @tenthsanctum
+            </a>
+          </div>
+
+          <!-- Shop Instagram image grid -->
+          <div class="instagram-photo-grid">
+            <a href="https://www.instagram.com/p/B81bKwwBFLT/" target="_blank" rel="noopener noreferrer">
+              <img src="Images/instagram/shop-1.png" alt="Tattoo work from Tenth Sanctum" />
+            </a>
+
+            <a href="https://www.instagram.com/p/CKR4MX9hCQ1/" target="_blank" rel="noopener noreferrer">
+              <img src="Images/instagram/shop-6.png" alt="Tenth Sanctum shop interior" />
+            </a>
+
+            <a href="https://www.instagram.com/p/DV1tCX9EfGU/" target="_blank" rel="noopener noreferrer">
+              <img src="Images/instagram/shop-2.png" alt="Tenth Sanctum shop interior" />
+            </a>
+
+            <a href="https://www.instagram.com/reel/C9a0ZvPPRSe/" target="_blank" rel="noopener noreferrer">
+              <img src="Images/instagram/shop-5.png" alt="Tenth Sanctum shop interior" />
+            </a>
+
+            <a href="https://www.instagram.com/reel/DMaenHtR1hr/" target="_blank" rel="noopener noreferrer">
+              <img src="Images/instagram/shop-3.png" alt="Tattoo work from Tenth Sanctum" />
+            </a>
+
+            <a href="https://www.instagram.com/p/B8Z9U7Uh-sy/" target="_blank" rel="noopener noreferrer">
+              <img src="Images/instagram/shop-4.png" alt="Tenth Sanctum shop interior" />
+            </a>
+          </div>
+        </div>
+
+        <!-- Flash Instagram group -->
+        <div class="instagram-group">
+          <div class="instagram-group-heading">
+            <h3>Flash Gallery</h3>
+            <a href="https://www.instagram.com/tenthsanctum_flashdays/" target="_blank" rel="noopener noreferrer">
+              @tenthsanctum_flashdays
+            </a>
+          </div>
+
+          <!-- Flash Instagram image grid -->
+          <div class="instagram-photo-grid">
+            <a href="https://www.instagram.com/p/DOhespsjQHI/" target="_blank" rel="noopener noreferrer">
+              <img src="Images/instagram/flash-1.png" alt="Available flash tattoo design" />
+            </a>
+
+            <a href="https://www.instagram.com/p/DO4JECQgbf2/" target="_blank" rel="noopener noreferrer">
+              <img src="Images/instagram/flash-2.png" alt="Flash tattoo artwork" />
+            </a>
+
+            <a href="https://www.instagram.com/p/DNda3gENIxX/" target="_blank" rel="noopener noreferrer">
+              <img src="Images/instagram/flash-3.png" alt="Tenth Sanctum flash day tattoo designs" />
+            </a>
+
+            <a href="https://www.instagram.com/p/DJ7th1qtigs/" target="_blank" rel="noopener noreferrer">
+              <img src="Images/instagram/flash-4.png" alt="Available flash tattoo design" />
+            </a>
+
+            <a href="https://www.instagram.com/p/DI5NKettZQl/" target="_blank" rel="noopener noreferrer">
+              <img src="Images/instagram/flash-5.png" alt="Flash tattoo artwork" />
+            </a>
+
+            <a href="https://www.instagram.com/reel/DAlh6p5vbgr/" target="_blank" rel="noopener noreferrer">
+              <img src="Images/instagram/flash-6.png" alt="Tenth Sanctum flash day tattoo designs" />
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Location section -->
+    <section class="location-section" id="location">
+      <p class="section-kicker">Visit the shop</p>
+      <h2>Location</h2>
+
+      <div class="location-grid">
+
+        <!-- Address, phone, hours, and map link -->
+        <div class="location-copy">
+          <p><strong>Tenth Sanctum Tattoo</strong></p>
+          <p>1010 S 10th St<br>Omaha, NE 68108</p>
+          <p><a href="tel:+14024221010">(402) 422-1010</a></p>
+
+          <p class="hours">
+            Open daily<br>
+            12 PM – 8 PM
+          </p>
+
+          <a
+            href="https://www.google.com/maps/search/?api=1&query=1010+S+10th+St+Omaha+NE+68108"
+            target="_blank"
+            rel="noopener"
+            class="location-button"
+          >
+            Open in Google Maps
+          </a>
+        </div>
+
+        <!-- Embedded Google Map -->
+        <iframe
+          class="location-map"
+          src="https://www.google.com/maps?q=1010%20S%2010th%20St%20Omaha%20NE%2068108&output=embed"
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          title="Map to Tenth Sanctum Tattoo"
+        ></iframe>
+      </div>
+    </section>
+  </main>
+
   <script>
-    
-  
     /* =========================
        INTRO ANIMATION TIMING
+       Controls the staged page-load animation
     ========================== */
+
+    /* Prevents the browser from restoring the previous scroll position */
     if ("scrollRestoration" in history) {
-  history.scrollRestoration = "manual";
-}
+      history.scrollRestoration = "manual";
+    }
 
-if (window.location.hash) {
-  history.replaceState(null, "", window.location.pathname + window.location.search);
-}
+    /* Removes any hash from the URL on page load */
+    if (window.location.hash) {
+      history.replaceState(null, "", window.location.pathname + window.location.search);
+    }
 
-window.scrollTo(0, 0);
-    
-document.addEventListener("DOMContentLoaded", () => {
+    /* Forces page to start at the top */
+    window.scrollTo(0, 0);
 
-  setTimeout(() => {
-    document.body.classList.add("logo-settling");
-  }, 650);
+    /* Runs intro animation steps once the HTML has loaded */
+    document.addEventListener("DOMContentLoaded", () => {
 
-  setTimeout(() => {
-    document.body.classList.add("hero-live");
-  }, 1650);
+      /* Moves logo from center toward its settled position */
+      setTimeout(() => {
+        document.body.classList.add("logo-settling");
+      }, 650);
 
-  setTimeout(() => {
-    document.body.classList.add("hero-bright");
-  }, 2050);
+      /* Reveals hero image */
+      setTimeout(() => {
+        document.body.classList.add("hero-live");
+      }, 1650);
 
-  setTimeout(() => {
-    document.body.classList.add("nav-live");
-    document.body.classList.remove("intro-running");
-  }, 2600);
+      /* Brightens hero image */
+      setTimeout(() => {
+        document.body.classList.add("hero-bright");
+      }, 2050);
 
-  setTimeout(() => {
-    const blackout = document.querySelector(".blackout");
-    if (blackout) blackout.remove();
-  }, 3100);
-});
+      /* Reveals nav/buttons and allows scrolling again */
+      setTimeout(() => {
+        document.body.classList.add("nav-live");
+        document.body.classList.remove("intro-running");
+      }, 2600);
 
+      /* Removes blackout element after animation is complete */
+      setTimeout(() => {
+        const blackout = document.querySelector(".blackout");
+        if (blackout) blackout.remove();
+      }, 3100);
+    });
+
+    /* =========================
+       SCROLL STATE
+       Adds class when user scrolls down
+    ========================== */
     window.addEventListener("scroll", () => {
-  if (window.scrollY > 80) {
-    document.body.classList.add("scrolled");
-  } else {
-    document.body.classList.remove("scrolled");
-  }
-});
+      if (window.scrollY > 80) {
+        document.body.classList.add("scrolled");
+      } else {
+        document.body.classList.remove("scrolled");
+      }
+    });
+
     /* =========================
        PULL-DOWN MENU CONTROLS
+       Opens/closes the slide-out menu
     ========================== */
+
+    /* Menu elements */
     const menuToggle = document.querySelector(".menu-toggle");
     const menuBackdrop = document.querySelector(".menu-backdrop");
     const menuLinks = document.querySelectorAll(".pull-menu a");
 
+    /* Closes menu and updates accessibility state */
     function closeMenu() {
       document.body.classList.remove("menu-open");
       menuToggle.setAttribute("aria-expanded", "false");
     }
 
+    /* Opens/closes menu when hamburger is clicked */
     menuToggle.addEventListener("click", () => {
       const isOpen = document.body.classList.toggle("menu-open");
       menuToggle.setAttribute("aria-expanded", isOpen ? "true" : "false");
     });
 
+    /* Closes menu when backdrop is clicked */
     menuBackdrop.addEventListener("click", closeMenu);
 
+    /* Closes menu when any menu link is clicked */
     menuLinks.forEach((link) => {
       link.addEventListener("click", closeMenu);
     });
+
+    /* =========================
+       ABOUT SLIDESHOW
+       Rotates through shop/about images
+    ========================== */
+
     const aboutSlides = document.querySelectorAll(".about-slide");
-let aboutSlideIndex = 0;
+    let aboutSlideIndex = 0;
 
-if (aboutSlides.length > 1) {
-  setInterval(() => {
-    aboutSlides[aboutSlideIndex].classList.remove("active");
-    aboutSlideIndex = (aboutSlideIndex + 1) % aboutSlides.length;
-    aboutSlides[aboutSlideIndex].classList.add("active");
-  }, 3000);
-}
+    /* Only runs slideshow if more than one image exists */
+    if (aboutSlides.length > 1) {
+      setInterval(() => {
+        aboutSlides[aboutSlideIndex].classList.remove("active");
+        aboutSlideIndex = (aboutSlideIndex + 1) % aboutSlides.length;
+        aboutSlides[aboutSlideIndex].classList.add("active");
+      }, 3000);
+    }
+
+    /* =========================
+       ARTIST CAROUSEL
+       Moves artist cards forward/backward
+    ========================== */
+
     const artistTrack = document.querySelector(".artist-track");
-const artistNext = document.querySelector(".artist-next");
-const artistPrev = document.querySelector(".artist-prev");
-const artistCards = document.querySelectorAll(".artist-track .artist-card");
+    const artistNext = document.querySelector(".artist-next");
+    const artistPrev = document.querySelector(".artist-prev");
+    const artistCards = document.querySelectorAll(".artist-track .artist-card");
 
-let artistIndex = 0;
-const artistsPerView = 4;
+    let artistIndex = 0;
+    const artistsPerView = 4;
 
-function updateArtistCarousel() {
-  const cardWidth = artistCards[0].offsetWidth + 24;
-  artistTrack.style.transform = `translateX(-${artistIndex * cardWidth}px)`;
-}
+    /* Updates carousel track position */
+    function updateArtistCarousel() {
+      const cardWidth = artistCards[0].offsetWidth + 24;
+      artistTrack.style.transform = `translateX(-${artistIndex * cardWidth}px)`;
+    }
 
-artistNext.addEventListener("click", () => {
-  artistIndex += artistsPerView;
+    /* Moves carousel forward */
+    artistNext.addEventListener("click", () => {
+      artistIndex += artistsPerView;
 
-  if (artistIndex >= artistCards.length) {
-    artistIndex = 0;
-  }
+      if (artistIndex >= artistCards.length) {
+        artistIndex = 0;
+      }
 
-  updateArtistCarousel();
-});
+      updateArtistCarousel();
+    });
 
-artistPrev.addEventListener("click", () => {
-  artistIndex -= artistsPerView;
+    /* Moves carousel backward */
+    artistPrev.addEventListener("click", () => {
+      artistIndex -= artistsPerView;
 
-  if (artistIndex < 0) {
-    artistIndex = Math.max(artistCards.length - artistsPerView, 0);
-  }
+      if (artistIndex < 0) {
+        artistIndex = Math.max(artistCards.length - artistsPerView, 0);
+      }
 
-  updateArtistCarousel();
-});
+      updateArtistCarousel();
+    });
 
-      if ("scrollRestoration" in history) {
-    history.scrollRestoration = "manual";
+    /* NOTE:
+       This scrollRestoration block is a duplicate of the one above.
+       You can safely remove this bottom copy.
+    */
+    if ("scrollRestoration" in history) {
+      history.scrollRestoration = "manual";
     }
   </script>
 </body>
