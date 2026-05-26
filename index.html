@@ -1406,11 +1406,9 @@ body.nav-live .hero-text {
   history.scrollRestoration = "manual";
 }
 
-if (window.location.hash) {
-  history.replaceState(null, "", window.location.pathname + window.location.search);
+if (!window.location.hash) {
+  window.scrollTo(0, 0);
 }
-
-window.scrollTo(0, 0);
     
 document.addEventListener("DOMContentLoaded", () => {
 
