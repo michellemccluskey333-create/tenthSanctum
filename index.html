@@ -1397,30 +1397,19 @@ body.nav-live .hero-text {
 </section>
 </main>
 <script>
+  
   /* =========================
      INTRO ANIMATION TIMING
   ========================== */
-const hasHash = Boolean(window.location.hash);
-
 if ("scrollRestoration" in history) {
   history.scrollRestoration = "manual";
 }
 
-if (!hasHash) {
+if (!window.location.hash) {
   window.scrollTo(0, 0);
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-  if (hasHash) {
-    document.body.classList.remove("intro-running");
-    document.body.classList.add("logo-settling", "hero-live", "hero-bright", "nav-live");
-
-    const blackout = document.querySelector(".blackout");
-    if (blackout) blackout.remove();
-
-    return;
-  }
-
   setTimeout(() => {
     document.body.classList.add("logo-settling");
   }, 650);
@@ -1443,7 +1432,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (blackout) blackout.remove();
   }, 3100);
 });
-
+  
   /* =========================
      SCROLL STATE
   ========================== */
