@@ -250,34 +250,25 @@ body.scrolled .fixed-top-bar {
   width: min(285px, 84vw);
   height: 100vh;
   padding: 108px 30px 34px;
-  background: #020202;
+  background:
+    linear-gradient(to bottom, rgba(0,0,0,0.98), rgba(8,8,8,0.96)),
+    #000;
   border-right: 1px solid var(--line);
   transform: translateX(-100%);
   transition: transform 0.45s var(--ease);
   overflow: hidden;
 }
-.pull-menu::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background-image: url("Images/emblem.png");
-  background-size: 145px;
-  background-repeat: repeat;
-  background-position: -22px 28px;
-  opacity: 0.08;
-  pointer-events: none;
-}
+
 
     body.menu-open .pull-menu {
       transform: translateX(0);
     }
-.menu-content {
-  position: relative;
-  z-index: 2;
-  min-height: 100%;
-  display: flex;
-  flex-direction: column;
-}
+
+    .menu-content {
+      min-height: 100%;
+      display: flex;
+      flex-direction: column;
+    }
 
 .pull-menu-links {
   display: flex;
@@ -368,7 +359,7 @@ body.scrolled .fixed-top-bar {
     0 0 6px rgba(184, 118, 92, 0.22);
 }
 
-    /* Emblem sits below the note, not stranded at the bottom
+    /* Emblem sits below the note, not stranded at the bottom */
   
 .menu-logo-small {
   position: absolute;
@@ -381,11 +372,8 @@ body.scrolled .fixed-top-bar {
     grayscale(0.1)
     drop-shadow(0 0 12px rgba(255, 42, 31, 0.18));
   pointer-events: none;
-}*/
-    .menu-logo-small {
-  display: none;
 }
- .menu-content {
+    .menu-content {
   position: relative;
   z-index: 2;
   min-height: 100%;
@@ -961,23 +949,20 @@ body.nav-live .hero-text {
     width: min(84vw, 520px);
   }
 
-  body.logo-settling .site-logo,
-  body.scrolled .site-logo {
+  body.logo-settling .site-logo {
     top: 82px;
     width: min(58vw, 285px);
     transform: translate(-50%, 0);
   }
 
-  .fixed-top-bar,
-  body.scrolled .fixed-top-bar {
-    display: none;
-    opacity: 0;
+  .fixed-top-bar {
+  display: none;
   }
 
   .site-logo,
   .menu-toggle,
   .book-top {
-    position: absolute;
+  position: absolute;
   }
 
   .menu-toggle {
@@ -992,10 +977,17 @@ body.nav-live .hero-text {
     font-size: 0.62rem;
     letter-spacing: 0.12em;
   }
+
   .pull-menu {
     width: 86vw;
     padding: 88px 28px 30px;
   }
+
+  .menu-logo-small {
+    width: 135px;
+    bottom: 72px;
+  }
+
   .hero-img {
     object-fit: cover;
     object-position: center center;
@@ -1292,27 +1284,27 @@ body.nav-live .hero-text {
       </div>
 
       <div class="instagram-photo-grid">
-        <a href="https://www.instagram.com/p/B81bKwwBFLT/" target="_blank" rel="noopener noreferrer">
+        <a href="https://www.instagram.com/p/B81bKwwBFLT/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" target="_blank" rel="noopener noreferrer">
           <img src="Images/instagram/shop-1.png" alt="Tattoo work from Tenth Sanctum" />
         </a>
 
-        <a href="https://www.instagram.com/p/CKR4MX9hCQ1/" target="_blank" rel="noopener noreferrer">
+        <a href="https://www.instagram.com/p/CKR4MX9hCQ1/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" target="_blank" rel="noopener noreferrer">
           <img src="Images/instagram/shop-6.png" alt="Tenth Sanctum shop interior" />
         </a>
 
-        <a href="https://www.instagram.com/p/DV1tCX9EfGU/" target="_blank" rel="noopener noreferrer">
+        <a href="https://www.instagram.com/p/DV1tCX9EfGU/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" target="_blank" rel="noopener noreferrer">
           <img src="Images/instagram/shop-2.png" alt="Tenth Sanctum shop interior" />
         </a>
 
-        <a href="https://www.instagram.com/reel/C9a0ZvPPRSe/" target="_blank" rel="noopener noreferrer">
+        <a href="https://www.instagram.com/reel/C9a0ZvPPRSe/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" target="_blank" rel="noopener noreferrer">
           <img src="Images/instagram/shop-5.png" alt="Tenth Sanctum shop interior" />
         </a>
 
-        <a href="https://www.instagram.com/reel/DMaenHtR1hr/" target="_blank" rel="noopener noreferrer">
+        <a href="https://www.instagram.com/reel/DMaenHtR1hr/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" target="_blank" rel="noopener noreferrer">
           <img src="Images/instagram/shop-3.png" alt="Tattoo work from Tenth Sanctum" />
         </a>
 
-        <a href="https://www.instagram.com/p/B8Z9U7Uh-sy/" target="_blank" rel="noopener noreferrer">
+        <a href="https://www.instagram.com/p/B8Z9U7Uh-sy/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" target="_blank" rel="noopener noreferrer">
           <img src="Images/instagram/shop-4.png" alt="Tenth Sanctum shop interior" />
         </a>
       </div>
@@ -1327,27 +1319,27 @@ body.nav-live .hero-text {
       </div>
 
       <div class="instagram-photo-grid">
-        <a href="https://www.instagram.com/p/DOhespsjQHI/" target="_blank" rel="noopener noreferrer">
+        <a href="https://www.instagram.com/p/DOhespsjQHI/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" target="_blank" rel="noopener noreferrer">
           <img src="Images/instagram/flash-1.png" alt="Available flash tattoo design" />
         </a>
 
-        <a href="https://www.instagram.com/p/DO4JECQgbf2/" target="_blank" rel="noopener noreferrer">
+        <a href="https://www.instagram.com/p/DO4JECQgbf2/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" target="_blank" rel="noopener noreferrer">
           <img src="Images/instagram/flash-2.png" alt="Flash tattoo artwork" />
         </a>
 
-        <a href="https://www.instagram.com/p/DNda3gENIxX/" target="_blank" rel="noopener noreferrer">
+        <a href="https://www.instagram.com/p/DNda3gENIxX/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" target="_blank" rel="noopener noreferrer">
           <img src="Images/instagram/flash-3.png" alt="Tenth Sanctum flash day tattoo designs" />
         </a>
 
-        <a href="https://www.instagram.com/p/DJ7th1qtigs/" target="_blank" rel="noopener noreferrer">
+        <a href="https://www.instagram.com/p/DJ7th1qtigs/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" target="_blank" rel="noopener noreferrer">
           <img src="Images/instagram/flash-4.png" alt="Available flash tattoo design" />
         </a>
 
-        <a href="https://www.instagram.com/p/DI5NKettZQl/" target="_blank" rel="noopener noreferrer">
+        <a href="https://www.instagram.com/p/DI5NKettZQl/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" target="_blank" rel="noopener noreferrer">
           <img src="Images/instagram/flash-5.png" alt="Flash tattoo artwork" />
         </a>
 
-        <a href="https://www.instagram.com/reel/DAlh6p5vbgr/" target="_blank" rel="noopener noreferrer">
+        <a href="https://www.instagram.com/reel/DAlh6p5vbgr/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" target="_blank" rel="noopener noreferrer">
           <img src="Images/instagram/flash-6.png" alt="Tenth Sanctum flash day tattoo designs" />
         </a>
       </div>
@@ -1396,17 +1388,26 @@ body.nav-live .hero-text {
     /* =========================
        INTRO ANIMATION TIMING
     ========================== */
-    if ("scrollRestoration" in history) {
-  history.scrollRestoration = "manual";
-}
-
-if (window.location.hash) {
-  history.replaceState(null, "", window.location.pathname + window.location.search);
-}
-
-window.scrollTo(0, 0);
     
 document.addEventListener("DOMContentLoaded", () => {
+
+  if (!window.location.hash) {
+    window.scrollTo(0, 0);
+  }
+  
+  if (window.location.hash) {
+    document.body.classList.add("logo-settling", "hero-live", "hero-bright", "nav-live");
+    document.body.classList.remove("intro-running");
+
+    const blackout = document.querySelector(".blackout");
+    if (blackout) blackout.remove();
+
+    setTimeout(() => {
+      document.querySelector(window.location.hash)?.scrollIntoView();
+    }, 50);
+
+    return;
+  }
 
   setTimeout(() => {
     document.body.classList.add("logo-settling");
