@@ -914,28 +914,35 @@ body.nav-live .hero-text {
   border: 1px solid rgba(232, 222, 206, 0.14);
   filter: grayscale(1) invert(0.9) contrast(0.9);
 }
-    /* =========================
+
+ /* =========================
        TABLET
     ========================== */
-    @media (max-width: 1050px) {
-      .site-logo {
-        width: min(78vw, 620px);
-      }
+   @media (max-width: 1050px) {
+  .site-logo {
+    width: min(78vw, 620px);
+  }
 
-      body.logo-settling .site-logo {
-        top: 22px;
-        width: min(62vw, 460px);
-        transform: translate(-50%, 0);
-      }
+  body.logo-settling .site-logo {
+    top: 22px;
+    width: min(62vw, 460px);
+    transform: translate(-50%, 0);
+  }
 
-      .hero-text {
-        max-width: 620px;
-      }
+  body.scrolled .site-logo {
+    top: 10px;
+    width: min(34vw, 260px);
+    transform: translate(-50%, 0);
+  }
 
-      .hero-text h1 {
-        font-size: clamp(2.4rem, 6.4vw, 4.2rem);
-      }
-    }
+  .hero-text {
+    max-width: 620px;
+  }
+
+  .hero-text h1 {
+    font-size: clamp(2.4rem, 6.4vw, 4.2rem);
+  }
+}
 
 /* =========================
    MOBILE
