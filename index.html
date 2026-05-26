@@ -1400,37 +1400,49 @@ body.nav-live .hero-text {
   /* =========================
      INTRO ANIMATION TIMING
   ========================== */
-  if ("scrollRestoration" in history) {
-    history.scrollRestoration = "manual";
+const hasHash = Boolean(window.location.hash);
+
+if ("scrollRestoration" in history) {
+  history.scrollRestoration = "manual";
+}
+
+if (!hasHash) {
+  window.scrollTo(0, 0);
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+  if (hasHash) {
+    document.body.classList.remove("intro-running");
+    document.body.classList.add("logo-settling", "hero-live", "hero-bright", "nav-live");
+
+    const blackout = document.querySelector(".blackout");
+    if (blackout) blackout.remove();
+
+    return;
   }
 
-  if (!window.location.hash) {
-    window.scrollTo(0, 0);
-  }
+  setTimeout(() => {
+    document.body.classList.add("logo-settling");
+  }, 650);
 
-  document.addEventListener("DOMContentLoaded", () => {
-    setTimeout(() => {
-      document.body.classList.add("logo-settling");
-    }, 650);
+  setTimeout(() => {
+    document.body.classList.add("hero-live");
+  }, 1650);
 
-    setTimeout(() => {
-      document.body.classList.add("hero-live");
-    }, 1650);
+  setTimeout(() => {
+    document.body.classList.add("hero-bright");
+  }, 2050);
 
-    setTimeout(() => {
-      document.body.classList.add("hero-bright");
-    }, 2050);
+  setTimeout(() => {
+    document.body.classList.add("nav-live");
+    document.body.classList.remove("intro-running");
+  }, 2600);
 
-    setTimeout(() => {
-      document.body.classList.add("nav-live");
-      document.body.classList.remove("intro-running");
-    }, 2600);
-
-    setTimeout(() => {
-      const blackout = document.querySelector(".blackout");
-      if (blackout) blackout.remove();
-    }, 3100);
-  });
+  setTimeout(() => {
+    const blackout = document.querySelector(".blackout");
+    if (blackout) blackout.remove();
+  }, 3100);
+});
 
   /* =========================
      SCROLL STATE
